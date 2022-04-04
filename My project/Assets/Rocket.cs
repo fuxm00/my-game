@@ -15,7 +15,11 @@ public class Rocket : MonoBehaviour
     {
         if (target == null)
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                target = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+            
         }
 
         rb = GetComponent<Rigidbody2D>();
@@ -24,17 +28,20 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isHoming == true)
+        if (target != null)
         {
-            Vector2 desiredDirection = target.position - gameObject.transform.position;
-            Vector2 currentDirection = gameObject.transform.up;
+            if (isHoming == true)
+            {
+                Vector2 desiredDirection = target.position - gameObject.transform.position;
+                Vector2 currentDirection = gameObject.transform.up;
 
-            desiredDirection.Normalize();
+                desiredDirection.Normalize();
 
-            float rotateAmount = Vector3.Cross(desiredDirection, currentDirection).z;
+                float rotateAmount = Vector3.Cross(desiredDirection, currentDirection).z;
 
-            rb.angularVelocity = rotateAmount * rotationSpeed * -1;
-        }        
+                rb.angularVelocity = rotateAmount * rotationSpeed * -1;
+            }
+        }
 
         rb.velocity = transform.up * rocketSpeed;
     }

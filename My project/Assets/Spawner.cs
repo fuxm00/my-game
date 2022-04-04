@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
         if (Time.time >= nextSpawnTime)
         {
             nextSpawnTime = Time.time + respawnTime;
-            Instantiate(objectToSpawn);
+            Instantiate(objectToSpawn, transform);
         }
     }
 

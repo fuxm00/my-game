@@ -3943,7 +3943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b438c45849c992a41a44bcf4b6daeb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 50
+  delay: 60
   currentDelay: 0
 --- !u!4 &1945862729
 Transform:

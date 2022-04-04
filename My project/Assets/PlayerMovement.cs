@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             hasJumped = false;
         }
 
-        if (jumpInput > 0.5 && !hasJumped)
+        if (jumpInput > 0.5 && !hasJumped && isGrounded)
         {
             jump();
             hasJumped = true;

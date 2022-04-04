@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class Doll : MonoBehaviour
 {
+    public int delay = 5;
+    public int currentDelay;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentDelay = delay;
     }
 
     // Update is called once per frame
     void Update()
     {
-        int randomNumber = Random.Range(0, 20);
-        if (randomNumber < 1)
+        currentDelay--;
+        
+        if (currentDelay <= 0)
         {
-            Debug.Log("flip");
-            transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+            int randomNumber = Random.Range(0, 20);
+
+            if (randomNumber < 1)
+            {
+                currentDelay = delay;
+                transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+            }
         }
+        
     }
 }

@@ -33,6 +33,12 @@ public class Barell : MonoBehaviour
     {
         float randomSeconds = Random.Range(2, 4);
         yield return new WaitForSeconds(randomSeconds);
+        dealDamage();
         Destroy(gameObject);
+    }
+
+    private void dealDamage()
+    {
+
     }
 }

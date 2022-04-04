@@ -90,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void jump()
     {
-        Debug.Log("jump");
         rb.velocity = Vector2.up * jumpForce;
     }
 }

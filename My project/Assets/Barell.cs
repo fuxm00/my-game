@@ -5,6 +5,10 @@ using UnityEngine;
 public class Barell : MonoBehaviour
 {
 
+    public GameObject explosionEffect;
+    public float blastRadius;
+    public float explodeForce;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,19 +24,31 @@ public class Barell : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //TODO efekt výbuchu
         StartCoroutine(Explode());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(this.gameObject);
+        
     }
 
     IEnumerator Explode()
     {
         float randomSeconds = Random.Range(2, 4);
         yield return new WaitForSeconds(randomSeconds);
+
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, blastRadius);
+        foreach (Collider2D nearbyObject in colliders)
+        {
+            Rigidbody2D rb = nearbyObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Vector2 direction = nearbyObject.transform.position - transform.position;
+                rb.AddForce(direction * explodeForce);
+            }
+        }
+        
         dealDamage();
         Destroy(gameObject);
     }

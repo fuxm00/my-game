@@ -92,4 +92,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = Vector2.up * jumpForce;
     }
+
+    public void resetMovement()
+    {
+        rb.velocity = Vector2.zero;
+    }
 }

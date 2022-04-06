@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMng : MonoBehaviour
 {
     public Joystick joystick;
+    public GameObject joystickHandle;
     public GameObject playerPrefab;
     public GameObject playerSpawn;
     private GameObject player;
@@ -18,6 +20,7 @@ public class GameMng : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
         gameIsRunning = false;
+        hideJoystick();
     }
 
     // Update is called once per frame
@@ -38,16 +41,16 @@ public class GameMng : MonoBehaviour
     {
         gameIsRunning = true;
         gameOverUI.SetActive(false);
-        joystick.gameObject.SetActive(true);
+        showJoystick();
         playerHealth = player.GetComponent<PlayerHealth>();
         playerHealth.resetHealth();
         player.SetActive(true);
-        player.GetComponent<PlayerHealth>().resetHealth();
+        
     }
 
     public void gameOver()
     {
-        joystick.gameObject.SetActive(false);
+        hideJoystick();
         player.SetActive(false);
         gameIsRunning = false;
 
@@ -70,5 +73,21 @@ public class GameMng : MonoBehaviour
                 gameOver();
             }
         }
+    }
+
+    private void hideJoystick()
+    {
+        Image image = joystick.gameObject.GetComponent<Image>();
+        Image image2 = joystickHandle.gameObject.GetComponent<Image>();
+        image.color = new Color32(0, 0, 0, 0);
+        image2.color = new Color32(0, 0, 0, 0);
+    }
+
+    private void showJoystick()
+    {
+        Image image = joystick.gameObject.GetComponent<Image>();
+        Image image2 = joystickHandle.gameObject.GetComponent<Image>();
+        image.color = new Color32(255, 255, 255, 255);
+        image2.color = new Color32(255, 255, 255, 255);
     }
 }

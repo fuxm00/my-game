@@ -13,6 +13,7 @@ public class GameMng : MonoBehaviour
     private PlayerHealth playerHealth;
     public GameObject gameOverUI;
     private bool gameIsRunning;
+    private PlayerHeartsUI hearts;
 
     public Color32 whiteColor;
     public Color32 transparentColor;
@@ -26,6 +27,7 @@ public class GameMng : MonoBehaviour
         player.SetActive(false);
         gameIsRunning = false;
         hideJoystick();
+        hearts = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
     }
 
     // Update is called once per frame
@@ -45,6 +47,7 @@ public class GameMng : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         playerHealth.resetHealth();
         player.SetActive(true);
+        hearts.refreshHearts();
         
     }
 

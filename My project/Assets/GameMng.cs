@@ -14,9 +14,14 @@ public class GameMng : MonoBehaviour
     public GameObject gameOverUI;
     private bool gameIsRunning;
 
+    public Color32 whiteColor;
+    public Color32 transparentColor;
+
     // Start is called before the first frame update
     void Start()
     {
+        whiteColor = new Color32(255, 255, 255, 255);
+        transparentColor =  new Color32(0, 0, 0, 0);
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
         gameIsRunning = false;
@@ -79,15 +84,26 @@ public class GameMng : MonoBehaviour
     {
         Image image = joystick.gameObject.GetComponent<Image>();
         Image image2 = joystickHandle.gameObject.GetComponent<Image>();
-        image.color = new Color32(0, 0, 0, 0);
-        image2.color = new Color32(0, 0, 0, 0);
+        if (image != null) {
+            image.color = transparentColor;
+        }
+        if (image != null)
+        {
+            image2.color = transparentColor;
+        }
     }
 
     private void showJoystick()
     {
         Image image = joystick.gameObject.GetComponent<Image>();
         Image image2 = joystickHandle.gameObject.GetComponent<Image>();
-        image.color = new Color32(255, 255, 255, 255);
-        image2.color = new Color32(255, 255, 255, 255);
+        if (image != null)
+        {
+            image.color = whiteColor;
+        }
+        if (image != null)
+        {
+            image2.color = whiteColor;
+        }
     }
 }

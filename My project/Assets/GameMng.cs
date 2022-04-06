@@ -31,11 +31,6 @@ public class GameMng : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void LateUpdate()
-    {
         if (gameIsRunning)
         {
             gameOverCheck();
@@ -80,19 +75,6 @@ public class GameMng : MonoBehaviour
         }
     }
 
-    private void hideJoystick()
-    {
-        Image image = joystick.gameObject.GetComponent<Image>();
-        Image image2 = joystickHandle.gameObject.GetComponent<Image>();
-        if (image != null) {
-            image.color = transparentColor;
-        }
-        if (image != null)
-        {
-            image2.color = transparentColor;
-        }
-    }
-
     private void showJoystick()
     {
         Image image = joystick.gameObject.GetComponent<Image>();
@@ -104,6 +86,19 @@ public class GameMng : MonoBehaviour
         if (image != null)
         {
             image2.color = whiteColor;
+        }
+    }
+
+    private void hideJoystick()
+    {
+        Image image = joystick.gameObject.GetComponent<Image>();
+        Image image2 = joystickHandle.gameObject.GetComponent<Image>();
+        if (image != null) {
+            image.color = transparentColor;
+        }
+        if (image != null)
+        {
+            image2.color = transparentColor;
         }
     }
 }

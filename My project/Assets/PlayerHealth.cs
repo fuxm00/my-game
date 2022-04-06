@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int playerLifes = 5;
+    public int playerMaxLives = 5;
+    public int currentPlayerLives;
     public bool isAlive;
-    public int currentPlayerLifes;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentPlayerLifes = playerLifes;
-        if (currentPlayerLifes > 0)
+        currentPlayerLives = playerMaxLives;
+        if (currentPlayerLives > 0)
         {
             isAlive = true;
         } else
@@ -24,20 +24,30 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentPlayerLifes <= 0 && isAlive)
-        {
-            die();
-        }
-    }
 
-    private void die ()
-    {
-        isAlive = false;
     }
 
     public void resetHealth()
     {
-        currentPlayerLifes = playerLifes;
+        currentPlayerLives = playerMaxLives;
         isAlive = true;
+    }
+
+    public void damagePlayer(int damagePoints)
+    {
+        if (isAlive)
+        {
+            currentPlayerLives -= damagePoints;
+
+            if (currentPlayerLives <= 0)
+            {
+                die();
+            }
+        }
+    }
+
+    private void die()
+    {
+        isAlive = false;
     }
 }

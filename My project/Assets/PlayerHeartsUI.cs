@@ -11,8 +11,7 @@ public class PlayerHeartsUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        
     }
 
     // Update is called once per frame
@@ -23,6 +22,16 @@ public class PlayerHeartsUI : MonoBehaviour
 
     public void refreshHearts()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        if (playerHealth == null)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
+
         foreach (GameObject heart in playerHearts)
         {
             heart.SetActive(false);

@@ -3,35 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameMng : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public Joystick joystick;
-    public GameObject joystickHandle;
+    [Header("Player")]
     public GameObject playerPrefab;
     public GameObject playerSpawn;
-    private GameObject player;
-    private PlayerHealth playerHealth;
-    public GameObject gameOverUI;
-    public bool gameIsRunning;
-    private PlayerHeartsUI heartsScript;
-    public GameObject playerHearts;
-    public GameObject scoreManager;
-    private ScoreManager scoreMng;
 
-    public Color32 whiteColor;
-    public Color32 transparentColor;
+    [Header("Joystick")]
+    public Joystick joystick;
+    public GameObject joystickHandle;
+
+    private GameObject player;
+    private PlayerHealth playerHealthScript;
+
+    [Header("Game Over")]
+    public GameObject gameOverUI;
+
+
+    [Header("Score")]
+    public GameObject scoreManager;
+    private ScoreManager scoreManagerScript;
+
+    [Header("Hearts")]
+    public GameObject playerHearts;
+    private PlayerHeartsUI playerHeartsUIScript;
+
+    [Header("Start Game")]
+    public GameObject startGameUI;
+
+    private Color32 whiteColor;
+    private Color32 transparentColor;
+
+    [Header("Else")]
+    public bool gameIsRunning;
 
     // Start is called before the first frame update
     void Start()
     {
         setColors();
-        player = GameObject.FindGameObjectWithTag("Player");
-        player.SetActive(false);
-        gameIsRunning = false;
+        preparePlayer();
         hideJoystick();
-        heartsScript = playerHearts.GetComponent<PlayerHeartsUI>();
+        gameIsRunning = false;
+
+        playerHealthScript = player.GetComponent<PlayerHealth>();
+
+        playerHeartsUIScript = playerHearts.GetComponent<PlayerHeartsUI>();
         hideHearts();
-        scoreMng = scoreManager.GetComponent<ScoreManager>();
+
+        scoreManagerScript = scoreManager.GetComponent<ScoreManager>();
 
     }
 
@@ -49,13 +68,21 @@ public class GameMng : MonoBehaviour
         gameIsRunning = true;
         gameOverUI.SetActive(false);
         showJoystick();
-        playerHealth = player.GetComponent<PlayerHealth>();
-        playerHealth.resetHealth();
+        playerHealthScript.resetHealth();
         player.SetActive(true);
-        heartsScript.refreshHearts();
+        playerHeartsUIScript.refreshHearts();
         showHearts();
-        scoreMng.resetScore();
-        
+        scoreManagerScript.resetScore();
+
+        if (startGameUI.activeInHierarchy == true)
+        {
+            startGameUI.SetActive(false);
+        }
+
+        if (playerHearts.activeInHierarchy != true)
+        {
+            playerHearts.SetActive(true);
+        }
     }
 
     public void gameOver()
@@ -103,7 +130,8 @@ public class GameMng : MonoBehaviour
     {
         Image image = joystick.gameObject.GetComponent<Image>();
         Image image2 = joystickHandle.gameObject.GetComponent<Image>();
-        if (image != null) {
+        if (image != null)
+        {
             image.color = transparentColor;
         }
         if (image != null)
@@ -126,5 +154,10 @@ public class GameMng : MonoBehaviour
     {
         whiteColor = new Color32(255, 255, 255, 255);
         transparentColor = new Color32(0, 0, 0, 0);
+    }
+    private void preparePlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
     }
 }

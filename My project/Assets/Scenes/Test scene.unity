@@ -184,20 +184,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdaebf970f6eeb47883852dfdf8c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 198229673}
-  joystickHandle: {fileID: 699879804}
   playerPrefab: {fileID: 6463673506755767184, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
   playerSpawn: {fileID: 785665677}
+  joystick: {fileID: 198229673}
+  joystickHandle: {fileID: 699879804}
   gameOverUI: {fileID: 1085786882}
-  gameIsRunning: 0
-  playerHearts: {fileID: 1364070676}
   scoreManager: {fileID: 806975532}
-  whiteColor:
-    serializedVersion: 2
-    rgba: 0
-  transparentColor:
-    serializedVersion: 2
-    rgba: 0
+  playerHearts: {fileID: 1364070676}
+  startGameUI: {fileID: 555731819}
+  gameIsRunning: 0
 --- !u!4 &42853427
 Transform:
   m_ObjectHideFlags: 0
@@ -2358,18 +2353,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 555731819}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1945862727}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2381,18 +2364,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1364070676}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 42853426}
         m_TargetAssemblyTypeName: GameMng, Assembly-CSharp

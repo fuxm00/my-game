@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Doll : MonoBehaviour
 {
+    [Header("Characteristics")]
     public int delay = 5;
-    public int currentDelay;
+
+    private int currentDelay;
 
     // Start is called before the first frame update
     void Start()

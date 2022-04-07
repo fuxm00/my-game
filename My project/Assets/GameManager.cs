@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     public GameObject scoreManager;
     private ScoreManager scoreManagerScript;
 
+    [Header("scoreUI")]
+    public GameObject scoreUI;
+    private ScoreUI scoreUIScript;
+
     [Header("Hearts")]
     public GameObject playerHearts;
     private PlayerHeartsUI playerHeartsUIScript;
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour
         setColors();
         preparePlayer();
         hideJoystick();
+        hideScore();
         gameIsRunning = false;
 
         playerHealthScript = player.GetComponent<PlayerHealth>();
@@ -51,6 +56,10 @@ public class GameManager : MonoBehaviour
         hideHearts();
 
         scoreManagerScript = scoreManager.GetComponent<ScoreManager>();
+
+        scoreUIScript = scoreUI.GetComponent<ScoreUI>();
+
+        startGameUI.SetActive(true);
 
     }
 
@@ -72,7 +81,9 @@ public class GameManager : MonoBehaviour
         player.SetActive(true);
         playerHeartsUIScript.refreshHearts();
         showHearts();
+        
         scoreManagerScript.resetScore();
+        scoreUIScript.refreshScore();
 
         if (startGameUI.activeInHierarchy == true)
         {
@@ -83,6 +94,14 @@ public class GameManager : MonoBehaviour
         {
             playerHearts.SetActive(true);
         }
+
+        //reset score
+        scoreManagerScript.resetScore();
+        //refresh score
+        scoreUIScript.refreshScore();
+        //show score
+        showScore();
+        
     }
 
     public void gameOver()
@@ -92,6 +111,8 @@ public class GameManager : MonoBehaviour
         gameIsRunning = false;
         gameOverUI.SetActive(true);
         hideHearts();
+        //hide score
+        hideScore();
     }
 
     public void quitApp()
@@ -159,5 +180,15 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
+    }
+
+    private void showScore()
+    {
+        scoreUI.SetActive(true);
+    }
+
+    private void hideScore()
+    {
+        scoreUI.SetActive(false);
     }
 }

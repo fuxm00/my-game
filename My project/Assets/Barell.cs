@@ -13,6 +13,8 @@ public class Barell : MonoBehaviour
 
     private ScoreManager scoreMng;
 
+    private GameManager gameMng;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class Barell : MonoBehaviour
         transform.Rotate(0, 0, randomRotation);
 
         scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<ScoreManager>();
+        gameMng = GameObject.FindGameObjectWithTag("GameMng").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -65,7 +68,10 @@ public class Barell : MonoBehaviour
             }
         }
 
-        scoreMng.changeScore(1);
+        if (gameMng.gameIsRunning)
+        {
+            scoreMng.changeScore(1);
+        }
 
         Destroy(gameObject);
     }

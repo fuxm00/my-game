@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+    [Header("Characteristics")]
     public float rocketSpeed;
     public float rotationSpeed;
     public bool isHoming;
-    public Transform target;
+
+    [Header("Target")]
+    private Transform targetTransform;
+
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (target == null)
+        if (targetTransform == null)
         {
             if (GameObject.FindGameObjectWithTag("Player") != null)
             {
-                target = GameObject.FindGameObjectWithTag("Player").transform;
+                targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
             }
             
         }
@@ -28,11 +32,11 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (target != null)
+        if (targetTransform != null)
         {
             if (isHoming == true)
             {
-                Vector2 desiredDirection = target.position - gameObject.transform.position;
+                Vector2 desiredDirection = targetTransform.position - gameObject.transform.position;
                 Vector2 currentDirection = gameObject.transform.up;
 
                 desiredDirection.Normalize();

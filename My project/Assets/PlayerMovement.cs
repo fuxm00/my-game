@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Characteristics")]
     public float moveSpeed;
     public float jumpForce;
+
+    [Header("Joystick")]
     public Joystick joystick;
 
     private Rigidbody2D rb;
@@ -14,10 +17,12 @@ public class PlayerMovement : MonoBehaviour
     private float jumpInput;
     private bool facingRight = true;
 
-    private bool isGrounded;
+    [Header("Ground check")]
     public Transform groundCheckObject;
     public float groundDistanceToCheck;
     public LayerMask groundMask;
+    private bool isGrounded;
+
     private bool hasJumped;
 
     // Start is called before the first frame update
@@ -32,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = joystick.Horizontal;
         jumpInput = joystick.Vertical;
+
+        wrongFacingCheck();
     }
 
     private void FixedUpdate()
@@ -39,8 +46,6 @@ public class PlayerMovement : MonoBehaviour
         groundCheck();
 
         movePlayer(moveInput, 0);
-
-        wrongFacingCheck();
 
         jumpCheck();
     }
@@ -91,10 +96,5 @@ public class PlayerMovement : MonoBehaviour
     private void jump()
     {
         rb.velocity = Vector2.up * jumpForce;
-    }
-
-    public void resetMovement()
-    {
-        rb.velocity = Vector2.zero;
     }
 }

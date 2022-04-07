@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHeartsUI : MonoBehaviour
 {
     public GameObject[] playerHearts;
-    private GameObject player;
+    public GameObject player;
     private PlayerHealth playerHealth;
 
     // Start is called before the first frame update
@@ -22,15 +22,7 @@ public class PlayerHeartsUI : MonoBehaviour
 
     public void refreshHearts()
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-
-        if (playerHealth == null)
-        {
-            playerHealth = player.GetComponent<PlayerHealth>();
-        }
+        playerHealth = player.GetComponent<PlayerHealth>();
 
         foreach (GameObject heart in playerHearts)
         {

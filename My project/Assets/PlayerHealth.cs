@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public int playerMaxLives = 5;
     public int currentPlayerLives;
     public bool isAlive;
-    private PlayerHeartsUI hearts;
+    private PlayerHeartsUI playerHeartsUIScript;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
             isAlive = false;
         }
 
-        hearts = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
+        playerHeartsUIScript = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
         if (isAlive)
         {
             currentPlayerLives -= damagePoints;
-            hearts.refreshHearts();
+            playerHeartsUIScript.refreshHearts();
 
             if (currentPlayerLives <= 0)
             {

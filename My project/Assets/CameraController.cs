@@ -5,14 +5,11 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject TargetToFollow;
-    public Vector3 TargetPosition;
-    public bool hasTarget;
 
     // Start is called before the first frame update
     void Start()
     {
-        hasTarget = false;
+
     }
 
     // Update is called once per frame

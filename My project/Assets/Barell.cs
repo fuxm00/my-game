@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Barell : MonoBehaviour
 {
-
-    public GameObject explosionEffect;
+    [Header("Characteristics")]
     public float blastRadius;
     public float explodeForce;
+
+    [Header("Effect")]
+    public GameObject explosionEffect;
+
+    public GameObject scoreMng;
 
     // Start is called before the first frame update
     void Start()

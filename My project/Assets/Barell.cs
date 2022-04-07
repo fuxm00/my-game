@@ -52,21 +52,12 @@ public class Barell : MonoBehaviour
 
             PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
             if (health != null) {
-
                 if (health.currentPlayerLives > 0)
                 {
                     health.damagePlayer(1);
                 }
-                
             }
         }
-        
-        dealDamage();
         Destroy(gameObject);
-    }
-
-    private void dealDamage()
-    {
-
     }
 }

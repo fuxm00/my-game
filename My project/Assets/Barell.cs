@@ -11,13 +11,15 @@ public class Barell : MonoBehaviour
     [Header("Effect")]
     public GameObject explosionEffect;
 
-    public GameObject scoreMng;
+    private ScoreManager scoreMng;
 
     // Start is called before the first frame update
     void Start()
     {
         float randomRotation = Random.Range(-90, 90);
         transform.Rotate(0, 0, randomRotation);
+
+        scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -63,7 +65,7 @@ public class Barell : MonoBehaviour
             }
         }
 
-        GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<ScoreManager>().changeScore(1);
+        scoreMng.changeScore(1);
 
         Destroy(gameObject);
     }

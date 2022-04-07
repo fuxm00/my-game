@@ -58,6 +58,9 @@ public class Barell : MonoBehaviour
                 }
             }
         }
+
+        GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<ScoreManager>().changeScore(1);
+
         Destroy(gameObject);
     }
 }

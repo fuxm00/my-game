@@ -12,9 +12,11 @@ public class GameMng : MonoBehaviour
     private GameObject player;
     private PlayerHealth playerHealth;
     public GameObject gameOverUI;
-    private bool gameIsRunning;
+    public bool gameIsRunning;
     private PlayerHeartsUI heartsScript;
     public GameObject playerHearts;
+    public GameObject scoreManager;
+    private ScoreManager scoreMng;
 
     public Color32 whiteColor;
     public Color32 transparentColor;
@@ -22,14 +24,14 @@ public class GameMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        whiteColor = new Color32(255, 255, 255, 255);
-        transparentColor =  new Color32(0, 0, 0, 0);
+        setColors();
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
         gameIsRunning = false;
         hideJoystick();
         heartsScript = playerHearts.GetComponent<PlayerHeartsUI>();
         hideHearts();
+        scoreMng = scoreManager.GetComponent<ScoreManager>();
 
     }
 
@@ -52,6 +54,7 @@ public class GameMng : MonoBehaviour
         player.SetActive(true);
         heartsScript.refreshHearts();
         showHearts();
+        scoreMng.resetScore();
         
     }
 
@@ -117,5 +120,11 @@ public class GameMng : MonoBehaviour
     private void hideHearts()
     {
         playerHearts.SetActive(false);
+    }
+
+    private void setColors()
+    {
+        whiteColor = new Color32(255, 255, 255, 255);
+        transparentColor = new Color32(0, 0, 0, 0);
     }
 }

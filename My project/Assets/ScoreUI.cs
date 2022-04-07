@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CurrencyManager : MonoBehaviour
+public class ScoreUI : MonoBehaviour
 {
-    public int credits;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +14,5 @@ public class CurrencyManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void creditTransaction(int amount)
-    {
-        credits += amount;
     }
 }

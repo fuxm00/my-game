@@ -13,7 +13,8 @@ public class GameMng : MonoBehaviour
     private PlayerHealth playerHealth;
     public GameObject gameOverUI;
     private bool gameIsRunning;
-    private PlayerHeartsUI hearts;
+    private PlayerHeartsUI heartsScript;
+    public GameObject playerHearts;
 
     public Color32 whiteColor;
     public Color32 transparentColor;
@@ -27,7 +28,9 @@ public class GameMng : MonoBehaviour
         player.SetActive(false);
         gameIsRunning = false;
         hideJoystick();
-        hearts = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
+        heartsScript = playerHearts.GetComponent<PlayerHeartsUI>();
+        hideHearts();
+
     }
 
     // Update is called once per frame
@@ -47,7 +50,8 @@ public class GameMng : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         playerHealth.resetHealth();
         player.SetActive(true);
-        hearts.refreshHearts();
+        heartsScript.refreshHearts();
+        showHearts();
         
     }
 
@@ -56,8 +60,8 @@ public class GameMng : MonoBehaviour
         hideJoystick();
         player.SetActive(false);
         gameIsRunning = false;
-
         gameOverUI.SetActive(true);
+        hideHearts();
     }
 
     public void quitApp()
@@ -103,5 +107,15 @@ public class GameMng : MonoBehaviour
         {
             image2.color = transparentColor;
         }
+    }
+
+    private void showHearts()
+    {
+        playerHearts.SetActive(true);
+    }
+
+    private void hideHearts()
+    {
+        playerHearts.SetActive(false);
     }
 }

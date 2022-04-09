@@ -460,8 +460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blastRadius: 3
   explodeForce: 150
-  explosionEffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
-  scoreMng: {fileID: 0}
+  explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
 --- !u!1 &5504852650753064259
 GameObject:
   m_ObjectHideFlags: 0

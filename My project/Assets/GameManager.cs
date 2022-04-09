@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Joystick")]
     public Joystick joystick;
     public GameObject joystickHandle;
+    public GameObject joystickBackgound;
 
     private GameObject player;
     private PlayerHealth playerHealthScript;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     private Color32 whiteColor;
     private Color32 transparentColor;
+    private Color32 semiTransparentColor;
 
     [Header("Else")]
     public bool gameIsRunning;
@@ -137,27 +139,38 @@ public class GameManager : MonoBehaviour
     {
         Image image = joystick.gameObject.GetComponent<Image>();
         Image image2 = joystickHandle.gameObject.GetComponent<Image>();
+        Image image3 = joystickBackgound.gameObject.GetComponent<Image>();
         if (image != null)
         {
             image.color = whiteColor;
         }
-        if (image != null)
+        if (image2 != null)
         {
             image2.color = whiteColor;
         }
+        if (image3 != null)
+        {
+            image3.color = semiTransparentColor;
+        }
+
     }
 
     private void hideJoystick()
     {
         Image image = joystick.gameObject.GetComponent<Image>();
         Image image2 = joystickHandle.gameObject.GetComponent<Image>();
+        Image image3 = joystickBackgound.gameObject.GetComponent<Image>();
         if (image != null)
         {
             image.color = transparentColor;
         }
-        if (image != null)
+        if (image2 != null)
         {
             image2.color = transparentColor;
+        }
+        if (image3 != null)
+        {
+            image3.color = transparentColor;
         }
     }
 
@@ -175,6 +188,7 @@ public class GameManager : MonoBehaviour
     {
         whiteColor = new Color32(255, 255, 255, 255);
         transparentColor = new Color32(0, 0, 0, 0);
+        semiTransparentColor = new Color32(0, 0, 0, 70);
     }
     private void preparePlayer()
     {

@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight = true;
 
     [Header("Ground check")]
-    public Transform groundCheckObject;
+    public Transform groundCheckObjectLeft;
+    public Transform groundCheckObjectRight;
     public float groundDistanceToCheck;
     public LayerMask groundMask;
     private bool isGrounded;
@@ -52,7 +53,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void groundCheck()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, groundDistanceToCheck, groundMask);
+        if (Physics2D.OverlapCircle(groundCheckObjectLeft.position, groundDistanceToCheck, groundMask) || Physics2D.OverlapCircle(groundCheckObjectRight.position, groundDistanceToCheck, groundMask))
+        {
+            isGrounded = true;
+        } else
+        {
+            isGrounded = false;
+        }
+        
+        //isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, groundDistanceToCheck, groundMask);
     }
 
     private void movePlayer(float horizontal, float vertical)

@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 12397165}
   - component: {fileID: 12397164}
   m_Layer: 5
-  m_Name: Score Board
+  m_Name: Coin Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.9608052, a: 1}
+  m_Color: {r: 1, g: 0.87004155, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -528,50 +528,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106897239}
   m_CullTransparentMesh: 1
---- !u!1 &159867222
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 159867224}
-  - component: {fileID: 159867223}
-  m_Layer: 0
-  m_Name: Currency Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &159867223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159867222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3648cada7f257d04ea04086371f0be85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  credits: 0
---- !u!4 &159867224
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159867222}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.114674, y: -0.42139494, z: 0.63852376}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 467277881}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &198229672 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -1006,7 +962,6 @@ Transform:
   m_Children:
   - {fileID: 42853427}
   - {fileID: 981094679}
-  - {fileID: 159867224}
   - {fileID: 806975534}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -1172,7 +1127,7 @@ MonoBehaviour:
   - {fileID: 7218607744900889825, guid: 2e37f05b03f0f14459fb5c387ef74c78, type: 3}
   - {fileID: 2858611994326846292, guid: e1e56f8e732fb2d449f54607ac7ffd34, type: 3}
   - {fileID: 4574042265254223934, guid: 35fe158a0f499f544b3397bfb7993262, type: 3}
-  playerDistanceToSpawnPart: 50
+  playerDistanceToSpawnPart: 25
   player: {fileID: 263333667}
 --- !u!4 &616413172
 Transform:
@@ -1558,7 +1513,7 @@ GameObject:
   - component: {fileID: 806975534}
   - component: {fileID: 806975533}
   m_Layer: 0
-  m_Name: Score Manager
+  m_Name: Coin Manager
   m_TagString: ScoreMng
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1576,8 +1531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8aea6c50eeb3145a18ab2110b5d95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScore: 0
-  ScoreUI: {fileID: 971059022}
+  currentCoins: 0
+  coinUI: {fileID: 971059022}
 --- !u!4 &806975534
 Transform:
   m_ObjectHideFlags: 0
@@ -1590,7 +1545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 467277881}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &807940294
 GameObject:
@@ -1811,7 +1766,7 @@ GameObject:
   - component: {fileID: 971059023}
   - component: {fileID: 971059024}
   m_Layer: 5
-  m_Name: Score UI
+  m_Name: Coin UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1849,11 +1804,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594deb42bd4188d47ab7e7f39b8f1a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreBoard: {fileID: 12397163}
+  coinBoard: {fileID: 12397163}
   prefix: 'SCORE: '
-  scoreManager: {fileID: 806975532}
-  scoreManagerScript: {fileID: 0}
-  scoreText: {fileID: 0}
+  coinManager: {fileID: 806975532}
+  coinManagerScript: {fileID: 0}
+  coinText: {fileID: 0}
 --- !u!1 &981094677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,7 +2401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1364070677
 Transform:
   m_ObjectHideFlags: 0

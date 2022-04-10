@@ -23,11 +23,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Score")]
     public GameObject scoreManager;
-    private ScoreManager scoreManagerScript;
+    private CoinManager scoreManagerScript;
 
     [Header("scoreUI")]
     public GameObject scoreUI;
-    private ScoreUI scoreUIScript;
+    private CoinUI scoreUIScript;
 
     [Header("Hearts")]
     public GameObject playerHearts;
@@ -57,9 +57,9 @@ public class GameManager : MonoBehaviour
         playerHeartsUIScript = playerHearts.GetComponent<PlayerHeartsUI>();
         hideHearts();
 
-        scoreManagerScript = scoreManager.GetComponent<ScoreManager>();
+        scoreManagerScript = scoreManager.GetComponent<CoinManager>();
 
-        scoreUIScript = scoreUI.GetComponent<ScoreUI>();
+        scoreUIScript = scoreUI.GetComponent<CoinUI>();
 
         startGameUI.SetActive(true);
 

@@ -5,12 +5,12 @@ using UnityEngine;
 public class Reward : MonoBehaviour
 {
     public int coinReward;
-    private ScoreManager scoreMng;
+    private CoinManager scoreMng;
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<ScoreManager>();
+        scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<CoinManager>();
     }
 
     // Update is called once per frame

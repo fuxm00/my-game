@@ -11,7 +11,7 @@ public class Barell : MonoBehaviour
     [Header("Effect")]
     public GameObject explosionEffect;
 
-    private ScoreManager scoreMng;
+    private CoinManager scoreMng;
 
     private GameManager gameMng;
 

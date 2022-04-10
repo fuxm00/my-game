@@ -12,9 +12,9 @@ public class CoinManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject gameManager = GameObject.FindGameObjectWithTag("GameMng");
         coinUIScript = coinUI.GetComponent<CoinUI>();
         currentCoins = 0;
+        //totalcoins ze souboru
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class CoinManager : MonoBehaviour
         coinUIScript.refreshScore();
     }
 
-    public void resetScore()
+    public void resetCurrentCoins()
     {
         currentCoins = 0;
     }

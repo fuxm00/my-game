@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
         playerHeartsUIScript.refreshHearts();
         showHearts();
         
-        scoreManagerScript.resetScore();
+        scoreManagerScript.resetCurrentCoins();
         scoreUIScript.refreshScore();
 
         if (startGameUI.activeInHierarchy == true)
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         }
 
         //reset score
-        scoreManagerScript.resetScore();
+        scoreManagerScript.resetCurrentCoins();
         //refresh score
         scoreUIScript.refreshScore();
         //show score

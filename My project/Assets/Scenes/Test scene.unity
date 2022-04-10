@@ -1193,7 +1193,7 @@ GameObject:
   - component: {fileID: 711124988}
   - component: {fileID: 711124987}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1215,8 +1215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 356.4991, y: 256.23166}
-  m_SizeDelta: {x: 378.9982, y: 109.5366}
+  m_AnchoredPosition: {x: 364.17227, y: 267.7414}
+  m_SizeDelta: {x: 394.3445, y: 132.5561}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &711124987
 MonoBehaviour:
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9064461, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 50
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
@@ -1251,7 +1251,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: '+15 COINS
+
+    TOTAL: 150'
 --- !u!222 &711124988
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1532,6 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCoins: 0
+  totalCoins: 0
   coinUI: {fileID: 971059022}
 --- !u!4 &806975534
 Transform:
@@ -1906,13 +1909,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085786883}
+  - component: {fileID: 1085786884}
   m_Layer: 5
   m_Name: Game Over UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1085786883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1937,6 +1941,22 @@ RectTransform:
   m_AnchoredPosition: {x: -1110.0001, y: -540.3947}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1085786884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085786882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e6f56f0f6e22147bd204afc9867fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPrefix: +
+  firstSuffix: ' COINS'
+  secondPrefix: 'TOTAL:'
+  coinText: {fileID: 0}
 --- !u!1 &1091177739
 GameObject:
   m_ObjectHideFlags: 0

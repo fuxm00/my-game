@@ -6,9 +6,14 @@ using UnityEngine.Advertisements;
 public class AdsManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         Advertisement.Initialize("4695771");
+    }
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame

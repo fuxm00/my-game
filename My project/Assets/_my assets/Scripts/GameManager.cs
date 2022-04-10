@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
     [Header("Start Game")]
     public GameObject startGameUI;
 
+    [Header("Ads")]
+    public GameObject AdManager;
+    public RewardedAd rewardedAd;
+
     private Color32 whiteColor;
     private Color32 transparentColor;
     private Color32 semiTransparentColor;
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
 
         gameOverUIScript = gameOverUI.GetComponent<GameOverUI>();
 
+        rewardedAd = AdManager.GetComponent<RewardedAd>();
     }
 
     // Update is called once per frame
@@ -106,6 +111,8 @@ public class GameManager : MonoBehaviour
         coinUIScript.refreshScore();
         //show score
         showScore();
+
+        rewardedAd.LoadAd();
         
     }
 

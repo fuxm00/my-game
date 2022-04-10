@@ -296,7 +296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SCORE: 151'
+  m_Text: 'COINS: 151'
 --- !u!222 &12397165
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1808,7 +1808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinBoard: {fileID: 12397163}
-  prefix: 'SCORE: '
+  prefix: 'COINS: '
   coinManager: {fileID: 806975532}
   coinManagerScript: {fileID: 0}
   coinText: {fileID: 0}

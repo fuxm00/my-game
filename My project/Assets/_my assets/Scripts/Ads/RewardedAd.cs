@@ -60,9 +60,11 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     {
         if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
-            Debug.Log("rewaaaaaaaaaard");
-            _showAdButton.interactable = false;
             
+            _showAdButton.interactable = false;
+            _showAdButton.onClick.AddListener(ShowAd);
+            Debug.Log("rewaaaaaaaaaard");
+
             // Grant a reward.
 
             // Load another ad:

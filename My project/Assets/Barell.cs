@@ -20,9 +20,6 @@ public class Barell : MonoBehaviour
     {
         float randomRotation = Random.Range(-90, 90);
         transform.Rotate(0, 0, randomRotation);
-
-        scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<ScoreManager>();
-        gameMng = GameObject.FindGameObjectWithTag("GameMng").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -66,11 +63,6 @@ public class Barell : MonoBehaviour
                     health.damagePlayer(1);
                 }
             }
-        }
-
-        if (gameMng.gameIsRunning)
-        {
-            scoreMng.changeScore(1);
         }
 
         Destroy(gameObject);

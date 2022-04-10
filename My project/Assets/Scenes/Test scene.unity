@@ -359,8 +359,8 @@ MonoBehaviour:
   joystickHandle: {fileID: 699879804}
   joystickBackgound: {fileID: 1718334423}
   gameOverUI: {fileID: 1085786882}
-  scoreManager: {fileID: 806975532}
-  scoreUI: {fileID: 971059022}
+  coinManager: {fileID: 806975532}
+  coinUI: {fileID: 971059022}
   playerHearts: {fileID: 1364070676}
   startGameUI: {fileID: 555731819}
   gameIsRunning: 0
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   - {fileID: 7218607744900889825, guid: 2e37f05b03f0f14459fb5c387ef74c78, type: 3}
   - {fileID: 2858611994326846292, guid: e1e56f8e732fb2d449f54607ac7ffd34, type: 3}
   - {fileID: 4574042265254223934, guid: 35fe158a0f499f544b3397bfb7993262, type: 3}
-  playerDistanceToSpawnPart: 25
+  playerDistanceToSpawnPart: 250
   player: {fileID: 263333667}
 --- !u!4 &616413172
 Transform:
@@ -1916,7 +1916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1085786883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1956,7 +1956,8 @@ MonoBehaviour:
   firstPrefix: +
   firstSuffix: ' COINS'
   secondPrefix: 'TOTAL:'
-  coinText: {fileID: 0}
+  coinManager: {fileID: 806975532}
+  coinText: {fileID: 711124987}
 --- !u!1 &1091177739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,11 +2642,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 235
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 248
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4043,6 +4044,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: playerMaxLives
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6463673506755767184, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
       propertyPath: m_Name
       value: Player

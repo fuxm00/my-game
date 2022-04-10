@@ -19,15 +19,16 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Over")]
     public GameObject gameOverUI;
+    private GameOverUI gameOverUIScript;
 
 
-    [Header("Score")]
-    public GameObject scoreManager;
-    private CoinManager scoreManagerScript;
+    [Header("Coins")]
+    public GameObject coinManager;
+    private CoinManager coinManagerScript;
 
-    [Header("scoreUI")]
-    public GameObject scoreUI;
-    private CoinUI scoreUIScript;
+    [Header("CoinUI")]
+    public GameObject coinUI;
+    private CoinUI coinUIScript;
 
     [Header("Hearts")]
     public GameObject playerHearts;
@@ -57,11 +58,13 @@ public class GameManager : MonoBehaviour
         playerHeartsUIScript = playerHearts.GetComponent<PlayerHeartsUI>();
         hideHearts();
 
-        scoreManagerScript = scoreManager.GetComponent<CoinManager>();
+        coinManagerScript = coinManager.GetComponent<CoinManager>();
 
-        scoreUIScript = scoreUI.GetComponent<CoinUI>();
+        coinUIScript = coinUI.GetComponent<CoinUI>();
 
         startGameUI.SetActive(true);
+
+        gameOverUIScript = gameOverUI.GetComponent<GameOverUI>();
 
     }
 
@@ -84,8 +87,8 @@ public class GameManager : MonoBehaviour
         playerHeartsUIScript.refreshHearts();
         showHearts();
         
-        scoreManagerScript.resetCurrentCoins();
-        scoreUIScript.refreshScore();
+        coinManagerScript.resetCurrentCoins();
+        coinUIScript.refreshScore();
 
         if (startGameUI.activeInHierarchy == true)
         {
@@ -98,9 +101,9 @@ public class GameManager : MonoBehaviour
         }
 
         //reset score
-        scoreManagerScript.resetCurrentCoins();
+        coinManagerScript.resetCurrentCoins();
         //refresh score
-        scoreUIScript.refreshScore();
+        coinUIScript.refreshScore();
         //show score
         showScore();
         
@@ -113,8 +116,9 @@ public class GameManager : MonoBehaviour
         gameIsRunning = false;
         gameOverUI.SetActive(true);
         hideHearts();
-        //hide score
         hideScore();
+        coinManagerScript.transferToTotalCoins();
+        gameOverUIScript.refreshCoins();
     }
 
     public void quitApp()
@@ -198,11 +202,11 @@ public class GameManager : MonoBehaviour
 
     private void showScore()
     {
-        scoreUI.SetActive(true);
+        coinUI.SetActive(true);
     }
 
     private void hideScore()
     {
-        scoreUI.SetActive(false);
+        coinUI.SetActive(false);
     }
 }

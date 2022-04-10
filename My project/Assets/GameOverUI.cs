@@ -9,6 +9,10 @@ public class GameOverUI : MonoBehaviour
     public string firstSuffix;
     public string secondPrefix;
 
+    public GameObject coinManager;
+    private CoinManager coinManagerScript;
+    
+
     public Text coinText;
 
     // Start is called before the first frame update
@@ -25,6 +29,7 @@ public class GameOverUI : MonoBehaviour
 
     public void refreshCoins()
     {
-        
+        coinManagerScript = coinManager.GetComponent<CoinManager>();
+        coinText.text = firstPrefix + coinManagerScript.currentCoins + firstSuffix + "\r\n" + secondPrefix + coinManagerScript.totalCoins;
     }
 }

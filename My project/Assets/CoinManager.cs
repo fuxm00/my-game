@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoinManager : MonoBehaviour
 {
     public int currentCoins;
+    public int totalCoins;
 
     public GameObject coinUI;
     private CoinUI coinUIScript;
@@ -23,10 +24,15 @@ public class CoinManager : MonoBehaviour
         
     }
 
-    public void changeScore(int amount)
+    public void giveCurrentCoins(int amount)
     {
         currentCoins += amount;
         coinUIScript.refreshScore();
+    }
+
+    public void transferToTotalCoins()
+    {
+        totalCoins += currentCoins;
     }
 
     public void resetCurrentCoins()

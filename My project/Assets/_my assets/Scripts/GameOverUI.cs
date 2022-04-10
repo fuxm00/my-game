@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
-    public string firstPrefix;
-    public string firstSuffix;
-    public string secondPrefix;
+    public string collectedPrefix;
+    public string adBonusPrefix;
+    public string totalPrefix;
 
     public GameObject coinManager;
     private CoinManager coinManagerScript;
@@ -30,6 +30,14 @@ public class GameOverUI : MonoBehaviour
     public void refreshCoins()
     {
         coinManagerScript = coinManager.GetComponent<CoinManager>();
-        coinText.text = firstPrefix + coinManagerScript.currentCoins + firstSuffix + "\r\n" + secondPrefix + coinManagerScript.totalCoins;
+        coinText.text = 
+            collectedPrefix + 
+            coinManagerScript.collectedCoins + 
+            "\r\n" +
+            adBonusPrefix +
+            coinManagerScript.adBonusCoins +
+            "\r\n" +
+            totalPrefix + 
+            coinManagerScript.totalCoins;
     }
 }

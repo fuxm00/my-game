@@ -23,7 +23,7 @@ public class Reward : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            scoreMng.giveCurrentCoins(coinReward);
+            scoreMng.giveCollectedCoins(coinReward);
             Destroy(gameObject);
         }
     }

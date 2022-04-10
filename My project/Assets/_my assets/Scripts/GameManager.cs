@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         playerHeartsUIScript.refreshHearts();
         showHearts();
         
-        coinManagerScript.resetCurrentCoins();
+        coinManagerScript.resetRecievedCoins();
         coinUIScript.refreshScore();
 
         if (startGameUI.activeInHierarchy == true)
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         }
 
         //reset score
-        coinManagerScript.resetCurrentCoins();
+        coinManagerScript.resetRecievedCoins();
         //refresh score
         coinUIScript.refreshScore();
         //show score
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(true);
         hideHearts();
         hideScore();
-        coinManagerScript.transferToTotalCoins();
+        coinManagerScript.transferToTotalCoins(coinManagerScript.collectedCoins);
         gameOverUIScript.refreshCoins();
     }
 

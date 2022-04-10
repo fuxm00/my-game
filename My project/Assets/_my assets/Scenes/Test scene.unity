@@ -691,7 +691,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2x CREDITS
+  m_Text: '+20% COINS
+
+    WATCH AD'
 --- !u!222 &247425053
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -849,6 +851,8 @@ MonoBehaviour:
   _showAdButton: {fileID: 868853492}
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
+  coinMnanager: {fileID: 806975532}
+  gameOverUI: {fileID: 1085786882}
 --- !u!1 &322955659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,7 +1283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 364.17227, y: 267.7414}
+  m_AnchoredPosition: {x: 364.17227, y: 241}
   m_SizeDelta: {x: 394.3445, y: 132.5561}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &711124987
@@ -1304,10 +1308,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 3
     m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1315,7 +1319,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+15 COINS
+  m_Text: 'COLLECTED: +12 354
+
+    AD BONUS: +1468
 
     TOTAL: 150'
 --- !u!222 &711124988
@@ -1597,7 +1603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8aea6c50eeb3145a18ab2110b5d95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCoins: 0
+  collectedCoins: 0
+  adBonusCoins: 0
   totalCoins: 0
   coinUI: {fileID: 971059022}
 --- !u!4 &806975534
@@ -1903,7 +1910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081060287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 1.47, z: 0}
+  m_LocalPosition: {x: -4.34, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1722828582}
@@ -1962,9 +1969,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e6f56f0f6e22147bd204afc9867fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstPrefix: +
-  firstSuffix: ' COINS'
-  secondPrefix: 'TOTAL:'
+  collectedPrefix: 'COLLECTED: +'
+  adBonusPrefix: 'AD BONUS: +'
+  totalPrefix: 'TOTAL: '
   coinManager: {fileID: 806975532}
   coinText: {fileID: 711124987}
 --- !u!1 &1091177739

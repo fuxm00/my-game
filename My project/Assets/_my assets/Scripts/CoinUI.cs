@@ -29,6 +29,6 @@ public class CoinUI : MonoBehaviour
     {
         coinText = coinBoard.GetComponent<Text>();
         coinManagerScript = coinManager.GetComponent<CoinManager>();
-        coinText.text = prefix + coinManagerScript.currentCoins;
+        coinText.text = prefix + coinManagerScript.collectedCoins;
     }
 }

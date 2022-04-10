@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    public int currentCoins;
+    public int collectedCoins;
+    public int adBonusCoins;
     public int totalCoins;
 
     public GameObject coinUI;
@@ -14,7 +15,8 @@ public class CoinManager : MonoBehaviour
     void Start()
     {
         coinUIScript = coinUI.GetComponent<CoinUI>();
-        currentCoins = 0;
+        collectedCoins = 0;
+        adBonusCoins = 0;
         //totalcoins ze souboru
     }
 
@@ -24,19 +26,26 @@ public class CoinManager : MonoBehaviour
         
     }
 
-    public void giveCurrentCoins(int amount)
+    public void giveCollectedCoins(int amount)
     {
-        currentCoins += amount;
+        collectedCoins += amount;
         coinUIScript.refreshScore();
     }
 
-    public void transferToTotalCoins()
+    public void giveAdBonusCoins()
     {
-        totalCoins += currentCoins;
+        adBonusCoins = (int)((float)collectedCoins * .2f);
+        coinUIScript.refreshScore();
     }
 
-    public void resetCurrentCoins()
+    public void transferToTotalCoins(int amount)
     {
-        currentCoins = 0;
+        totalCoins += amount;
+    }
+
+    public void resetRecievedCoins()
+    {
+        collectedCoins = 0;
+        adBonusCoins = 0;
     }
 }

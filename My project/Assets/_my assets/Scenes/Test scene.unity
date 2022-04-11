@@ -1465,6 +1465,7 @@ MonoBehaviour:
   extraHeartisBought: 0
   coinManager: {fileID: 806975532}
   player: {fileID: 263333667}
+  palyerBody: {fileID: 683733201}
   shopUI: {fileID: 792226296}
   extraHeartPrice: 1999
   goldenSkinPrice: 9999
@@ -1675,6 +1676,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644106073}
   m_CullTransparentMesh: 1
+--- !u!1 &683733201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8452244514634352386, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+  m_PrefabInstance: {fileID: 6463673505311518096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &685304487
 GameObject:
   m_ObjectHideFlags: 0

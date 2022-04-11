@@ -18,6 +18,7 @@ public class ShopManager : MonoBehaviour
     [Header("Player")]
     public GameObject player;
     private PlayerHealth playerHealthScript;
+    public GameObject palyerBody;
 
     [Header("Shop UI")]
     public GameObject shopUI;
@@ -39,7 +40,7 @@ public class ShopManager : MonoBehaviour
         if (product.definition.id == coins_100)
         {
             Debug.Log("100 coins reward!");
-            coinManagerScript.transferToTotalCoins(100);
+            coinManagerScript.transferToTotalCoins(999999);
             shopUIScript.refresh();
         }
 
@@ -80,7 +81,7 @@ public class ShopManager : MonoBehaviour
             if (goldenSkinPrice <= coinManagerScript.totalCoins)
             {
                 coinManagerScript.totalCoins -= goldenSkinPrice;
-                //skin change
+                palyerBody.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 0, 255);
                 goldenSkinIsBought = true;
                 shopUIScript.refresh();
             }

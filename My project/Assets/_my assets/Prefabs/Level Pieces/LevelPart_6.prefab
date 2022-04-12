@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 8217401573466325646}
   m_Layer: 7
   m_Name: LevelPart_6
-  m_TagString: Untagged
+  m_TagString: LevelPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

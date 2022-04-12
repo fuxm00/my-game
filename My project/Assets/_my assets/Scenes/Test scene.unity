@@ -500,7 +500,7 @@ MonoBehaviour:
   startGameUI: {fileID: 555731819}
   AdManager: {fileID: 307442485}
   rewardedAd: {fileID: 0}
-  gameIsRunning: 0
+  levelGenerator: {fileID: 616413170}
 --- !u!4 &42853427
 Transform:
   m_ObjectHideFlags: 0
@@ -1300,7 +1300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &467277880
 GameObject:
@@ -1548,7 +1548,8 @@ MonoBehaviour:
   - {fileID: 7218607744900889825, guid: 2e37f05b03f0f14459fb5c387ef74c78, type: 3}
   - {fileID: 2858611994326846292, guid: e1e56f8e732fb2d449f54607ac7ffd34, type: 3}
   - {fileID: 4574042265254223934, guid: 35fe158a0f499f544b3397bfb7993262, type: 3}
-  playerDistanceToSpawnPart: 250
+  currentLevelParts: []
+  playerDistanceToSpawnPart: 25
   player: {fileID: 263333667}
 --- !u!4 &616413172
 Transform:
@@ -1562,7 +1563,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &637311969
 GameObject:
@@ -2034,7 +2035,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792226296
 GameObject:
@@ -4819,7 +4820,7 @@ Transform:
   m_Children:
   - {fileID: 1081060289}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738316828
 GameObject:
@@ -5602,7 +5603,7 @@ Transform:
   - {fileID: 11562782}
   - {fileID: 292638983}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1960761353
 GameObject:
@@ -5989,7 +5990,7 @@ RectTransform:
   - {fileID: 1364070677}
   - {fileID: 971059023}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

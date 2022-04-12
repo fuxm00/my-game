@@ -6,6 +6,7 @@ public class LevelGenerator : MonoBehaviour
 {
     public Transform levelPart_Start;
     public List<Transform> levelParts;
+    public GameObject[] currentLevelParts;
 
     private Vector3 lastEndposition;
     public float playerDistanceToSpawnPart;
@@ -15,9 +16,7 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lastEndposition = levelPart_Start.Find("End Position").position;
-
-
+        setStartPosition();   
     }
 
     // Update is called once per frame
@@ -40,5 +39,32 @@ public class LevelGenerator : MonoBehaviour
     {
         Transform levelPartTransform =  Instantiate(levelPart, spawnPosition, Quaternion.identity);
         return levelPartTransform;
+    }
+
+    public void resetLevelParts()
+    {
+        currentLevelParts = GameObject.FindGameObjectsWithTag("LevelPart");
+
+        foreach (GameObject levelPart in currentLevelParts)
+        {
+            Destroy(levelPart);
+        }
+
+        setStartPosition();
+
+        initLevelParts();
+    }
+
+    private void initLevelParts()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            SpawnLevelPart();
+        }
+    }
+
+    private void setStartPosition()
+    {
+        lastEndposition = levelPart_Start.Find("End Position").position;
     }
 }

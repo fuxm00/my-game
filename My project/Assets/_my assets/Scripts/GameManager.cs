@@ -8,19 +8,17 @@ public class GameManager : MonoBehaviour
     [Header("Player")]
     public GameObject playerPrefab;
     public GameObject playerSpawn;
+    private GameObject player;
+    private PlayerHealth playerHealthScript;
 
     [Header("Joystick")]
     public Joystick joystick;
     public GameObject joystickHandle;
     public GameObject joystickBackgound;
 
-    private GameObject player;
-    private PlayerHealth playerHealthScript;
-
     [Header("Game Over")]
     public GameObject gameOverUI;
     private GameOverUI gameOverUIScript;
-
 
     [Header("Coins")]
     public GameObject coinManager;
@@ -41,12 +39,15 @@ public class GameManager : MonoBehaviour
     public GameObject AdManager;
     public RewardedAd rewardedAd;
 
+    [Header("Level Generator")]
+    public GameObject levelGenerator;
+    private LevelGenerator levelGeneratorScript;
+
     private Color32 whiteColor;
     private Color32 transparentColor;
     private Color32 semiTransparentColor;
 
-    [Header("Else")]
-    public bool gameIsRunning;
+    private bool gameIsRunning;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +72,8 @@ public class GameManager : MonoBehaviour
         gameOverUIScript = gameOverUI.GetComponent<GameOverUI>();
 
         rewardedAd = AdManager.GetComponent<RewardedAd>();
+
+        levelGeneratorScript = levelGenerator.GetComponent<LevelGenerator>();
     }
 
     // Update is called once per frame
@@ -113,7 +116,8 @@ public class GameManager : MonoBehaviour
         showScore();
 
         rewardedAd.LoadAd();
-        
+
+        levelGeneratorScript.resetLevelParts();        
     }
 
     public void gameOver()

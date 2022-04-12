@@ -7,30 +7,32 @@ public class Spawner : MonoBehaviour
     [Header("Object to Spawn")]
     public GameObject objectToSpawn;
 
-    [Header("Game Manager")]
-    public GameObject gameManager;
+    private GameObject gameManager;
     private GameManager gameManagerScript;
 
     [Header("Characteristics")]
     public float respawnTime = 3f;
     public float playerDistanceToSpawnObject;
 
-    [Header("Player")]
-    public GameObject player;
-    private Rigidbody2D rb;
+    private GameObject player;
 
     private float nextSpawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameMng");
         gameManagerScript = gameManager.GetComponent<GameManager>();
-        rb = player.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
         if (!gameManagerScript.gameIsRunning)
         {
             return;

@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     private Color32 transparentColor;
     private Color32 semiTransparentColor;
 
-    private bool gameIsRunning;
+    public bool gameIsRunning;
 
     // Start is called before the first frame update
     void Start()

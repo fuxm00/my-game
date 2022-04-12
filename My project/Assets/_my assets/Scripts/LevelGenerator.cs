@@ -12,19 +12,27 @@ public class LevelGenerator : MonoBehaviour
     public float playerDistanceToSpawnPart;
     public GameObject player;
 
+    public GameObject gameManager;
+    private GameManager gameManagerScript;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManagerScript = gameManager.GetComponent<GameManager>();
+
         setStartPosition();   
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, lastEndposition) < playerDistanceToSpawnPart)
+        if (gameManagerScript.gameIsRunning)
         {
-            SpawnLevelPart();
+            if (Vector3.Distance(player.transform.position, lastEndposition) < playerDistanceToSpawnPart)
+            {
+                SpawnLevelPart();
+            }
         }
     }
 

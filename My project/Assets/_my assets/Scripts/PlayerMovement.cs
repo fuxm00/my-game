@@ -7,12 +7,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("Characteristics")]
     public float moveSpeed;
     public float jumpForce;
+    public float velocityOfDeath;
 
     [Header("Joystick")]
     public Joystick joystick;
 
     [Header("Player")]
     public GameObject player;
+    private PlayerHealth playerhealth;
 
     private Rigidbody2D rb;
 
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         hasJumped = true;
 
         startPostion = player.transform.position;
+        playerhealth = player.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -56,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
         movePlayer(moveInput, 0);
 
         jumpCheck();
+
+        velocityCheck();
     }
 
     private void groundCheck()
@@ -63,11 +68,12 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.OverlapCircle(groundCheckObjectLeft.position, groundDistanceToCheck, groundMask) || Physics2D.OverlapCircle(groundCheckObjectRight.position, groundDistanceToCheck, groundMask))
         {
             isGrounded = true;
-        } else
+        }
+        else
         {
             isGrounded = false;
         }
-        
+
         //isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, groundDistanceToCheck, groundMask);
     }
 
@@ -118,5 +124,13 @@ public class PlayerMovement : MonoBehaviour
     {
         //player.transform.position = new Vector3(0, 2.76f, 0) ;
         player.transform.position = startPostion;
+    }
+
+    private void velocityCheck()
+    {
+        if (rb.velocity.y < velocityOfDeath)
+        {
+            playerhealth.die();
+        }
     }
 }

@@ -9,6 +9,9 @@ public class PlayerHealth : MonoBehaviour
     public bool isAlive;
     private PlayerHeartsUI playerHeartsUIScript;
 
+    [Header("Player")]
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void die()
+    public void die()
     {
         isAlive = false;
     }

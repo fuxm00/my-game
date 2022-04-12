@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Joystick")]
     public Joystick joystick;
 
+    [Header("Player")]
+    public GameObject player;
+
     private Rigidbody2D rb;
 
     private float moveInput;
@@ -26,11 +29,15 @@ public class PlayerMovement : MonoBehaviour
 
     private bool hasJumped;
 
+    private Vector3 startPostion;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
         hasJumped = true;
+
+        startPostion = player.transform.position;
     }
 
     // Update is called once per frame
@@ -105,5 +112,11 @@ public class PlayerMovement : MonoBehaviour
     private void jump()
     {
         rb.velocity = Vector2.up * jumpForce;
+    }
+
+    public void resetPosition()
+    {
+        //player.transform.position = new Vector3(0, 2.76f, 0) ;
+        player.transform.position = startPostion;
     }
 }

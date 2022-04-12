@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerSpawn;
     private GameObject player;
     private PlayerHealth playerHealthScript;
+    private PlayerMovement playerMovementScript;
 
     [Header("Joystick")]
     public Joystick joystick;
@@ -74,6 +75,8 @@ public class GameManager : MonoBehaviour
         rewardedAd = AdManager.GetComponent<RewardedAd>();
 
         levelGeneratorScript = levelGenerator.GetComponent<LevelGenerator>();
+
+        playerMovementScript = player.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -117,7 +120,9 @@ public class GameManager : MonoBehaviour
 
         rewardedAd.LoadAd();
 
-        levelGeneratorScript.resetLevelParts();        
+        levelGeneratorScript.resetLevelParts();
+
+        playerMovementScript.resetPosition();
     }
 
     public void gameOver()

@@ -4,25 +4,50 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [Header("Object to Spawn")]
     public GameObject objectToSpawn;
 
+    [Header("Game Manager")]
+    public GameObject gameManager;
+    private GameManager gameManagerScript;
+
+    [Header("Characteristics")]
     public float respawnTime = 3f;
+    public float playerDistanceToSpawnObject;
+
+    [Header("Player")]
+    public GameObject player;
+    private Rigidbody2D rb;
+
     private float nextSpawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManagerScript = gameManager.GetComponent<GameManager>();
+        rb = player.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextSpawnTime)
+        if (!gameManagerScript.gameIsRunning)
         {
-            nextSpawnTime = Time.time + respawnTime;
-            Instantiate(objectToSpawn, transform);
+            return;
         }
+
+        if (Time.time < nextSpawnTime)
+        {
+            return;
+        }
+
+        if (Vector3.Distance(player.transform.position, transform.position) > playerDistanceToSpawnObject)
+        {
+            return;
+        }
+
+        nextSpawnTime = Time.time + respawnTime;
+        Instantiate(objectToSpawn, transform);
     }
 
     private void FixedUpdate()

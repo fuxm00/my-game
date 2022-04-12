@@ -8,6 +8,11 @@ public class Rocket : MonoBehaviour
     public float rocketSpeed;
     public float rotationSpeed;
     public bool isHoming;
+    public float blastRadius;
+    public float explodeForce;
+
+    [Header("Effect")]
+    public GameObject explosionEffect;
 
     [Header("Target")]
     private Transform targetTransform;
@@ -52,6 +57,34 @@ public class Rocket : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(this.gameObject);
+        if (collision.IsTouchingLayers(7) || collision.gameObject.tag == "Player")
+        {
+            Explode();
+        }
+    }
+
+    private void Explode()
+    {
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, blastRadius);
+
+        foreach (Collider2D nearbyObject in colliders)
+        {
+            Rigidbody2D rb = nearbyObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Vector2 direction = nearbyObject.transform.position - transform.position;
+                rb.AddForce(direction * explodeForce);
+            }
+
+            PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
+            if (health != null)
+            {
+                health.damagePlayer(1);
+            }
+        }
+
+        Destroy(gameObject);
     }
 }

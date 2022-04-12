@@ -7,19 +7,20 @@ public class Barell : MonoBehaviour
     [Header("Characteristics")]
     public float blastRadius;
     public float explodeForce;
+    public bool isRandomised;
 
     [Header("Effect")]
     public GameObject explosionEffect;
 
-    private CoinManager scoreMng;
-
-    private GameManager gameMng;
-
     // Start is called before the first frame update
     void Start()
     {
-        float randomRotation = Random.Range(-90, 90);
-        transform.Rotate(0, 0, randomRotation);
+        if(isRandomised)
+        {
+            float randomRotation = Random.Range(-90, 90);
+            transform.Rotate(0, 0, randomRotation);
+        }
+        
     }
 
     // Update is called once per frame
@@ -57,11 +58,9 @@ public class Barell : MonoBehaviour
             }
 
             PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
-            if (health != null) {
-                if (health.currentPlayerLives > 0)
-                {
-                    health.damagePlayer(1);
-                }
+            if (health != null) 
+            {
+                health.damagePlayer(1);
             }
         }
 

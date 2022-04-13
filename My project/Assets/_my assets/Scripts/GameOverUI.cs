@@ -5,39 +5,30 @@ using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
-    public string collectedPrefix;
-    public string adBonusPrefix;
-    public string totalPrefix;
+    [Header("Prefixes")]
+    [SerializeField] string collectedPrefix;
+    [SerializeField] string adBonusPrefix;
+    [SerializeField] string totalPrefix;
 
-    public GameObject coinManager;
+    [Header("Text")]
+    [SerializeField] Text coinText;
+
+    [Header("Coin Manager")]
+    [SerializeField] GameObject coinManager;
+
     private CoinManager coinManagerScript;
-    
-
-    public Text coinText;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void refreshCoins()
     {
         coinManagerScript = coinManager.GetComponent<CoinManager>();
         coinText.text = 
             collectedPrefix + 
-            coinManagerScript.collectedCoins + 
+            coinManagerScript.CollectedCoins + 
             "\r\n" +
             adBonusPrefix +
-            coinManagerScript.adBonusCoins +
+            coinManagerScript.AdBonusCoins +
             "\r\n" +
             totalPrefix + 
-            coinManagerScript.totalCoins;
+            coinManagerScript.TotalCoins;
     }
 }

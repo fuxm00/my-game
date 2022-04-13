@@ -73,7 +73,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             _showAdButton.interactable = false;
             _showAdButton.onClick.RemoveListener(ShowAd);
             coinManagerScript.giveAdBonusCoins();
-            coinManagerScript.transferToTotalCoins(coinManagerScript.adBonusCoins);
+            coinManagerScript.transferToTotalCoins(coinManagerScript.AdBonusCoins);
             gameOverUIScript.refreshCoins();
 
             // Load another ad:

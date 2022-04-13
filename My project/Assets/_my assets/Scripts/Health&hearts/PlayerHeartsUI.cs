@@ -4,21 +4,11 @@ using UnityEngine;
 
 public class PlayerHeartsUI : MonoBehaviour
 {
-    public GameObject[] playerHearts;
-    public GameObject player;
+    [Header("Player")]
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject[] playerHearts;
+
     private PlayerHealth playerHealth;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void refreshHearts()
     {
@@ -29,7 +19,7 @@ public class PlayerHeartsUI : MonoBehaviour
             heart.SetActive(false);
         }
 
-        for (int i = 0; i < playerHealth.currentPlayerLives; i++)
+        for (int i = 0; i < playerHealth.CurrentPlayerLives; i++)
         {
             playerHearts[i].SetActive(true);
         }

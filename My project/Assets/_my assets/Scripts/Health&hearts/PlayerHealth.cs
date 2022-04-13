@@ -4,9 +4,35 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int playerMaxLives = 5;
-    public int currentPlayerLives;
-    public bool isAlive;
+    [Header("Lives")]
+    [SerializeField] int playerMaxLives;
+    public int PlayerMaxLives
+    {
+        get
+        {
+            return playerMaxLives;
+        }
+    }
+
+    [SerializeField] int currentPlayerLives;
+    public int CurrentPlayerLives
+    {
+        get
+        {
+            return currentPlayerLives;
+        }
+    }
+
+    [Header("Is Alive")]
+    [SerializeField] bool isAlive;
+    public bool IsAlive
+    {
+        get
+        {
+            return isAlive;
+        }
+    }
+
     private PlayerHeartsUI playerHeartsUIScript;
 
     // Start is called before the first frame update
@@ -22,12 +48,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         playerHeartsUIScript = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void resetHealth()
@@ -53,5 +73,10 @@ public class PlayerHealth : MonoBehaviour
     public void die()
     {
         isAlive = false;
+    }
+
+    public void increaseMaxLives (int amount)
+    {
+        playerMaxLives += amount;
     }
 }

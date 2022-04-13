@@ -9,12 +9,6 @@ public class Explosion : MonoBehaviour
     {
         StartCoroutine(DestroySelf());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     IEnumerator DestroySelf()
     {
         yield return new WaitForSeconds(2);

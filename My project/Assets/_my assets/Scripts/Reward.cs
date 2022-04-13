@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Reward : MonoBehaviour
 {
-    public int coinReward;
+    [Header("Reward")]
+    [SerializeField] int coinReward;
     private CoinManager scoreMng;
 
     // Start is called before the first frame update
     void Start()
     {
         scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<CoinManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

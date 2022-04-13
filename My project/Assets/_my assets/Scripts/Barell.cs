@@ -5,12 +5,12 @@ using UnityEngine;
 public class Barell : MonoBehaviour
 {
     [Header("Characteristics")]
-    public float blastRadius;
-    public float explodeForce;
-    public bool isRandomised;
+    [SerializeField] float blastRadius;
+    [SerializeField] float explodeForce;
+    [SerializeField] bool isRandomised;
 
     [Header("Effect")]
-    public GameObject explosionEffect;
+    [SerializeField] GameObject explosionEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -23,20 +23,9 @@ public class Barell : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         StartCoroutine(Explode());
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
     }
 
     IEnumerator Explode()

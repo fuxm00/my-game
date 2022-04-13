@@ -5,18 +5,16 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     [Header("Characteristics")]
-    public float rocketSpeed;
-    public float rotationSpeed;
-    public bool isHoming;
-    public float blastRadius;
-    public float explodeForce;
+    [SerializeField] float rocketSpeed;
+    [SerializeField] float rotationSpeed;
+    [SerializeField] bool isHoming;
+    [SerializeField] float blastRadius;
+    [SerializeField] float explodeForce;
 
     [Header("Effect")]
-    public GameObject explosionEffect;
+    [SerializeField] GameObject explosionEffect;
 
-    [Header("Target")]
     private Transform targetTransform;
-
     private Rigidbody2D rb;
 
     // Start is called before the first frame update

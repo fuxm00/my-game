@@ -6,49 +6,59 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Player")]
-    public GameObject playerPrefab;
-    public GameObject playerSpawn;
+    [SerializeField] GameObject playerPrefab;
+    [SerializeField] GameObject playerSpawn;    
+
+    [Header("Joystick")]
+    [SerializeField] Joystick joystick;
+    [SerializeField] GameObject joystickHandle;
+    [SerializeField] GameObject joystickBackgound;
+
+    [Header("Game Over")]
+    [SerializeField] GameObject gameOverUI;    
+
+    [Header("Coins")]
+    [SerializeField] GameObject coinManager;    
+
+    [Header("CoinUI")]
+    [SerializeField] GameObject coinUI;    
+
+    [Header("Hearts")]
+    [SerializeField] GameObject playerHearts;    
+
+    [Header("Start Game")]
+    [SerializeField] GameObject startGameUI;
+
+    [Header("Ads")]
+    [SerializeField] GameObject AdManager;
+
+    [Header("Level Generator")]
+    [SerializeField] GameObject levelGenerator;
+
+    [SerializeField] bool gameIsRunning;
+    public bool GameIsRunning
+    {
+        get
+        {
+            return gameIsRunning;
+        }
+    }
+
     private GameObject player;
     private PlayerHealth playerHealthScript;
     private PlayerMovement playerMovementScript;
-
-    [Header("Joystick")]
-    public Joystick joystick;
-    public GameObject joystickHandle;
-    public GameObject joystickBackgound;
-
-    [Header("Game Over")]
-    public GameObject gameOverUI;
     private GameOverUI gameOverUIScript;
-
-    [Header("Coins")]
-    public GameObject coinManager;
     private CoinManager coinManagerScript;
-
-    [Header("CoinUI")]
-    public GameObject coinUI;
-    private CoinUI coinUIScript;
-
-    [Header("Hearts")]
-    public GameObject playerHearts;
     private PlayerHeartsUI playerHeartsUIScript;
-
-    [Header("Start Game")]
-    public GameObject startGameUI;
-
-    [Header("Ads")]
-    public GameObject AdManager;
-    public RewardedAd rewardedAd;
-
-    [Header("Level Generator")]
-    public GameObject levelGenerator;
-    private LevelGenerator levelGeneratorScript;
-
+    private CoinUI coinUIScript;
     private Color32 whiteColor;
     private Color32 transparentColor;
     private Color32 semiTransparentColor;
+    private LevelGenerator levelGeneratorScript;
+    private RewardedAd rewardedAd;
 
-    public bool gameIsRunning;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -130,7 +140,7 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(true);
         hideHearts();
         hideScore();
-        coinManagerScript.transferToTotalCoins(coinManagerScript.collectedCoins);
+        coinManagerScript.transferToTotalCoins(coinManagerScript.CollectedCoins);
         gameOverUIScript.refreshCoins();
     }
 

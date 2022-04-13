@@ -5,33 +5,28 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
-    public GameObject AdManager;
-    public BannerAd bannerAdScript;
+    [Header("Ad Manager")]
+    [SerializeField] GameObject AdManager;    
 
-    public GameObject coinManger;
-    public CoinManager coinManagerScript;
+    [Header("Coin Manager")]
+    [SerializeField] GameObject coinManger;    
 
-    public GameObject shopManager;
+    [Header("Shop Manager")]
+    [SerializeField] GameObject shopManager;    
+
+    [Header("Buttons")]
+    [SerializeField] Button extraHeartButton;
+    [SerializeField] Button goldenSkinButton;
+
+    [Header("Coin Text")]
+    [SerializeField] Text totalCoinText;
+
+    [Header("Prefix")]
+    [SerializeField] string coinPrefix;
+
+    private BannerAd bannerAdScript;
+    private CoinManager coinManagerScript;
     private ShopManager shopManagerScript;
-
-    public Button extraHeartButton;
-    public Button goldenSkinButton;
-
-    public Text totalCoinText;
-    public string coinPrefix;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void showBanner()
     {
         if (bannerAdScript == null)
@@ -41,11 +36,6 @@ public class ShopUI : MonoBehaviour
 
         bannerAdScript.LoadBanner();
         bannerAdScript.ShowBannerAd();
-    }
-
-    public void hideBanner()
-    {
-        bannerAdScript.HideBannerAd();
     }
 
     public void refresh()
@@ -60,16 +50,16 @@ public class ShopUI : MonoBehaviour
             coinManagerScript = coinManger.GetComponent<CoinManager>();
         }
 
-        if (shopManagerScript.extraHeartisBought)
+        if (shopManagerScript.ExtraHeartisBought)
         {
             extraHeartButton.interactable = false;
         }
 
-        if (shopManagerScript.goldenSkinIsBought)
+        if (shopManagerScript.GoldenSkinIsBought)
         {
             goldenSkinButton.interactable = false;
         }
 
-        totalCoinText.text = coinPrefix + coinManagerScript.totalCoins;
+        totalCoinText.text = coinPrefix + coinManagerScript.TotalCoins;
     }
 }

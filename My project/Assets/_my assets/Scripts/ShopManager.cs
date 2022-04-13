@@ -5,29 +5,44 @@ using UnityEngine.Purchasing;
 
 public class ShopManager : MonoBehaviour
 {
-    private string coins_100 = "100Coins";
-    private string NoBanners = "NoBanner";
-
-    public bool goldenSkinIsBought;
-    public bool extraHeartisBought;
-
     [Header("Coins")]
-    public GameObject coinManager;
-    private CoinManager coinManagerScript;
+    [SerializeField] GameObject coinManager;    
 
     [Header("Player")]
-    public GameObject player;
-    private PlayerHealth playerHealthScript;
-    public GameObject palyerBody;
+    [SerializeField] GameObject player;
+    
+    [SerializeField] GameObject playerBody;
 
     [Header("Shop UI")]
-    public GameObject shopUI;
+    [SerializeField] GameObject shopUI;    
+
+    [Header("Prices")]
+    [SerializeField] int extraHeartPrice;
+    [SerializeField] int goldenSkinPrice;
+
+    private string coins_100 = "100Coins";
+
+    private bool goldenSkinIsBought;
+    public bool GoldenSkinIsBought
+    {
+        get
+        {
+            return goldenSkinIsBought;
+        }
+    }
+
+    private bool extraHeartisBought;
+    public bool ExtraHeartisBought
+    {
+        get
+        {
+            return extraHeartisBought;
+        }
+    }
+
     private ShopUI shopUIScript;
-
-    [Header("Price")]
-    public int extraHeartPrice;
-    public int goldenSkinPrice;
-
+    private CoinManager coinManagerScript;
+    private PlayerHealth playerHealthScript;
     private void Start()
     {
         coinManagerScript = coinManager.GetComponent<CoinManager>();
@@ -39,19 +54,8 @@ public class ShopManager : MonoBehaviour
     {
         if (product.definition.id == coins_100)
         {
-            Debug.Log("100 coins reward!");
-            coinManagerScript.transferToTotalCoins(999999);
+            coinManagerScript.transferToTotalCoins(999);
             shopUIScript.refresh();
-        }
-
-        /*else if (product.definition.id == NoBanners)
-        {
-            Debug.Log("Shop without Banner reward!");
-        }*/ 
-
-        else
-        {
-            Debug.Log(product.definition.id + " not found in Catalog");
         }
     }
 
@@ -64,10 +68,10 @@ public class ShopManager : MonoBehaviour
     {
         if (!extraHeartisBought)
         {
-            if (extraHeartPrice <= coinManagerScript.totalCoins)
+            if (extraHeartPrice <= coinManagerScript.TotalCoins)
             {
-                coinManagerScript.totalCoins -= extraHeartPrice;
-                playerHealthScript.playerMaxLives = 4;
+                coinManagerScript.transferToTotalCoins(-extraHeartPrice);
+                playerHealthScript.increaseMaxLives(1);
                 extraHeartisBought = true;
                 shopUIScript.refresh();
             }
@@ -78,10 +82,10 @@ public class ShopManager : MonoBehaviour
     {
         if (!goldenSkinIsBought)
         {
-            if (goldenSkinPrice <= coinManagerScript.totalCoins)
+            if (goldenSkinPrice <= coinManagerScript.TotalCoins)
             {
-                coinManagerScript.totalCoins -= goldenSkinPrice;
-                palyerBody.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 0, 255);
+                coinManagerScript.transferToTotalCoins(-goldenSkinPrice);
+                playerBody.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 0, 255);
                 goldenSkinIsBought = true;
                 shopUIScript.refresh();
             }

@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public Transform levelPart_Start;
-    public List<Transform> levelParts;
-    public GameObject[] currentLevelParts;
+    [Header("Parts")]
+    [SerializeField] Transform levelPart_Start;
+    [SerializeField] List<Transform> levelParts;
+    [SerializeField] float playerDistanceToSpawnPart;
 
-    private Vector3 lastEndposition;
-    public float playerDistanceToSpawnPart;
-    public GameObject player;
+    [Header("Player")]
+    [SerializeField] GameObject player;
 
-    public GameObject gameManager;
+    [Header("Game Manager")]
+    [SerializeField] GameObject gameManager;
+
     private GameManager gameManagerScript;
-
-
+    private Vector3 lastEndposition;
+    private GameObject[] currentLevelParts;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManagerScript.gameIsRunning)
+        if (gameManagerScript.GameIsRunning)
         {
             if (Vector3.Distance(player.transform.position, lastEndposition) < playerDistanceToSpawnPart)
             {

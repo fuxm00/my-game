@@ -5,30 +5,22 @@ using UnityEngine.UI;
 
 public class CoinUI : MonoBehaviour
 {
-    public GameObject coinBoard;
-    public string prefix;
+    [Header("Coin Board")] 
+    [SerializeField] GameObject coinBoard;
 
-    public GameObject coinManager;
-    public CoinManager coinManagerScript;
+    [Header("Prefix")] 
+    [SerializeField] string prefix;
 
-    public Text coinText;
+    [Header("Coin Manager")]
+    [SerializeField] GameObject coinManager;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    private CoinManager coinManagerScript;
+    private Text coinText;
 
     public void refreshScore()
     {
         coinText = coinBoard.GetComponent<Text>();
         coinManagerScript = coinManager.GetComponent<CoinManager>();
-        coinText.text = prefix + coinManagerScript.collectedCoins;
+        coinText.text = prefix + coinManagerScript.CollectedCoins;
     }
 }

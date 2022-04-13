@@ -5,17 +5,15 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [Header("Object to Spawn")]
-    public GameObject objectToSpawn;
-
-    private GameObject gameManager;
-    private GameManager gameManagerScript;
+    [SerializeField] GameObject objectToSpawn;
 
     [Header("Characteristics")]
-    public float respawnTime = 3f;
-    public float playerDistanceToSpawnObject;
+    [SerializeField] float respawnTime = 3f;
+    [SerializeField] float playerDistanceToSpawnObject;
 
     private GameObject player;
-
+    private GameObject gameManager;
+    private GameManager gameManagerScript;
     private float nextSpawnTime;
 
     // Start is called before the first frame update
@@ -33,7 +31,7 @@ public class Spawner : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if (!gameManagerScript.gameIsRunning)
+        if (!gameManagerScript.GameIsRunning)
         {
             return;
         }
@@ -50,10 +48,5 @@ public class Spawner : MonoBehaviour
 
         nextSpawnTime = Time.time + respawnTime;
         Instantiate(objectToSpawn, transform);
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 }

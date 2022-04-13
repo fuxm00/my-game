@@ -5,33 +5,30 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Characteristics")]
-    public float moveSpeed;
-    public float jumpForce;
-    public float velocityOfDeath;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float jumpForce;
+    [SerializeField] float velocityOfDeath;
 
     [Header("Joystick")]
-    public Joystick joystick;
+    [SerializeField] Joystick joystick;
 
     [Header("Player")]
-    public GameObject player;
+    [SerializeField] GameObject player;    
+
+    [Header("Ground check")]
+    [SerializeField] Transform groundCheckObjectLeft;
+    [SerializeField] Transform groundCheckObjectRight;
+    [SerializeField] float groundDistanceToCheck;
+    [SerializeField] LayerMask groundMask;
+
+    private bool isGrounded;
     private PlayerHealth playerhealth;
-
+    private bool hasJumped;
+    private Vector3 startPostion;
     private Rigidbody2D rb;
-
     private float moveInput;
     private float jumpInput;
     private bool facingRight = true;
-
-    [Header("Ground check")]
-    public Transform groundCheckObjectLeft;
-    public Transform groundCheckObjectRight;
-    public float groundDistanceToCheck;
-    public LayerMask groundMask;
-    private bool isGrounded;
-
-    private bool hasJumped;
-
-    private Vector3 startPostion;
 
     // Start is called before the first frame update
     void Start()
@@ -73,8 +70,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
         }
-
-        //isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, groundDistanceToCheck, groundMask);
     }
 
     private void movePlayer(float horizontal, float vertical)

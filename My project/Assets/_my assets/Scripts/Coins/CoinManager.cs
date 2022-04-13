@@ -4,11 +4,39 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    public int collectedCoins;
-    public int adBonusCoins;
-    public int totalCoins;
+    [SerializeField] GameObject coinUI;
 
-    public GameObject coinUI;
+    private int collectedCoins;
+    public int CollectedCoins
+    {
+        get
+        {
+            return collectedCoins;
+        }
+    }
+
+    private int adBonusCoins;
+    public int AdBonusCoins
+    {
+        get
+        {
+            return adBonusCoins;
+        }
+    }
+
+    private int totalCoins;
+    public int TotalCoins
+    {
+        get
+        {
+            return totalCoins;
+        }
+        set
+        {
+            totalCoins = value;
+        }
+    }
+
     private CoinUI coinUIScript;
 
     // Start is called before the first frame update
@@ -18,12 +46,6 @@ public class CoinManager : MonoBehaviour
         collectedCoins = 0;
         adBonusCoins = 0;
         //totalcoins ze souboru
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void giveCollectedCoins(int amount)

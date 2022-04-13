@@ -1556,7 +1556,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COINS
+  m_Text: x COINS
 --- !u!222 &477664414
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2343,7 +2343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba94dda58b813234890be6944aa1c39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &806975532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,9 +2372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8aea6c50eeb3145a18ab2110b5d95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedCoins: 0
-  adBonusCoins: 0
-  totalCoins: 0
   coinUI: {fileID: 971059022}
 --- !u!4 &806975534
 Transform:
@@ -3911,12 +3907,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cab697994905245b600cf6dec93f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 263333667}
   playerHearts:
   - {fileID: 1991244869}
   - {fileID: 210355710}
   - {fileID: 807940294}
   - {fileID: 241557404}
-  player: {fileID: 263333667}
 --- !u!1 &1413429579
 GameObject:
   m_ObjectHideFlags: 0
@@ -5741,7 +5737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: 100Coins
+  productId: coins_999
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -6456,7 +6452,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
       propertyPath: playerMaxLives
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6463673506755767184, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
       propertyPath: m_Name

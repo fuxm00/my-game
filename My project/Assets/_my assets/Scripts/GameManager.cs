@@ -111,11 +111,8 @@ public class GameManager : MonoBehaviour
             playerHearts.SetActive(true);
         }
 
-        //reset score
         coinManagerScript.resetRecievedCoins();
-        //refresh score
         coinUIScript.refreshScore();
-        //show score
         showScore();
 
         rewardedAd.LoadAd();
@@ -148,7 +145,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
 
-            if (playerHealth != null && !playerHealth.isAlive && gameIsRunning)
+            if (playerHealth != null && !playerHealth.IsAlive && gameIsRunning)
             {
                 gameOver();
             }

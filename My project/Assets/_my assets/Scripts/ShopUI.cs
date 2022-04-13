@@ -34,12 +34,6 @@ public class ShopUI : MonoBehaviour
 
     public void showBanner()
     {
-        //podmínka jestli se mají ukazovat
-        if (1 == 0)
-        {
-            return;
-        }
-
         if (bannerAdScript == null)
         {
             bannerAdScript = AdManager.GetComponent<BannerAd>();

@@ -20,7 +20,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] int extraHeartPrice;
     [SerializeField] int goldenSkinPrice;
 
-    private string coins_100 = "100Coins";
+    private string coins_999 = "coins_999";
 
     private bool goldenSkinIsBought;
     public bool GoldenSkinIsBought
@@ -52,7 +52,7 @@ public class ShopManager : MonoBehaviour
 
     public void OnPurchaseComplete(Product product)
     {
-        if (product.definition.id == coins_100)
+        if (product.definition.id == coins_999)
         {
             coinManagerScript.transferToTotalCoins(999);
             shopUIScript.refresh();

@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _joystickHandle;
     [SerializeField] GameObject _joystickBackgound;
 
+    [Header("Jump Button")]
+    [SerializeField] Button _jumpButton;
+
     [Header("Game Over")]
     [SerializeField] GameObject _gameOverUI;    
 
@@ -62,7 +65,7 @@ public class GameManager : MonoBehaviour
     {
         SetColors();
         PreparePlayer();
-        HideJoystick();
+        HideControls();
         HideScore();
         gameIsRunning = false;
 
@@ -99,7 +102,7 @@ public class GameManager : MonoBehaviour
     {
         gameIsRunning = true;
         _gameOverUI.SetActive(false);
-        ShowJoystick();
+        ShowControls();
         playerHealthScript.ResetHealth();
         player.SetActive(true);
         playerHeartsUIScript.RefreshHearts();
@@ -131,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        HideJoystick();
+        HideControls();
         player.SetActive(false);
         gameIsRunning = false;
         _gameOverUI.SetActive(true);
@@ -159,7 +162,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ShowJoystick()
+    private void ShowControls()
     {
         Image image = _joystick.gameObject.GetComponent<Image>();
         Image image2 = _joystickHandle.gameObject.GetComponent<Image>();
@@ -177,9 +180,10 @@ public class GameManager : MonoBehaviour
             image3.color = semiTransparentColor;
         }
 
+        _jumpButton.gameObject.SetActive(true);
     }
 
-    private void HideJoystick()
+    private void HideControls()
     {
         Image image = _joystick.gameObject.GetComponent<Image>();
         Image image2 = _joystickHandle.gameObject.GetComponent<Image>();
@@ -196,6 +200,8 @@ public class GameManager : MonoBehaviour
         {
             image3.color = transparentColor;
         }
+
+        _jumpButton.gameObject.SetActive(false);
     }
 
     private void ShowHearts()

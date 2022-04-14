@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Joystick")]
     [SerializeField] Joystick _joystick;
 
+    [Header("jump Button")]
+    [SerializeField] GameObject _jumpButton;
+
     [Header("Player")]
     [SerializeField] GameObject _player;    
 
@@ -27,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _startPostion;
     private Rigidbody2D _rb;
     private float _moveInput;
-    private float _jumpInput;
     private bool _facingRight = true;
+    private JumpButton _jumpButtonScript;
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +41,13 @@ public class PlayerMovement : MonoBehaviour
 
         _startPostion = _player.transform.position;
         _playerhealth = _player.GetComponent<PlayerHealth>();
+        _jumpButtonScript = _jumpButton.GetComponent<JumpButton>();
     }
 
     // Update is called once per frame
     void Update()
     {
         _moveInput = _joystick.Horizontal;
-        _jumpInput = _joystick.Vertical;
 
         WrongFacingCheck();
     }
@@ -103,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
             _hasJumped = false;
         }
 
-        if (_jumpInput > 0.5 && !_hasJumped && _isGrounded)
+        if (_jumpButtonScript.IsPressed && !_hasJumped && _isGrounded)
         {
             Jump();
             _hasJumped = true;

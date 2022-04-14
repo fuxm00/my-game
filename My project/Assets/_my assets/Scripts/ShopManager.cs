@@ -10,8 +10,6 @@ public class ShopManager : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] GameObject _player;
-    
-    [SerializeField] GameObject _playerBody;
 
     [Header("Shop UI")]
     [SerializeField] GameObject _shopUI;    
@@ -43,11 +41,27 @@ public class ShopManager : MonoBehaviour
     private ShopUI _shopUIScript;
     private CoinManager _coinManagerScript;
     private PlayerHealth _playerHealthScript;
+    private PlayerAppearance _playerAppearanceScript;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("ExtraHeartIsBought") == 1)
+        {
+            _extraHeartisBought = true;
+        }
+
+        if (PlayerPrefs.GetInt("GoldenSkinIsBought") == 1)
+        {
+            _extraHeartisBought = true;
+        }
+    }
+
     private void Start()
     {
         _coinManagerScript = _coinManager.GetComponent<CoinManager>();
         _playerHealthScript = _player.GetComponent<PlayerHealth>();
         _shopUIScript = _shopUI.GetComponent<ShopUI>();
+        _playerAppearanceScript = _player.GetComponent<PlayerAppearance>();
     }
 
     public void OnPurchaseComplete(Product product)
@@ -73,6 +87,7 @@ public class ShopManager : MonoBehaviour
                 _coinManagerScript.TransferToTotalCoins(-_extraHeartPrice);
                 _playerHealthScript.IncreaseMaxLives(1);
                 _extraHeartisBought = true;
+                PlayerPrefs.SetInt("ExtraHeartIsBought", 1);
                 _shopUIScript.Refresh();
             }
         }
@@ -85,8 +100,9 @@ public class ShopManager : MonoBehaviour
             if (_goldenSkinPrice <= _coinManagerScript.TotalCoins)
             {
                 _coinManagerScript.TransferToTotalCoins(-_goldenSkinPrice);
-                _playerBody.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 0, 255);
+                _playerAppearanceScript.ChangeToGoldSkin();
                 _goldenSkinIsBought = true;
+                PlayerPrefs.SetInt("GoldenSkinIsBought", 1);
                 _shopUIScript.Refresh();
             }
         }

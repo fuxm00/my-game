@@ -48,6 +48,12 @@ public class PlayerHealth : MonoBehaviour
         }
 
         playerHeartsUIScript = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
+
+        if (PlayerPrefs.GetInt("ExtraHeartIsBought") == 1)
+        {
+            IncreaseMaxLives(1);
+        }
+
     }
 
     public void ResetHealth()

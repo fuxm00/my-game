@@ -54,5 +54,6 @@ public class Barell : MonoBehaviour
         }
 
         Destroy(gameObject);
+
     }
 }

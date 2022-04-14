@@ -5,31 +5,31 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Lives")]
-    [SerializeField] int playerMaxLives;
+    [SerializeField] int _playerMaxLives;
     public int PlayerMaxLives
     {
         get
         {
-            return playerMaxLives;
+            return _playerMaxLives;
         }
     }
 
-    [SerializeField] int currentPlayerLives;
+    private int _currentPlayerLives;
     public int CurrentPlayerLives
     {
         get
         {
-            return currentPlayerLives;
+            return _currentPlayerLives;
         }
     }
 
     [Header("Is Alive")]
-    [SerializeField] bool isAlive;
+    private bool _isAlive;
     public bool IsAlive
     {
         get
         {
-            return isAlive;
+            return _isAlive;
         }
     }
 
@@ -38,45 +38,45 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentPlayerLives = playerMaxLives;
-        if (currentPlayerLives > 0)
+        _currentPlayerLives = _playerMaxLives;
+        if (_currentPlayerLives > 0)
         {
-            isAlive = true;
+            _isAlive = true;
         } else
         {
-            isAlive = false;
+            _isAlive = false;
         }
 
         playerHeartsUIScript = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
     }
 
-    public void resetHealth()
+    public void ResetHealth()
     {
-        currentPlayerLives = playerMaxLives;
-        isAlive = true;
+        _currentPlayerLives = _playerMaxLives;
+        _isAlive = true;
     }
 
-    public void damagePlayer(int damagePoints)
+    public void DamagePlayer(int damagePoints)
     {
-        if (isAlive)
+        if (_isAlive)
         {
-            currentPlayerLives -= damagePoints;
-            playerHeartsUIScript.refreshHearts();
+            _currentPlayerLives -= damagePoints;
+            playerHeartsUIScript.RefreshHearts();
 
-            if (currentPlayerLives <= 0)
+            if (_currentPlayerLives <= 0)
             {
-                die();
+                Die();
             }
         }
     }
 
-    public void die()
+    public void Die()
     {
-        isAlive = false;
+        _isAlive = false;
     }
 
-    public void increaseMaxLives (int amount)
+    public void IncreaseMaxLives (int amount)
     {
-        playerMaxLives += amount;
+        _playerMaxLives += amount;
     }
 }

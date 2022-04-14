@@ -5,20 +5,20 @@ using UnityEngine;
 public class Reward : MonoBehaviour
 {
     [Header("Reward")]
-    [SerializeField] int coinReward;
-    private CoinManager scoreMng;
+    [SerializeField] int _coinReward;
+    private CoinManager _scoreMng;
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<CoinManager>();
+        _scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<CoinManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            scoreMng.giveCollectedCoins(coinReward);
+            _scoreMng.GiveCollectedCoins(_coinReward);
             Destroy(gameObject);
         }
     }

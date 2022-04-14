@@ -421,10 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a04c51864e656459785c20752e9628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 3
-  explodeForce: 200
-  isRandomised: 1
-  explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
+  _blastRadius: 3
+  _explodeForce: 200
+  _isRandomised: 1
+  _explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
 --- !u!1 &4007189982547461033
 GameObject:
   m_ObjectHideFlags: 0

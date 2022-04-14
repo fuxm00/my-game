@@ -5,127 +5,127 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Characteristics")]
-    [SerializeField] float moveSpeed;
-    [SerializeField] float jumpForce;
-    [SerializeField] float velocityOfDeath;
+    [SerializeField] float _moveSpeed;
+    [SerializeField] float _jumpForce;
+    [SerializeField] float _velocityOfDeath;
 
     [Header("Joystick")]
-    [SerializeField] Joystick joystick;
+    [SerializeField] Joystick _joystick;
 
     [Header("Player")]
-    [SerializeField] GameObject player;    
+    [SerializeField] GameObject _player;    
 
     [Header("Ground check")]
-    [SerializeField] Transform groundCheckObjectLeft;
-    [SerializeField] Transform groundCheckObjectRight;
-    [SerializeField] float groundDistanceToCheck;
-    [SerializeField] LayerMask groundMask;
+    [SerializeField] Transform _groundCheckObjectLeft;
+    [SerializeField] Transform _groundCheckObjectRight;
+    [SerializeField] float _groundDistanceToCheck;
+    [SerializeField] LayerMask _groundMask;
 
-    private bool isGrounded;
-    private PlayerHealth playerhealth;
-    private bool hasJumped;
-    private Vector3 startPostion;
-    private Rigidbody2D rb;
-    private float moveInput;
-    private float jumpInput;
-    private bool facingRight = true;
+    private bool _isGrounded;
+    private PlayerHealth _playerhealth;
+    private bool _hasJumped;
+    private Vector3 _startPostion;
+    private Rigidbody2D _rb;
+    private float _moveInput;
+    private float _jumpInput;
+    private bool _facingRight = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
-        hasJumped = true;
+        _rb = this.GetComponent<Rigidbody2D>();
+        _hasJumped = true;
 
-        startPostion = player.transform.position;
-        playerhealth = player.GetComponent<PlayerHealth>();
+        _startPostion = _player.transform.position;
+        _playerhealth = _player.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveInput = joystick.Horizontal;
-        jumpInput = joystick.Vertical;
+        _moveInput = _joystick.Horizontal;
+        _jumpInput = _joystick.Vertical;
 
-        wrongFacingCheck();
+        WrongFacingCheck();
     }
 
     private void FixedUpdate()
     {
-        groundCheck();
+        GroundCheck();
 
-        movePlayer(moveInput, 0);
+        MovePlayer(_moveInput, 0);
 
-        jumpCheck();
+        JumpCheck();
 
-        velocityCheck();
+        VelocityCheck();
     }
 
-    private void groundCheck()
+    private void GroundCheck()
     {
-        if (Physics2D.OverlapCircle(groundCheckObjectLeft.position, groundDistanceToCheck, groundMask) || Physics2D.OverlapCircle(groundCheckObjectRight.position, groundDistanceToCheck, groundMask))
+        if (Physics2D.OverlapCircle(_groundCheckObjectLeft.position, _groundDistanceToCheck, _groundMask) || Physics2D.OverlapCircle(_groundCheckObjectRight.position, _groundDistanceToCheck, _groundMask))
         {
-            isGrounded = true;
+            _isGrounded = true;
         }
         else
         {
-            isGrounded = false;
+            _isGrounded = false;
         }
     }
 
-    private void movePlayer(float horizontal, float vertical)
+    private void MovePlayer(float horizontal, float vertical)
     {
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        _rb.velocity = new Vector2(_moveInput * _moveSpeed, _rb.velocity.y);
     }
 
-    private void wrongFacingCheck()
+    private void WrongFacingCheck()
     {
-        if (facingRight == false && moveInput > 0)
+        if (_facingRight == false && _moveInput > 0)
         {
-            flipPlayer();
+            FlipPlayer();
         }
-        else if (facingRight == true && moveInput < 0)
+        else if (_facingRight == true && _moveInput < 0)
         {
-            flipPlayer();
+            FlipPlayer();
         }
     }
-    private void flipPlayer()
+    private void FlipPlayer()
     {
-        facingRight = !facingRight;
+        _facingRight = !_facingRight;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
     }
 
-    private void jumpCheck()
+    private void JumpCheck()
     {
-        if (isGrounded == true)
+        if (_isGrounded == true)
         {
-            hasJumped = false;
+            _hasJumped = false;
         }
 
-        if (jumpInput > 0.5 && !hasJumped && isGrounded)
+        if (_jumpInput > 0.5 && !_hasJumped && _isGrounded)
         {
-            jump();
-            hasJumped = true;
+            Jump();
+            _hasJumped = true;
         }
     }
 
-    private void jump()
+    private void Jump()
     {
-        rb.velocity = Vector2.up * jumpForce;
+        _rb.velocity = Vector2.up * _jumpForce;
     }
 
-    public void resetPosition()
+    public void ResetPosition()
     {
         //player.transform.position = new Vector3(0, 2.76f, 0) ;
-        player.transform.position = startPostion;
+        _player.transform.position = _startPostion;
     }
 
-    private void velocityCheck()
+    private void VelocityCheck()
     {
-        if (rb.velocity.y < velocityOfDeath)
+        if (_rb.velocity.y < _velocityOfDeath)
         {
-            playerhealth.die();
+            _playerhealth.Die();
         }
     }
 }

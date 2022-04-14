@@ -5,17 +5,17 @@ using UnityEngine;
 public class Barell : MonoBehaviour
 {
     [Header("Characteristics")]
-    [SerializeField] float blastRadius;
-    [SerializeField] float explodeForce;
-    [SerializeField] bool isRandomised;
+    [SerializeField] float _blastRadius;
+    [SerializeField] float _explodeForce;
+    [SerializeField] bool _isRandomised;
 
     [Header("Effect")]
-    [SerializeField] GameObject explosionEffect;
+    [SerializeField] GameObject _explosionEffect;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(isRandomised)
+        if(_isRandomised)
         {
             float randomRotation = Random.Range(-90, 90);
             transform.Rotate(0, 0, randomRotation);
@@ -33,9 +33,9 @@ public class Barell : MonoBehaviour
         float randomSeconds = Random.Range(2, 4);
         yield return new WaitForSeconds(randomSeconds);
 
-        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Instantiate(_explosionEffect, transform.position, transform.rotation);
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, blastRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
 
         foreach (Collider2D nearbyObject in colliders)
         {
@@ -43,13 +43,13 @@ public class Barell : MonoBehaviour
             if (rb != null)
             {
                 Vector2 direction = nearbyObject.transform.position - transform.position;
-                rb.AddForce(direction * explodeForce);
+                rb.AddForce(direction * _explodeForce);
             }
 
             PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
             if (health != null) 
             {
-                health.damagePlayer(1);
+                health.DamagePlayer(1);
             }
         }
 

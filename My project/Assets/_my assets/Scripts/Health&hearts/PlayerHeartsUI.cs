@@ -5,23 +5,23 @@ using UnityEngine;
 public class PlayerHeartsUI : MonoBehaviour
 {
     [Header("Player")]
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject[] playerHearts;
+    [SerializeField] GameObject _player;
+    [SerializeField] GameObject[] _playerHearts;
 
-    private PlayerHealth playerHealth;
+    private PlayerHealth _playerHealth;
 
-    public void refreshHearts()
+    public void RefreshHearts()
     {
-        playerHealth = player.GetComponent<PlayerHealth>();
+        _playerHealth = _player.GetComponent<PlayerHealth>();
 
-        foreach (GameObject heart in playerHearts)
+        foreach (GameObject heart in _playerHearts)
         {
             heart.SetActive(false);
         }
 
-        for (int i = 0; i < playerHealth.CurrentPlayerLives; i++)
+        for (int i = 0; i < _playerHealth.CurrentPlayerLives; i++)
         {
-            playerHearts[i].SetActive(true);
+            _playerHearts[i].SetActive(true);
         }
     }
 }

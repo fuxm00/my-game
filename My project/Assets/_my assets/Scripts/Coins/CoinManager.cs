@@ -4,70 +4,71 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    [SerializeField] GameObject coinUI;
+    [SerializeField] GameObject _coinUI;
 
-    private int collectedCoins;
+    private int _collectedCoins;
     public int CollectedCoins
     {
         get
         {
-            return collectedCoins;
+            return _collectedCoins;
         }
     }
 
-    private int adBonusCoins;
+    private int _adBonusCoins;
     public int AdBonusCoins
     {
         get
         {
-            return adBonusCoins;
+            return _adBonusCoins;
         }
     }
 
-    private int totalCoins;
+    private int _totalCoins;
     public int TotalCoins
     {
         get
         {
-            return totalCoins;
+            return _totalCoins;
         }
         set
         {
-            totalCoins = value;
+            _totalCoins = value;
         }
     }
 
-    private CoinUI coinUIScript;
+    private CoinUI _coinUIScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        coinUIScript = coinUI.GetComponent<CoinUI>();
-        collectedCoins = 0;
-        adBonusCoins = 0;
-        //totalcoins ze souboru
+        _coinUIScript = _coinUI.GetComponent<CoinUI>();
+        _collectedCoins = 0;
+        _adBonusCoins = 0;
+        _totalCoins = PlayerPrefs.GetInt("totalCoins");
     }
 
-    public void giveCollectedCoins(int amount)
+    public void GiveCollectedCoins(int amount)
     {
-        collectedCoins += amount;
-        coinUIScript.refreshScore();
+        _collectedCoins += amount;
+        _coinUIScript.RefreshScore();
     }
 
-    public void giveAdBonusCoins()
+    public void GiveAdBonusCoins()
     {
-        adBonusCoins = (int)((float)collectedCoins * .2f);
-        coinUIScript.refreshScore();
+        _adBonusCoins = (int)((float)_collectedCoins * .2f);
+        _coinUIScript.RefreshScore();
     }
 
-    public void transferToTotalCoins(int amount)
+    public void TransferToTotalCoins(int amount)
     {
-        totalCoins += amount;
+        _totalCoins += amount;
+        PlayerPrefs.SetInt("totalCoins", _totalCoins);
     }
 
-    public void resetRecievedCoins()
+    public void ResetRecievedCoins()
     {
-        collectedCoins = 0;
-        adBonusCoins = 0;
+        _collectedCoins = 0;
+        _adBonusCoins = 0;
     }
 }

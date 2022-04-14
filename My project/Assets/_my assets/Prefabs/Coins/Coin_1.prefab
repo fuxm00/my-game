@@ -153,4 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4164461edb213146b6518c7d56a7d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinReward: 1
+  _coinReward: 1

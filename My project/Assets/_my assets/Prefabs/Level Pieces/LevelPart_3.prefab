@@ -481,8 +481,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4007189982337918752, guid: b5139d6a65517e54883e0e2e4b8208e3, type: 3}
     - target: {fileID: 7786485248781790615, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
+      propertyPath: _objectToSpawn
+      value: 
+      objectReference: {fileID: 4007189982337918752, guid: b5139d6a65517e54883e0e2e4b8208e3, type: 3}
+    - target: {fileID: 7786485248781790615, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
       propertyPath: playerDistanceToSpawnObject
       value: 15.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786485248781790615, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
+      propertyPath: _playerDistanceToSpawnObject
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7786485248781790696, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
       propertyPath: m_Name

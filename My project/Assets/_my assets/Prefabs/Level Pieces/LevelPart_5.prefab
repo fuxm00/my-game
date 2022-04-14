@@ -422,12 +422,24 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7786485248781790615, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
+      propertyPath: _respawnTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786485248781790615, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
       propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 5504852650623847747, guid: 5067cbe7ab37e1646bfda648158e53ac, type: 3}
+    - target: {fileID: 7786485248781790615, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
+      propertyPath: _objectToSpawn
       value: 
       objectReference: {fileID: 5504852650623847747, guid: 5067cbe7ab37e1646bfda648158e53ac, type: 3}
     - target: {fileID: 7786485248781790615, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
       propertyPath: playerDistanceToSpawnObject
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786485248781790615, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
+      propertyPath: _playerDistanceToSpawnObject
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7786485248781790696, guid: e97ffb69d30c22f478c155bf37c26c21, type: 3}
       propertyPath: m_Name

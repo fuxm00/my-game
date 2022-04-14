@@ -6,36 +6,36 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Player")]
-    [SerializeField] GameObject playerPrefab;
-    [SerializeField] GameObject playerSpawn;    
+    [SerializeField] GameObject _playerPrefab;
+    [SerializeField] GameObject _playerSpawn;    
 
     [Header("Joystick")]
-    [SerializeField] Joystick joystick;
-    [SerializeField] GameObject joystickHandle;
-    [SerializeField] GameObject joystickBackgound;
+    [SerializeField] Joystick _joystick;
+    [SerializeField] GameObject _joystickHandle;
+    [SerializeField] GameObject _joystickBackgound;
 
     [Header("Game Over")]
-    [SerializeField] GameObject gameOverUI;    
+    [SerializeField] GameObject _gameOverUI;    
 
     [Header("Coins")]
-    [SerializeField] GameObject coinManager;    
+    [SerializeField] GameObject _coinManager;    
 
     [Header("CoinUI")]
-    [SerializeField] GameObject coinUI;    
+    [SerializeField] GameObject _coinUI;    
 
     [Header("Hearts")]
-    [SerializeField] GameObject playerHearts;    
+    [SerializeField] GameObject _playerHeartsUI;    
 
     [Header("Start Game")]
-    [SerializeField] GameObject startGameUI;
+    [SerializeField] GameObject _startGameUI;
 
     [Header("Ads")]
-    [SerializeField] GameObject AdManager;
+    [SerializeField] GameObject _AdManager;
 
     [Header("Level Generator")]
-    [SerializeField] GameObject levelGenerator;
+    [SerializeField] GameObject _levelGenerator;
 
-    [SerializeField] bool gameIsRunning;
+    private bool gameIsRunning;
     public bool GameIsRunning
     {
         get
@@ -57,34 +57,31 @@ public class GameManager : MonoBehaviour
     private LevelGenerator levelGeneratorScript;
     private RewardedAd rewardedAd;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
-        setColors();
-        preparePlayer();
-        hideJoystick();
-        hideScore();
+        SetColors();
+        PreparePlayer();
+        HideJoystick();
+        HideScore();
         gameIsRunning = false;
 
         playerHealthScript = player.GetComponent<PlayerHealth>();
 
-        playerHeartsUIScript = playerHearts.GetComponent<PlayerHeartsUI>();
-        hideHearts();
+        playerHeartsUIScript = _playerHeartsUI.GetComponent<PlayerHeartsUI>();
+        HideHearts();
 
-        coinManagerScript = coinManager.GetComponent<CoinManager>();
+        coinManagerScript = _coinManager.GetComponent<CoinManager>();
 
-        coinUIScript = coinUI.GetComponent<CoinUI>();
+        coinUIScript = _coinUI.GetComponent<CoinUI>();
 
-        startGameUI.SetActive(true);
+        _startGameUI.SetActive(true);
 
-        gameOverUIScript = gameOverUI.GetComponent<GameOverUI>();
+        gameOverUIScript = _gameOverUI.GetComponent<GameOverUI>();
 
-        rewardedAd = AdManager.GetComponent<RewardedAd>();
+        rewardedAd = _AdManager.GetComponent<RewardedAd>();
 
-        levelGeneratorScript = levelGenerator.GetComponent<LevelGenerator>();
+        levelGeneratorScript = _levelGenerator.GetComponent<LevelGenerator>();
 
         playerMovementScript = player.GetComponent<PlayerMovement>();
     }
@@ -94,62 +91,62 @@ public class GameManager : MonoBehaviour
     {
         if (gameIsRunning)
         {
-            gameOverCheck();
+            GameOverCheck();
         }
     }
 
-    public void newGame()
+    public void NewGame()
     {
         gameIsRunning = true;
-        gameOverUI.SetActive(false);
-        showJoystick();
-        playerHealthScript.resetHealth();
+        _gameOverUI.SetActive(false);
+        ShowJoystick();
+        playerHealthScript.ResetHealth();
         player.SetActive(true);
-        playerHeartsUIScript.refreshHearts();
-        showHearts();
+        playerHeartsUIScript.RefreshHearts();
+        ShowHearts();
         
-        coinManagerScript.resetRecievedCoins();
-        coinUIScript.refreshScore();
+        coinManagerScript.ResetRecievedCoins();
+        coinUIScript.RefreshScore();
 
-        if (startGameUI.activeInHierarchy == true)
+        if (_startGameUI.activeInHierarchy == true)
         {
-            startGameUI.SetActive(false);
+            _startGameUI.SetActive(false);
         }
 
-        if (playerHearts.activeInHierarchy != true)
+        if (_playerHeartsUI.activeInHierarchy != true)
         {
-            playerHearts.SetActive(true);
+            _playerHeartsUI.SetActive(true);
         }
 
-        coinManagerScript.resetRecievedCoins();
-        coinUIScript.refreshScore();
-        showScore();
+        coinManagerScript.ResetRecievedCoins();
+        coinUIScript.RefreshScore();
+        ShowScore();
 
         rewardedAd.LoadAd();
 
-        levelGeneratorScript.resetLevelParts();
+        levelGeneratorScript.ResetLevelParts();
 
-        playerMovementScript.resetPosition();
+        playerMovementScript.ResetPosition();
     }
 
-    public void gameOver()
+    public void GameOver()
     {
-        hideJoystick();
+        HideJoystick();
         player.SetActive(false);
         gameIsRunning = false;
-        gameOverUI.SetActive(true);
-        hideHearts();
-        hideScore();
-        coinManagerScript.transferToTotalCoins(coinManagerScript.CollectedCoins);
-        gameOverUIScript.refreshCoins();
+        _gameOverUI.SetActive(true);
+        HideHearts();
+        HideScore();
+        coinManagerScript.TransferToTotalCoins(coinManagerScript.CollectedCoins);
+        gameOverUIScript.RefreshCoins();
     }
 
-    public void quitApp()
+    public void QuitApp()
     {
         Application.Quit();
     }
 
-    private void gameOverCheck()
+    private void GameOverCheck()
     {
         if (gameIsRunning)
         {
@@ -157,16 +154,16 @@ public class GameManager : MonoBehaviour
 
             if (playerHealth != null && !playerHealth.IsAlive && gameIsRunning)
             {
-                gameOver();
+                GameOver();
             }
         }
     }
 
-    private void showJoystick()
+    private void ShowJoystick()
     {
-        Image image = joystick.gameObject.GetComponent<Image>();
-        Image image2 = joystickHandle.gameObject.GetComponent<Image>();
-        Image image3 = joystickBackgound.gameObject.GetComponent<Image>();
+        Image image = _joystick.gameObject.GetComponent<Image>();
+        Image image2 = _joystickHandle.gameObject.GetComponent<Image>();
+        Image image3 = _joystickBackgound.gameObject.GetComponent<Image>();
         if (image != null)
         {
             image.color = whiteColor;
@@ -182,11 +179,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void hideJoystick()
+    private void HideJoystick()
     {
-        Image image = joystick.gameObject.GetComponent<Image>();
-        Image image2 = joystickHandle.gameObject.GetComponent<Image>();
-        Image image3 = joystickBackgound.gameObject.GetComponent<Image>();
+        Image image = _joystick.gameObject.GetComponent<Image>();
+        Image image2 = _joystickHandle.gameObject.GetComponent<Image>();
+        Image image3 = _joystickBackgound.gameObject.GetComponent<Image>();
         if (image != null)
         {
             image.color = transparentColor;
@@ -201,35 +198,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void showHearts()
+    private void ShowHearts()
     {
-        playerHearts.SetActive(true);
+        _playerHeartsUI.SetActive(true);
     }
 
-    private void hideHearts()
+    private void HideHearts()
     {
-        playerHearts.SetActive(false);
+        _playerHeartsUI.SetActive(false);
     }
 
-    private void setColors()
+    private void SetColors()
     {
         whiteColor = new Color32(255, 255, 255, 255);
         transparentColor = new Color32(0, 0, 0, 0);
         semiTransparentColor = new Color32(0, 0, 0, 70);
     }
-    private void preparePlayer()
+    private void PreparePlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
     }
 
-    private void showScore()
+    private void ShowScore()
     {
-        coinUI.SetActive(true);
+        _coinUI.SetActive(true);
     }
 
-    private void hideScore()
+    private void HideScore()
     {
-        coinUI.SetActive(false);
+        _coinUI.SetActive(false);
     }
 }

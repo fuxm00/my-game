@@ -231,12 +231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c45cb82d9eb83f499d8867d47409512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketSpeed: 5
-  rotationSpeed: 120
-  isHoming: 1
-  blastRadius: 3
-  explodeForce: 200
-  explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
+  _rocketSpeed: 5
+  _rotationSpeed: 125
+  _isHoming: 1
+  _blastRadius: 2
+  _explodeForce: 200
+  _explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
 --- !u!61 &693272324933718041
 BoxCollider2D:
   m_ObjectHideFlags: 0

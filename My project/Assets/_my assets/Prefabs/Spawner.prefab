@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5ba6bc472357e438eb019131651870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 0}
-  respawnTime: 4
-  playerDistanceToSpawnObject: 10
+  _objectToSpawn: {fileID: 0}
+  _respawnTime: 4
+  _playerDistanceToSpawnObject: 10

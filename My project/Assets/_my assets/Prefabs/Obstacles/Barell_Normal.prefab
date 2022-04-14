@@ -391,14 +391,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5504852650623847747}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1755257418915285502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!50 &5504852650623848126
 Rigidbody2D:
   serializedVersion: 4
@@ -458,9 +458,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a04c51864e656459785c20752e9628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 3
-  explodeForce: 150
-  explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
+  _blastRadius: 3
+  _explodeForce: 200
+  _isRandomised: 0
+  _explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
 --- !u!1 &5504852650753064259
 GameObject:
   m_ObjectHideFlags: 0

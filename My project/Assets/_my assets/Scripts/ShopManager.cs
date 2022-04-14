@@ -6,56 +6,56 @@ using UnityEngine.Purchasing;
 public class ShopManager : MonoBehaviour
 {
     [Header("Coins")]
-    [SerializeField] GameObject coinManager;    
+    [SerializeField] GameObject _coinManager;    
 
     [Header("Player")]
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject _player;
     
-    [SerializeField] GameObject playerBody;
+    [SerializeField] GameObject _playerBody;
 
     [Header("Shop UI")]
-    [SerializeField] GameObject shopUI;    
+    [SerializeField] GameObject _shopUI;    
 
     [Header("Prices")]
-    [SerializeField] int extraHeartPrice;
-    [SerializeField] int goldenSkinPrice;
+    [SerializeField] int _extraHeartPrice;
+    [SerializeField] int _goldenSkinPrice;
 
-    private string coins_999 = "coins_999";
+    private string _coins999 = "coins_999";
 
-    private bool goldenSkinIsBought;
+    private bool _goldenSkinIsBought;
     public bool GoldenSkinIsBought
     {
         get
         {
-            return goldenSkinIsBought;
+            return _goldenSkinIsBought;
         }
     }
 
-    private bool extraHeartisBought;
+    private bool _extraHeartisBought;
     public bool ExtraHeartisBought
     {
         get
         {
-            return extraHeartisBought;
+            return _extraHeartisBought;
         }
     }
 
-    private ShopUI shopUIScript;
-    private CoinManager coinManagerScript;
-    private PlayerHealth playerHealthScript;
+    private ShopUI _shopUIScript;
+    private CoinManager _coinManagerScript;
+    private PlayerHealth _playerHealthScript;
     private void Start()
     {
-        coinManagerScript = coinManager.GetComponent<CoinManager>();
-        playerHealthScript = player.GetComponent<PlayerHealth>();
-        shopUIScript = shopUI.GetComponent<ShopUI>();
+        _coinManagerScript = _coinManager.GetComponent<CoinManager>();
+        _playerHealthScript = _player.GetComponent<PlayerHealth>();
+        _shopUIScript = _shopUI.GetComponent<ShopUI>();
     }
 
     public void OnPurchaseComplete(Product product)
     {
-        if (product.definition.id == coins_999)
+        if (product.definition.id == _coins999)
         {
-            coinManagerScript.transferToTotalCoins(999);
-            shopUIScript.refresh();
+            _coinManagerScript.TransferToTotalCoins(999);
+            _shopUIScript.Refresh();
         }
     }
 
@@ -64,30 +64,30 @@ public class ShopManager : MonoBehaviour
         Debug.Log("Purchase of: " + product.definition.id + " failed because of " + reason);
     }
 
-    public void buyExtraHeart()
+    public void BuyExtraHeart()
     {
-        if (!extraHeartisBought)
+        if (!_extraHeartisBought)
         {
-            if (extraHeartPrice <= coinManagerScript.TotalCoins)
+            if (_extraHeartPrice <= _coinManagerScript.TotalCoins)
             {
-                coinManagerScript.transferToTotalCoins(-extraHeartPrice);
-                playerHealthScript.increaseMaxLives(1);
-                extraHeartisBought = true;
-                shopUIScript.refresh();
+                _coinManagerScript.TransferToTotalCoins(-_extraHeartPrice);
+                _playerHealthScript.IncreaseMaxLives(1);
+                _extraHeartisBought = true;
+                _shopUIScript.Refresh();
             }
         }
     }
 
-    public void buyGoldenSkin()
+    public void BuyGoldenSkin()
     {
-        if (!goldenSkinIsBought)
+        if (!_goldenSkinIsBought)
         {
-            if (goldenSkinPrice <= coinManagerScript.TotalCoins)
+            if (_goldenSkinPrice <= _coinManagerScript.TotalCoins)
             {
-                coinManagerScript.transferToTotalCoins(-goldenSkinPrice);
-                playerBody.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 0, 255);
-                goldenSkinIsBought = true;
-                shopUIScript.refresh();
+                _coinManagerScript.TransferToTotalCoins(-_goldenSkinPrice);
+                _playerBody.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 0, 255);
+                _goldenSkinIsBought = true;
+                _shopUIScript.Refresh();
             }
         }
     }

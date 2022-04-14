@@ -5,14 +5,14 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     [Header("Characteristics")]
-    [SerializeField] float rocketSpeed;
-    [SerializeField] float rotationSpeed;
-    [SerializeField] bool isHoming;
-    [SerializeField] float blastRadius;
-    [SerializeField] float explodeForce;
+    [SerializeField] float _rocketSpeed;
+    [SerializeField] float _rotationSpeed;
+    [SerializeField] bool _isHoming;
+    [SerializeField] float _blastRadius;
+    [SerializeField] float _explodeForce;
 
     [Header("Effect")]
-    [SerializeField] GameObject explosionEffect;
+    [SerializeField] GameObject _explosionEffect;
 
     private Transform targetTransform;
     private Rigidbody2D rb;
@@ -37,7 +37,7 @@ public class Rocket : MonoBehaviour
     {
         if (targetTransform != null)
         {
-            if (isHoming == true)
+            if (_isHoming == true)
             {
                 Vector2 desiredDirection = targetTransform.position - gameObject.transform.position;
                 Vector2 currentDirection = gameObject.transform.up;
@@ -46,11 +46,11 @@ public class Rocket : MonoBehaviour
 
                 float rotateAmount = Vector3.Cross(desiredDirection, currentDirection).z;
 
-                rb.angularVelocity = rotateAmount * rotationSpeed * -1;
+                rb.angularVelocity = rotateAmount * _rotationSpeed * -1;
             }
         }
 
-        rb.velocity = transform.up * rocketSpeed;
+        rb.velocity = transform.up * _rocketSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -63,9 +63,9 @@ public class Rocket : MonoBehaviour
 
     private void Explode()
     {
-        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Instantiate(_explosionEffect, transform.position, transform.rotation);
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, blastRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
 
         foreach (Collider2D nearbyObject in colliders)
         {
@@ -73,13 +73,13 @@ public class Rocket : MonoBehaviour
             if (rb != null)
             {
                 Vector2 direction = nearbyObject.transform.position - transform.position;
-                rb.AddForce(direction * explodeForce);
+                rb.AddForce(direction * _explodeForce);
             }
 
             PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
             if (health != null)
             {
-                health.damagePlayer(1);
+                health.DamagePlayer(1);
             }
         }
 

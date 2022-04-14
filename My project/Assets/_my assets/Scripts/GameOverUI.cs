@@ -6,29 +6,29 @@ using UnityEngine.UI;
 public class GameOverUI : MonoBehaviour
 {
     [Header("Prefixes")]
-    [SerializeField] string collectedPrefix;
-    [SerializeField] string adBonusPrefix;
-    [SerializeField] string totalPrefix;
+    [SerializeField] string _collectedPrefix;
+    [SerializeField] string _adBonusPrefix;
+    [SerializeField] string _totalPrefix;
 
     [Header("Text")]
-    [SerializeField] Text coinText;
+    [SerializeField] Text _coinText;
 
     [Header("Coin Manager")]
-    [SerializeField] GameObject coinManager;
+    [SerializeField] GameObject _coinManager;
 
-    private CoinManager coinManagerScript;
+    private CoinManager _coinManagerScript;
 
-    public void refreshCoins()
+    public void RefreshCoins()
     {
-        coinManagerScript = coinManager.GetComponent<CoinManager>();
-        coinText.text = 
-            collectedPrefix + 
-            coinManagerScript.CollectedCoins + 
+        _coinManagerScript = _coinManager.GetComponent<CoinManager>();
+        _coinText.text = 
+            _collectedPrefix + 
+            _coinManagerScript.CollectedCoins + 
             "\r\n" +
-            adBonusPrefix +
-            coinManagerScript.AdBonusCoins +
+            _adBonusPrefix +
+            _coinManagerScript.AdBonusCoins +
             "\r\n" +
-            totalPrefix + 
-            coinManagerScript.TotalCoins;
+            _totalPrefix + 
+            _coinManagerScript.TotalCoins;
     }
 }

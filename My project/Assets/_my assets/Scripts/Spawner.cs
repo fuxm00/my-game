@@ -5,48 +5,48 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [Header("Object to Spawn")]
-    [SerializeField] GameObject objectToSpawn;
+    [SerializeField] GameObject _objectToSpawn;
 
     [Header("Characteristics")]
-    [SerializeField] float respawnTime = 3f;
-    [SerializeField] float playerDistanceToSpawnObject;
+    [SerializeField] float _respawnTime;
+    [SerializeField] float _playerDistanceToSpawnObject;
 
-    private GameObject player;
-    private GameObject gameManager;
-    private GameManager gameManagerScript;
-    private float nextSpawnTime;
+    private GameObject _player;
+    private GameObject _gameManager;
+    private GameManager _gameManagerScript;
+    private float _nextSpawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameMng");
-        gameManagerScript = gameManager.GetComponent<GameManager>();
+        _gameManager = GameObject.FindGameObjectWithTag("GameMng");
+        _gameManagerScript = _gameManager.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        if (_player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            _player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if (!gameManagerScript.GameIsRunning)
-        {
-            return;
-        }
-
-        if (Time.time < nextSpawnTime)
+        if (!_gameManagerScript.GameIsRunning)
         {
             return;
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) > playerDistanceToSpawnObject)
+        if (Time.time < _nextSpawnTime)
         {
             return;
         }
 
-        nextSpawnTime = Time.time + respawnTime;
-        Instantiate(objectToSpawn, transform);
+        if (Vector3.Distance(_player.transform.position, transform.position) > _playerDistanceToSpawnObject)
+        {
+            return;
+        }
+
+        _nextSpawnTime = Time.time + _respawnTime;
+        Instantiate(_objectToSpawn, transform);
     }
 }

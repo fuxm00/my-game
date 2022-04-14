@@ -11,11 +11,11 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
 
-    public GameObject coinMnanager;
-    private CoinManager coinManagerScript;
+    [SerializeField] GameObject _coinMnanager;
+    private CoinManager _coinManagerScript;
 
-    public GameObject gameOverUI;
-    private GameOverUI gameOverUIScript;
+    [SerializeField] GameObject _gameOverUI;
+    private GameOverUI _gameOverUIScript;
 
     void Awake()
     {
@@ -29,8 +29,8 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         //Disable the button until the ad is ready to show:
         _showAdButton.interactable = false;
 
-        coinManagerScript = coinMnanager.GetComponent<CoinManager>();
-        gameOverUIScript = gameOverUI.GetComponent<GameOverUI>();
+        _coinManagerScript = _coinMnanager.GetComponent<CoinManager>();
+        _gameOverUIScript = _gameOverUI.GetComponent<GameOverUI>();
     }
 
     // Load content to the Ad Unit:
@@ -72,9 +72,9 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             
             _showAdButton.interactable = false;
             _showAdButton.onClick.RemoveListener(ShowAd);
-            coinManagerScript.giveAdBonusCoins();
-            coinManagerScript.transferToTotalCoins(coinManagerScript.AdBonusCoins);
-            gameOverUIScript.refreshCoins();
+            _coinManagerScript.GiveAdBonusCoins();
+            _coinManagerScript.TransferToTotalCoins(_coinManagerScript.AdBonusCoins);
+            _gameOverUIScript.RefreshCoins();
 
             // Load another ad:
             //Advertisement.Load(_adUnitId, this);

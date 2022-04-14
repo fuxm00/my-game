@@ -6,21 +6,21 @@ using UnityEngine.UI;
 public class CoinUI : MonoBehaviour
 {
     [Header("Coin Board")] 
-    [SerializeField] GameObject coinBoard;
+    [SerializeField] GameObject _coinBoard;
 
     [Header("Prefix")] 
-    [SerializeField] string prefix;
+    [SerializeField] string _prefix;
 
     [Header("Coin Manager")]
-    [SerializeField] GameObject coinManager;
+    [SerializeField] GameObject _coinManager;
 
-    private CoinManager coinManagerScript;
-    private Text coinText;
+    private CoinManager _coinManagerScript;
+    private Text _coinText;
 
-    public void refreshScore()
+    public void RefreshScore()
     {
-        coinText = coinBoard.GetComponent<Text>();
-        coinManagerScript = coinManager.GetComponent<CoinManager>();
-        coinText.text = prefix + coinManagerScript.CollectedCoins;
+        _coinText = _coinBoard.GetComponent<Text>();
+        _coinManagerScript = _coinManager.GetComponent<CoinManager>();
+        _coinText.text = _prefix + _coinManagerScript.CollectedCoins;
     }
 }

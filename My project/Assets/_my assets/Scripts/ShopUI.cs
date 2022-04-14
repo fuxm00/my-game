@@ -6,60 +6,65 @@ using UnityEngine.UI;
 public class ShopUI : MonoBehaviour
 {
     [Header("Ad Manager")]
-    [SerializeField] GameObject AdManager;    
+    [SerializeField] GameObject _adManager;    
 
     [Header("Coin Manager")]
-    [SerializeField] GameObject coinManger;    
+    [SerializeField] GameObject _coinManger;    
 
     [Header("Shop Manager")]
-    [SerializeField] GameObject shopManager;    
+    [SerializeField] GameObject _shopManager;    
 
     [Header("Buttons")]
-    [SerializeField] Button extraHeartButton;
-    [SerializeField] Button goldenSkinButton;
+    [SerializeField] Button _extraHeartButton;
+    [SerializeField] Button _goldenSkinButton;
 
     [Header("Coin Text")]
-    [SerializeField] Text totalCoinText;
+    [SerializeField] Text _totalCoinText;
 
     [Header("Prefix")]
-    [SerializeField] string coinPrefix;
+    [SerializeField] string _coinPrefix;
 
-    private BannerAd bannerAdScript;
-    private CoinManager coinManagerScript;
-    private ShopManager shopManagerScript;
-    public void showBanner()
+    private BannerAd _bannerAdScript;
+    private CoinManager _coinManagerScript;
+    private ShopManager _shopManagerScript;
+    public void ShowBanner()
     {
-        if (bannerAdScript == null)
+        if (_bannerAdScript == null)
         {
-            bannerAdScript = AdManager.GetComponent<BannerAd>();
+            _bannerAdScript = _adManager.GetComponent<BannerAd>();
         }
 
-        bannerAdScript.LoadBanner();
-        bannerAdScript.ShowBannerAd();
+        _bannerAdScript.LoadBanner();
+        _bannerAdScript.ShowBannerAd();
     }
 
-    public void refresh()
+    public void HideBanner()
     {
-        if (shopManagerScript == null)
+        _bannerAdScript.HideBannerAd();
+    }
+
+    public void Refresh()
+    {
+        if (_shopManagerScript == null)
         {
-            shopManagerScript = shopManager.GetComponent<ShopManager>();
+            _shopManagerScript = _shopManager.GetComponent<ShopManager>();
         }
 
-        if (coinManagerScript == null)
+        if (_coinManagerScript == null)
         {
-            coinManagerScript = coinManger.GetComponent<CoinManager>();
+            _coinManagerScript = _coinManger.GetComponent<CoinManager>();
         }
 
-        if (shopManagerScript.ExtraHeartisBought)
+        if (_shopManagerScript.ExtraHeartisBought)
         {
-            extraHeartButton.interactable = false;
+            _extraHeartButton.interactable = false;
         }
 
-        if (shopManagerScript.GoldenSkinIsBought)
+        if (_shopManagerScript.GoldenSkinIsBought)
         {
-            goldenSkinButton.interactable = false;
+            _goldenSkinButton.interactable = false;
         }
 
-        totalCoinText.text = coinPrefix + coinManagerScript.TotalCoins;
+        _totalCoinText.text = _coinPrefix + _coinManagerScript.TotalCoins;
     }
 }

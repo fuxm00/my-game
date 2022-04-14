@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4164461edb213146b6518c7d56a7d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinReward: 10
+  _coinReward: 10
 --- !u!1 &539809624873992287
 GameObject:
   m_ObjectHideFlags: 0

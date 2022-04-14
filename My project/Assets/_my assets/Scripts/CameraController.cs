@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private GameObject player;
+    private GameObject _player;
 
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        _player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null && player.activeInHierarchy == true)
+        if (_player != null && _player.activeInHierarchy == true)
         {
-            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+            transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y, transform.position.z);
 
         }
     }

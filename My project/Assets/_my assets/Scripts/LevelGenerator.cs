@@ -5,33 +5,34 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [Header("Parts")]
-    [SerializeField] Transform levelPart_Start;
-    [SerializeField] List<Transform> levelParts;
-    [SerializeField] float playerDistanceToSpawnPart;
+    [SerializeField] Transform _levelPart_Start;
+    [SerializeField] List<Transform> _levelParts;
+    [SerializeField] float _playerDistanceToSpawnPart;
 
     [Header("Player")]
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject _player;
 
     [Header("Game Manager")]
-    [SerializeField] GameObject gameManager;
+    [SerializeField] GameObject _gameManager;
 
-    private GameManager gameManagerScript;
-    private Vector3 lastEndposition;
-    private GameObject[] currentLevelParts;
+    private GameManager _gameManagerScript;
+    private Vector3 _lastEndposition;
+    private GameObject[] _currentLevelParts;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameManagerScript = gameManager.GetComponent<GameManager>();
+        _gameManagerScript = _gameManager.GetComponent<GameManager>();
 
-        setStartPosition();   
+        SetStartPosition();   
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManagerScript.GameIsRunning)
+        if (_gameManagerScript.GameIsRunning)
         {
-            if (Vector3.Distance(player.transform.position, lastEndposition) < playerDistanceToSpawnPart)
+            if (Vector3.Distance(_player.transform.position, _lastEndposition) < _playerDistanceToSpawnPart)
             {
                 SpawnLevelPart();
             }
@@ -40,9 +41,9 @@ public class LevelGenerator : MonoBehaviour
 
     private void SpawnLevelPart()
     {
-        Transform chosenLevelPart = levelParts[Random.Range(0, levelParts.Count)];
-        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndposition);
-        lastEndposition = lastLevelPartTransform.Find("End Position").position;
+        Transform chosenLevelPart = _levelParts[Random.Range(0, _levelParts.Count)];
+        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, _lastEndposition);
+        _lastEndposition = lastLevelPartTransform.Find("End Position").position;
     }
 
     private Transform SpawnLevelPart(Transform levelPart, Vector3 spawnPosition)
@@ -51,21 +52,21 @@ public class LevelGenerator : MonoBehaviour
         return levelPartTransform;
     }
 
-    public void resetLevelParts()
+    public void ResetLevelParts()
     {
-        currentLevelParts = GameObject.FindGameObjectsWithTag("LevelPart");
+        _currentLevelParts = GameObject.FindGameObjectsWithTag("LevelPart");
 
-        foreach (GameObject levelPart in currentLevelParts)
+        foreach (GameObject levelPart in _currentLevelParts)
         {
             Destroy(levelPart);
         }
 
-        setStartPosition();
+        SetStartPosition();
 
-        initLevelParts();
+        InitLevelParts();
     }
 
-    private void initLevelParts()
+    private void InitLevelParts()
     {
         for (int i = 0; i < 3; i++)
         {
@@ -73,8 +74,8 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void setStartPosition()
+    private void SetStartPosition()
     {
-        lastEndposition = levelPart_Start.Find("End Position").position;
+        _lastEndposition = _levelPart_Start.Find("End Position").position;
     }
 }

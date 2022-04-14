@@ -39,13 +39,17 @@ public class CoinManager : MonoBehaviour
 
     private CoinUI _coinUIScript;
 
+    private void Awake()
+    {
+        _totalCoins = PlayerPrefs.GetInt("totalCoins");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _coinUIScript = _coinUI.GetComponent<CoinUI>();
         _collectedCoins = 0;
         _adBonusCoins = 0;
-        _totalCoins = PlayerPrefs.GetInt("totalCoins");
     }
 
     public void GiveCollectedCoins(int amount)

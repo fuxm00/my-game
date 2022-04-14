@@ -10,12 +10,14 @@ public class Rocket : MonoBehaviour
     [SerializeField] bool _isHoming;
     [SerializeField] float _blastRadius;
     [SerializeField] float _explodeForce;
+    [SerializeField] float _timeDelayToExplode;
 
     [Header("Effect")]
     [SerializeField] GameObject _explosionEffect;
 
     private Transform targetTransform;
     private Rigidbody2D rb;
+    private float _timeToExplode;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +32,21 @@ public class Rocket : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
+
+        _timeToExplode = Time.time + _timeDelayToExplode;
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if (Time.time < _timeToExplode)
+        {
+            return;
+        }
+        
+        Explode();
+    }
+
     void FixedUpdate()
     {
         if (targetTransform != null)

@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
     {
         _gameManager = GameObject.FindGameObjectWithTag("GameMng");
         _gameManagerScript = _gameManager.GetComponent<GameManager>();
+        _nextSpawnTime = 0;
     }
 
     // Update is called once per frame

@@ -8,6 +8,8 @@ TagManager:
   - ScoreMng
   - GameMng
   - LevelPart
+  - Obstacle
+  - Platform
   layers:
   - Default
   - TransparentFX

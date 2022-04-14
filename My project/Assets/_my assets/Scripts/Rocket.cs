@@ -69,7 +69,7 @@ public class Rocket : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.IsTouchingLayers(7) || collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Player")
         {
             Explode();
         }

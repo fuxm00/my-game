@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     private Color32 semiTransparentColor;
     private LevelGenerator levelGeneratorScript;
     private RewardedAd rewardedAd;
+    private JumpButton _jumpButtonScript;
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +88,8 @@ public class GameManager : MonoBehaviour
         levelGeneratorScript = _levelGenerator.GetComponent<LevelGenerator>();
 
         playerMovementScript = player.GetComponent<PlayerMovement>();
+
+        _jumpButtonScript = _jumpButton.GetComponent<JumpButton>();
     }
 
     // Update is called once per frame
@@ -181,6 +184,7 @@ public class GameManager : MonoBehaviour
         }
 
         _jumpButton.gameObject.SetActive(true);
+        _jumpButtonScript.IsPressed = false;
     }
 
     private void HideControls()

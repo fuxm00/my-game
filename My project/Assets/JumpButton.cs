@@ -6,12 +6,15 @@ using UnityEngine.EventSystems;
 public class JumpButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     private bool _isPressed;
-
     public bool IsPressed
     {
         get
         {
             return _isPressed;
+        }
+        set
+        {
+            _isPressed = value;
         }
     }
 

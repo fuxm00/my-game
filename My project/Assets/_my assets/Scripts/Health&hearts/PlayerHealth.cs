@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class PlayerHealth : MonoBehaviour
         {
             return _currentPlayerLives;
         }
+        private set
+        {
+            _currentPlayerLives = value;
+            OnHealthChange?.Invoke();
+        }
     }
 
     [Header("Is Alive")]
@@ -33,20 +39,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    [SerializeField] UnityEvent OnHealthChange;
+
     private PlayerHeartsUI playerHeartsUIScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        _currentPlayerLives = _playerMaxLives;
-        if (_currentPlayerLives > 0)
-        {
-            _isAlive = true;
-        } else
-        {
-            _isAlive = false;
-        }
-
         playerHeartsUIScript = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
 
         if (PlayerPrefs.GetInt("ExtraHeartIsBought") == 1)
@@ -54,11 +53,22 @@ public class PlayerHealth : MonoBehaviour
             IncreaseMaxLives(1);
         }
 
+        CurrentPlayerLives = _playerMaxLives;
+
+        if (_currentPlayerLives > 0)
+        {
+            _isAlive = true;
+        }
+        else
+        {
+            _isAlive = false;
+        }
+
     }
 
     public void ResetHealth()
     {
-        _currentPlayerLives = _playerMaxLives;
+        CurrentPlayerLives = _playerMaxLives;
         _isAlive = true;
     }
 
@@ -66,8 +76,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_isAlive)
         {
-            _currentPlayerLives -= damagePoints;
-            playerHeartsUIScript.RefreshHearts();
+            CurrentPlayerLives -= damagePoints;
 
             if (_currentPlayerLives <= 0)
             {
@@ -84,5 +93,6 @@ public class PlayerHealth : MonoBehaviour
     public void IncreaseMaxLives (int amount)
     {
         _playerMaxLives += amount;
+        OnHealthChange?.Invoke();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using UnityEngine.Events;
 
 public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -16,6 +17,8 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 
     [SerializeField] GameObject _gameOverUI;
     private GameOverUI _gameOverUIScript;
+
+    [SerializeField] UnityEvent OnUnityAdsShowCompleteEvent;
 
     void Awake()
     {
@@ -74,8 +77,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             _showAdButton.onClick.RemoveListener(ShowAd);
             _coinManagerScript.GiveAdBonusCoins();
             _coinManagerScript.TransferToTotalCoins(_coinManagerScript.AdBonusCoins);
-            _gameOverUIScript.RefreshCoins();
-
+            OnUnityAdsShowCompleteEvent?.Invoke();
             // Load another ad:
             //Advertisement.Load(_adUnitId, this);
         }

@@ -6,6 +6,8 @@ public class PlayerHeartsUI : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] GameObject _player;
+
+    [Header("Hearts")]
     [SerializeField] GameObject[] _playerHearts;
 
     private PlayerHealth _playerHealth;

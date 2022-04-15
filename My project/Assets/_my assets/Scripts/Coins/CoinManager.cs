@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CoinManager : MonoBehaviour
 {
-    [SerializeField] GameObject _coinUI;
+    [SerializeField] UnityEvent OnTotalCoinsChange;
+    [SerializeField] UnityEvent OnRecievedCoinsChange;
 
-    private int _collectedCoins;
+    public int _collectedCoins;
     public int CollectedCoins
     {
         get
@@ -15,7 +17,7 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    private int _adBonusCoins;
+    public int _adBonusCoins;
     public int AdBonusCoins
     {
         get
@@ -24,7 +26,7 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    private int _totalCoins;
+    public int _totalCoins;
     public int TotalCoins
     {
         get
@@ -37,8 +39,6 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    private CoinUI _coinUIScript;
-
     private void Awake()
     {
         _totalCoins = PlayerPrefs.GetInt("totalCoins");
@@ -47,7 +47,6 @@ public class CoinManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _coinUIScript = _coinUI.GetComponent<CoinUI>();
         _collectedCoins = 0;
         _adBonusCoins = 0;
     }
@@ -55,24 +54,26 @@ public class CoinManager : MonoBehaviour
     public void GiveCollectedCoins(int amount)
     {
         _collectedCoins += amount;
-        _coinUIScript.RefreshScore();
+        OnRecievedCoinsChange?.Invoke();
     }
 
     public void GiveAdBonusCoins()
     {
         _adBonusCoins = (int)((float)_collectedCoins * .2f);
-        _coinUIScript.RefreshScore();
+        OnRecievedCoinsChange?.Invoke();
     }
 
     public void TransferToTotalCoins(int amount)
     {
         _totalCoins += amount;
         PlayerPrefs.SetInt("totalCoins", _totalCoins);
+        OnTotalCoinsChange?.Invoke();
     }
 
     public void ResetRecievedCoins()
     {
         _collectedCoins = 0;
         _adBonusCoins = 0;
+        OnRecievedCoinsChange?.Invoke();
     }
 }

@@ -467,8 +467,23 @@ MonoBehaviour:
   _coinUI: {fileID: 971059022}
   _playerHeartsUI: {fileID: 1364070676}
   _startGameUI: {fileID: 555731819}
-  _AdManager: {fileID: 307442485}
+  _adManager: {fileID: 307442485}
   _levelGenerator: {fileID: 616413170}
+  OnGameOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1085786884}
+        m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
+        m_MethodName: RefreshCoins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &42853427
 Transform:
   m_ObjectHideFlags: 0
@@ -1348,6 +1363,21 @@ MonoBehaviour:
   _iOSAdUnitId: Rewarded_iOS
   _coinMnanager: {fileID: 806975532}
   _gameOverUI: {fileID: 1085786882}
+  OnUnityAdsShowCompleteEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1085786884}
+        m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
+        m_MethodName: RefreshCoins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &307442489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1667,7 +1697,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coinManager: {fileID: 806975532}
   _player: {fileID: 263333667}
-  _shopUI: {fileID: 792226296}
   _extraHeartPrice: 1999
   _goldenSkinPrice: 9999
 --- !u!1 &555731819
@@ -2421,7 +2450,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8aea6c50eeb3145a18ab2110b5d95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinUI: {fileID: 971059022}
+  OnTotalCoinsChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 792226298}
+        m_TargetAssemblyTypeName: ShopUI, Assembly-CSharp
+        m_MethodName: Refresh
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRecievedCoinsChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 971059024}
+        m_TargetAssemblyTypeName: CoinUI, Assembly-CSharp
+        m_MethodName: RefreshScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &806975534
 Transform:
   m_ObjectHideFlags: 0
@@ -8189,6 +8247,34 @@ PrefabInstance:
     - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
       propertyPath: _playerMaxLives
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1364070678}
+    - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RefreshHearts
+      objectReference: {fileID: 0}
+    - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHeartsUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 263333668, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6463673506755767184, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
       propertyPath: m_Name

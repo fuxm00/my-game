@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,32 +34,31 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _startGameUI;
 
     [Header("Ads")]
-    [SerializeField] GameObject _AdManager;
+    [SerializeField] GameObject _adManager;
 
     [Header("Level Generator")]
     [SerializeField] GameObject _levelGenerator;
 
-    private bool gameIsRunning;
+    private bool _gameIsRunning;
     public bool GameIsRunning
     {
         get
         {
-            return gameIsRunning;
+            return _gameIsRunning;
         }
     }
 
-    private GameObject player;
-    private PlayerHealth playerHealthScript;
-    private PlayerMovement playerMovementScript;
-    private GameOverUI gameOverUIScript;
-    private CoinManager coinManagerScript;
-    private PlayerHeartsUI playerHeartsUIScript;
-    private CoinUI coinUIScript;
-    private Color32 whiteColor;
-    private Color32 transparentColor;
-    private Color32 semiTransparentColor;
-    private LevelGenerator levelGeneratorScript;
-    private RewardedAd rewardedAd;
+    [SerializeField] UnityEvent OnGameOver;
+
+    private GameObject _player;
+    private PlayerHealth _playerHealthScript;
+    private PlayerMovement _playerMovementScript;
+    private CoinManager _coinManagerScript;
+    private Color32 _whiteColor;
+    private Color32 _transparentColor;
+    private Color32 _semiTransparentColor;
+    private LevelGenerator _levelGeneratorScript;
+    private RewardedAd _rewardedAd;
     private JumpButton _jumpButtonScript;
 
     // Start is called before the first frame update
@@ -68,26 +68,21 @@ public class GameManager : MonoBehaviour
         PreparePlayer();
         HideControls();
         HideScore();
-        gameIsRunning = false;
+        _gameIsRunning = false;
 
-        playerHealthScript = player.GetComponent<PlayerHealth>();
+        _playerHealthScript = _player.GetComponent<PlayerHealth>();
 
-        playerHeartsUIScript = _playerHeartsUI.GetComponent<PlayerHeartsUI>();
         HideHearts();
 
-        coinManagerScript = _coinManager.GetComponent<CoinManager>();
-
-        coinUIScript = _coinUI.GetComponent<CoinUI>();
+        _coinManagerScript = _coinManager.GetComponent<CoinManager>();
 
         _startGameUI.SetActive(true);
 
-        gameOverUIScript = _gameOverUI.GetComponent<GameOverUI>();
+        _rewardedAd = _adManager.GetComponent<RewardedAd>();
 
-        rewardedAd = _AdManager.GetComponent<RewardedAd>();
+        _levelGeneratorScript = _levelGenerator.GetComponent<LevelGenerator>();
 
-        levelGeneratorScript = _levelGenerator.GetComponent<LevelGenerator>();
-
-        playerMovementScript = player.GetComponent<PlayerMovement>();
+        _playerMovementScript = _player.GetComponent<PlayerMovement>();
 
         _jumpButtonScript = _jumpButton.GetComponent<JumpButton>();
     }
@@ -95,7 +90,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameIsRunning)
+        if (_gameIsRunning)
         {
             GameOverCheck();
         }
@@ -103,16 +98,14 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        gameIsRunning = true;
+        _gameIsRunning = true;
         _gameOverUI.SetActive(false);
         ShowControls();
-        playerHealthScript.ResetHealth();
-        player.SetActive(true);
-        playerHeartsUIScript.RefreshHearts();
+        _player.SetActive(true);
+        _playerHealthScript.ResetHealth();
         ShowHearts();
         
-        coinManagerScript.ResetRecievedCoins();
-        coinUIScript.RefreshScore();
+        _coinManagerScript.ResetRecievedCoins();
 
         if (_startGameUI.activeInHierarchy == true)
         {
@@ -124,41 +117,40 @@ public class GameManager : MonoBehaviour
             _playerHeartsUI.SetActive(true);
         }
 
-        coinManagerScript.ResetRecievedCoins();
-        coinUIScript.RefreshScore();
         ShowScore();
 
-        rewardedAd.LoadAd();
+        _rewardedAd.LoadAd();
 
-        levelGeneratorScript.ResetLevelParts();
+        _levelGeneratorScript.ResetLevelParts();
 
-        playerMovementScript.ResetPosition();
+        _playerMovementScript.ResetPosition();
     }
 
     public void GameOver()
     {
         HideControls();
-        player.SetActive(false);
-        gameIsRunning = false;
+        _player.SetActive(false);
+        _gameIsRunning = false;
         _gameOverUI.SetActive(true);
         HideHearts();
         HideScore();
-        coinManagerScript.TransferToTotalCoins(coinManagerScript.CollectedCoins);
-        gameOverUIScript.RefreshCoins();
+        _coinManagerScript.TransferToTotalCoins(_coinManagerScript.CollectedCoins);
+        OnGameOver?.Invoke();
     }
 
     public void QuitApp()
     {
+        PlayerPrefs.DeleteAll();
         Application.Quit();
     }
 
     private void GameOverCheck()
     {
-        if (gameIsRunning)
+        if (_gameIsRunning)
         {
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            PlayerHealth playerHealth = _player.GetComponent<PlayerHealth>();
 
-            if (playerHealth != null && !playerHealth.IsAlive && gameIsRunning)
+            if (playerHealth != null && !playerHealth.IsAlive && _gameIsRunning)
             {
                 GameOver();
             }
@@ -172,15 +164,15 @@ public class GameManager : MonoBehaviour
         Image image3 = _joystickBackgound.gameObject.GetComponent<Image>();
         if (image != null)
         {
-            image.color = whiteColor;
+            image.color = _whiteColor;
         }
         if (image2 != null)
         {
-            image2.color = whiteColor;
+            image2.color = _whiteColor;
         }
         if (image3 != null)
         {
-            image3.color = semiTransparentColor;
+            image3.color = _semiTransparentColor;
         }
 
         _jumpButton.gameObject.SetActive(true);
@@ -194,15 +186,15 @@ public class GameManager : MonoBehaviour
         Image image3 = _joystickBackgound.gameObject.GetComponent<Image>();
         if (image != null)
         {
-            image.color = transparentColor;
+            image.color = _transparentColor;
         }
         if (image2 != null)
         {
-            image2.color = transparentColor;
+            image2.color = _transparentColor;
         }
         if (image3 != null)
         {
-            image3.color = transparentColor;
+            image3.color = _transparentColor;
         }
 
         _jumpButton.gameObject.SetActive(false);
@@ -220,14 +212,14 @@ public class GameManager : MonoBehaviour
 
     private void SetColors()
     {
-        whiteColor = new Color32(255, 255, 255, 255);
-        transparentColor = new Color32(0, 0, 0, 0);
-        semiTransparentColor = new Color32(0, 0, 0, 70);
+        _whiteColor = new Color32(255, 255, 255, 255);
+        _transparentColor = new Color32(0, 0, 0, 0);
+        _semiTransparentColor = new Color32(0, 0, 0, 70);
     }
     private void PreparePlayer()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        player.SetActive(false);
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _player.SetActive(false);
     }
 
     private void ShowScore()

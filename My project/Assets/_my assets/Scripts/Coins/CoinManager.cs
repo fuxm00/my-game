@@ -8,7 +8,7 @@ public class CoinManager : MonoBehaviour
     [SerializeField] UnityEvent OnTotalCoinsChange;
     [SerializeField] UnityEvent OnRecievedCoinsChange;
 
-    public int _collectedCoins;
+    private int _collectedCoins;
     public int CollectedCoins
     {
         get
@@ -17,7 +17,7 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    public int _adBonusCoins;
+    private int _adBonusCoins;
     public int AdBonusCoins
     {
         get
@@ -26,7 +26,7 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    public int _totalCoins;
+    private int _totalCoins;
     public int TotalCoins
     {
         get

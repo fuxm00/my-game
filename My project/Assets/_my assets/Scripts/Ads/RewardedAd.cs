@@ -16,7 +16,6 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     private CoinManager _coinManagerScript;
 
     [SerializeField] GameObject _gameOverUI;
-    private GameOverUI _gameOverUIScript;
 
     [SerializeField] UnityEvent OnUnityAdsShowCompleteEvent;
 
@@ -33,7 +32,6 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         _showAdButton.interactable = false;
 
         _coinManagerScript = _coinMnanager.GetComponent<CoinManager>();
-        _gameOverUIScript = _gameOverUI.GetComponent<GameOverUI>();
     }
 
     // Load content to the Ad Unit:
@@ -78,6 +76,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             _coinManagerScript.GiveAdBonusCoins();
             _coinManagerScript.TransferToTotalCoins(_coinManagerScript.AdBonusCoins);
             OnUnityAdsShowCompleteEvent?.Invoke();
+
             // Load another ad:
             //Advertisement.Load(_adUnitId, this);
         }

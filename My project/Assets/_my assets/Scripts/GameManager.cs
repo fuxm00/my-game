@@ -140,7 +140,6 @@ public class GameManager : MonoBehaviour
 
     public void QuitApp()
     {
-        PlayerPrefs.DeleteAll();
         Application.Quit();
     }
 

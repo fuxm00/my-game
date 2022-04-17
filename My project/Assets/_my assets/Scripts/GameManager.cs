@@ -54,9 +54,6 @@ public class GameManager : MonoBehaviour
     private PlayerHealth _playerHealthScript;
     private PlayerMovement _playerMovementScript;
     private CoinManager _coinManagerScript;
-    private Color32 _whiteColor;
-    private Color32 _transparentColor;
-    private Color32 _semiTransparentColor;
     private LevelGenerator _levelGeneratorScript;
     private RewardedAd _rewardedAd;
     private JumpButton _jumpButtonScript;
@@ -64,7 +61,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetColors();
         PreparePlayer();
         HideControls();
         HideScore();
@@ -163,15 +159,15 @@ public class GameManager : MonoBehaviour
         Image image3 = _joystickBackgound.gameObject.GetComponent<Image>();
         if (image != null)
         {
-            image.color = _whiteColor;
+            image.color = Colors.White;
         }
         if (image2 != null)
         {
-            image2.color = _whiteColor;
+            image2.color = Colors.White;
         }
         if (image3 != null)
         {
-            image3.color = _semiTransparentColor;
+            image3.color = Colors.SemiTransparent;
         }
 
         _jumpButton.gameObject.SetActive(true);
@@ -185,15 +181,15 @@ public class GameManager : MonoBehaviour
         Image image3 = _joystickBackgound.gameObject.GetComponent<Image>();
         if (image != null)
         {
-            image.color = _transparentColor;
+            image.color = Colors.Transparent;
         }
         if (image2 != null)
         {
-            image2.color = _transparentColor;
+            image2.color = Colors.Transparent;
         }
         if (image3 != null)
         {
-            image3.color = _transparentColor;
+            image3.color = Colors.Transparent;
         }
 
         _jumpButton.gameObject.SetActive(false);
@@ -207,13 +203,6 @@ public class GameManager : MonoBehaviour
     private void HideHearts()
     {
         _playerHeartsUI.SetActive(false);
-    }
-
-    private void SetColors()
-    {
-        _whiteColor = new Color32(255, 255, 255, 255);
-        _transparentColor = new Color32(0, 0, 0, 0);
-        _semiTransparentColor = new Color32(0, 0, 0, 70);
     }
     private void PreparePlayer()
     {

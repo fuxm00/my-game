@@ -18,6 +18,8 @@ public class LevelGenerator : MonoBehaviour
     private GameManager _gameManagerScript;
     private Vector3 _lastEndposition;
     private GameObject[] _currentLevelParts;
+    private int _currentLevelPartNumber;
+    private int _nextLevelPartNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -34,22 +36,37 @@ public class LevelGenerator : MonoBehaviour
         {
             if (Vector3.Distance(_player.transform.position, _lastEndposition) < _playerDistanceToSpawnPart)
             {
-                SpawnLevelPart();
+                SpawnFirstLevelPart();
             }
         }
     }
 
-    private void SpawnLevelPart()
+    private void SpawnFirstLevelPart()
     {
-        Transform chosenLevelPart = _levelParts[Random.Range(0, _levelParts.Count)];
-        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, _lastEndposition);
-        _lastEndposition = lastLevelPartTransform.Find("End Position").position;
+        _currentLevelPartNumber = Random.Range(0, _levelParts.Count);
+
+        SpawnLevelPart(_currentLevelPartNumber);
     }
 
-    private Transform SpawnLevelPart(Transform levelPart, Vector3 spawnPosition)
+    private void SpawnNextLevelPart()
     {
-        Transform levelPartTransform =  Instantiate(levelPart, spawnPosition, Quaternion.identity);
-        return levelPartTransform;
+        _nextLevelPartNumber = Random.Range(0, _levelParts.Count);
+
+        while (_currentLevelPartNumber == _nextLevelPartNumber)
+        {
+            _nextLevelPartNumber = Random.Range(0, _levelParts.Count);
+        }
+
+        SpawnLevelPart(_nextLevelPartNumber);
+
+        _currentLevelPartNumber = _nextLevelPartNumber;
+    }
+
+    private void SpawnLevelPart (int spawnNumber)
+    {
+        Transform chosenLevelPart = _levelParts[spawnNumber];
+        Transform lastLevelPartTransform = Instantiate(chosenLevelPart, _lastEndposition, Quaternion.identity);
+        _lastEndposition = lastLevelPartTransform.Find("End Position").position;
     }
 
     public void ResetLevelParts()
@@ -68,9 +85,11 @@ public class LevelGenerator : MonoBehaviour
 
     private void InitLevelParts()
     {
-        for (int i = 0; i < 3; i++)
+        SpawnFirstLevelPart();
+
+        for (int i = 0; i < 2; i++)
         {
-            SpawnLevelPart();
+            SpawnNextLevelPart();
         }
     }
 

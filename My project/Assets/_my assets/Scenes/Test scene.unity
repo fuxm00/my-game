@@ -1295,9 +1295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerBody: {fileID: 683733201}
-  _goldColor:
-    serializedVersion: 2
-    rgba: 4278255615
 --- !u!1 &307442485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,6 +1779,7 @@ MonoBehaviour:
   _playerDistanceToSpawnPart: 25
   _player: {fileID: 263333667}
   _gameManager: {fileID: 42853425}
+  _levelPartsToPrepare: 3
 --- !u!4 &616413172
 Transform:
   m_ObjectHideFlags: 0

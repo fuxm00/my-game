@@ -15,6 +15,9 @@ public class LevelGenerator : MonoBehaviour
     [Header("Game Manager")]
     [SerializeField] GameObject _gameManager;
 
+    [Header("Characteristics")]
+    [SerializeField] int _levelPartsToPrepare;
+
     private GameManager _gameManagerScript;
     private Vector3 _lastEndposition;
     private GameObject[] _currentLevelParts;
@@ -87,7 +90,7 @@ public class LevelGenerator : MonoBehaviour
     {
         SpawnFirstLevelPart();
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < _levelPartsToPrepare - 1; i++)
         {
             SpawnNextLevelPart();
         }

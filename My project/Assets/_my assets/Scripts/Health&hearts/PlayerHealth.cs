@@ -77,6 +77,7 @@ public class PlayerHealth : MonoBehaviour
         if (_isAlive)
         {
             CurrentPlayerLives -= damagePoints;
+            FindObjectOfType<AudioManager>().play("Hurt");
 
             if (_currentPlayerLives <= 0)
             {

@@ -18,8 +18,10 @@ public class Reward : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            FindObjectOfType<AudioManager>().play("Coin");
             _scoreMng.GiveCollectedCoins(_coinReward);
             Destroy(gameObject);
         }
+
     }
 }

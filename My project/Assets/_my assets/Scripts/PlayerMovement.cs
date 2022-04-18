@@ -116,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         _rb.velocity = Vector2.up * _jumpForce;
+        FindObjectOfType<AudioManager>().play("Jump");
     }
 
     public void ResetPosition()

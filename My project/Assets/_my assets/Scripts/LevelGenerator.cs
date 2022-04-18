@@ -16,6 +16,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject _gameManager;
 
     [Header("Characteristics")]
+    [Range(1, 50)]
     [SerializeField] int _levelPartsToPrepare;
 
     private GameManager _gameManagerScript;

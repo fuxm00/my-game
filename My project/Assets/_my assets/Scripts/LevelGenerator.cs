@@ -8,6 +8,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] Transform _levelPart_Start;
     [SerializeField] List<Transform> _levelParts;
     [SerializeField] float _playerDistanceToSpawnPart;
+    [SerializeField] float _playerDistanceToDestroyPart;
 
     [Header("Player")]
     [SerializeField] GameObject _player;
@@ -40,8 +41,10 @@ public class LevelGenerator : MonoBehaviour
         {
             if (Vector3.Distance(_player.transform.position, _lastEndposition) < _playerDistanceToSpawnPart)
             {
-                SpawnFirstLevelPart();
+                SpawnNextLevelPart();
             }
+
+            DestroyDistantLevelParts();
         }
     }
 
@@ -85,6 +88,19 @@ public class LevelGenerator : MonoBehaviour
         SetStartPosition();
 
         InitLevelParts();
+    }
+
+    private void DestroyDistantLevelParts()
+    {
+        _currentLevelParts = GameObject.FindGameObjectsWithTag("LevelPart");
+
+        foreach (GameObject levelPart in _currentLevelParts)
+        {
+            if (Vector3.Distance(_player.transform.position, levelPart.transform.position) > _playerDistanceToDestroyPart)
+            {
+                Destroy(levelPart);
+            }
+        }
     }
 
     private void InitLevelParts()

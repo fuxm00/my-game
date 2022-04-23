@@ -1778,6 +1778,7 @@ MonoBehaviour:
   - {fileID: 2858611994326846292, guid: e1e56f8e732fb2d449f54607ac7ffd34, type: 3}
   - {fileID: 4574042265254223934, guid: 35fe158a0f499f544b3397bfb7993262, type: 3}
   _playerDistanceToSpawnPart: 25
+  _playerDistanceToDestroyPart: 100
   _player: {fileID: 263333667}
   _gameManager: {fileID: 42853425}
   _levelPartsToPrepare: 3

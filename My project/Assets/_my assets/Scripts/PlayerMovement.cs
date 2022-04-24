@@ -19,9 +19,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject _player;    
 
     [Header("Ground check")]
-    [SerializeField] Transform _groundCheckObjectLeft;
-    [SerializeField] Transform _groundCheckObjectRight;
-    [SerializeField] float _groundDistanceToCheck;
+    [SerializeField] Transform _groundCheckLeft;
+    [SerializeField] Transform _groundCheckRight;
+    [SerializeField] float _distanceToCheck;
     [SerializeField] LayerMask _groundMask;
 
     private bool _isGrounded;
@@ -65,7 +65,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void GroundCheck()
     {
-        if (Physics2D.OverlapCircle(_groundCheckObjectLeft.position, _groundDistanceToCheck, _groundMask) || Physics2D.OverlapCircle(_groundCheckObjectRight.position, _groundDistanceToCheck, _groundMask))
+        if (Physics2D.OverlapCircle(_groundCheckLeft.position, _distanceToCheck, _groundMask) || 
+            Physics2D.OverlapCircle(_groundCheckRight.position, _distanceToCheck, _groundMask))
         {
             _isGrounded = true;
         }
@@ -121,7 +122,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetPosition()
     {
-        //player.transform.position = new Vector3(0, 2.76f, 0) ;
         _player.transform.position = _startPostion;
     }
 

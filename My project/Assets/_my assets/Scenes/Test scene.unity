@@ -8456,9 +8456,21 @@ PrefabInstance:
       value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6463673506755767189, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: _distanceToCheck
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463673506755767189, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: _groundCheckLeft
+      value: 
+      objectReference: {fileID: 2024619821}
+    - target: {fileID: 6463673506755767189, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
       propertyPath: _velocityOfDeath
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 6463673506755767189, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
+      propertyPath: _groundCheckRight
+      value: 
+      objectReference: {fileID: 1845009322}
     - target: {fileID: 6463673506755767189, guid: 42d1f172f6d4f78489ea398687130828, type: 3}
       propertyPath: _groundMask.m_Bits
       value: 128

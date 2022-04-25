@@ -1873,10 +1873,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Coin
+  - name: Coin1
     clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
     volume: 0.12
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin2
+    clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
+    volume: 0.2
+    pitch: 1.06
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin3
+    clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
+    volume: 0.2
+    pitch: 1.11
     loop: 0
     source: {fileID: 0}
   - name: Explosion

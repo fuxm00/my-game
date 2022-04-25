@@ -18,10 +18,23 @@ public class Reward : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            FindObjectOfType<AudioManager>().play("Coin");
+            AudioManager audioManager = FindObjectOfType<AudioManager>();
+
+            if (_coinReward <= 1)
+            {
+                audioManager.play("Coin1");
+            } else if ( _coinReward <=5) 
+            {
+                audioManager.play("Coin2");
+            } else if (_coinReward <=10)
+            {
+                audioManager.play("Coin3");
+            } else {
+                audioManager.play("Coin3");
+            }
+
             _scoreMng.GiveCollectedCoins(_coinReward);
             Destroy(gameObject);
         }
-
     }
 }

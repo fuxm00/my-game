@@ -28,11 +28,9 @@ public class Rocket : MonoBehaviour
             {
                 targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
             }
-            
         }
 
         rb = GetComponent<Rigidbody2D>();
-
         _timeToExplode = Time.time + _timeDelayToExplode;
     }
 
@@ -79,9 +77,9 @@ public class Rocket : MonoBehaviour
     {
         Instantiate(_explosionEffect, transform.position, transform.rotation);
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
+        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
 
-        foreach (Collider2D nearbyObject in colliders)
+        foreach (Collider2D nearbyObject in nearbyObjects)
         {
             Rigidbody2D rb = nearbyObject.GetComponent<Rigidbody2D>();
             if (rb != null)
@@ -91,7 +89,7 @@ public class Rocket : MonoBehaviour
             }
         }
 
-        foreach (Collider2D nearbyObject in colliders)
+        foreach (Collider2D nearbyObject in nearbyObjects)
         {
             PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
             if (health != null)

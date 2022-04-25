@@ -20,24 +20,21 @@ public class Barell : MonoBehaviour
             float randomRotation = Random.Range(-90, 90);
             transform.Rotate(0, 0, randomRotation);
         }
-        
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         StartCoroutine(Explode());
+
     }
 
     IEnumerator Explode()
     {
-        float randomSeconds = Random.Range(2, 4);
+        float randomSeconds = Random.Range(2, 5);
         yield return new WaitForSeconds(randomSeconds);
 
         Instantiate(_explosionEffect, transform.position, transform.rotation);
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
+        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
 
-        foreach (Collider2D nearbyObject in colliders)
+        foreach (Collider2D nearbyObject in nearbyObjects)
         {
             Rigidbody2D rb = nearbyObject.GetComponent<Rigidbody2D>();
             if (rb != null)
@@ -47,7 +44,7 @@ public class Barell : MonoBehaviour
             }
         }
 
-        foreach (Collider2D nearbyObject in colliders)
+        foreach (Collider2D nearbyObject in nearbyObjects)
         {
             PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
             if (health != null)
@@ -57,9 +54,6 @@ public class Barell : MonoBehaviour
             }
         }
 
-        
-
         Destroy(gameObject);
-
     }
 }

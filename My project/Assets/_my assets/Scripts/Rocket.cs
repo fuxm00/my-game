@@ -89,11 +89,15 @@ public class Rocket : MonoBehaviour
                 Vector2 direction = nearbyObject.transform.position - transform.position;
                 rb.AddForce(direction * _explodeForce);
             }
+        }
 
+        foreach (Collider2D nearbyObject in colliders)
+        {
             PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
             if (health != null)
             {
                 health.DamagePlayer(1);
+                break;
             }
         }
 

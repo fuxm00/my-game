@@ -41,13 +41,9 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] UnityEvent OnHealthChange;
 
-    private PlayerHeartsUI playerHeartsUIScript;
-
     // Start is called before the first frame update
     void Start()
     {
-        playerHeartsUIScript = GameObject.FindGameObjectWithTag("hearts").GetComponent<PlayerHeartsUI>();
-
         if (PlayerPrefs.GetInt("ExtraHeartIsBought") == 1)
         {
             IncreaseMaxLives(1);
@@ -63,7 +59,6 @@ public class PlayerHealth : MonoBehaviour
         {
             _isAlive = false;
         }
-
     }
 
     public void ResetHealth()

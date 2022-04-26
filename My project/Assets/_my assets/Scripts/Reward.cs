@@ -20,7 +20,7 @@ public class Reward : MonoBehaviour
         {
             AudioManager audioManager = FindObjectOfType<AudioManager>();
 
-            if (_coinReward <= 1)
+            if (_coinReward == 1)
             {
                 audioManager.play("Coin1");
             } else if ( _coinReward <=5) 

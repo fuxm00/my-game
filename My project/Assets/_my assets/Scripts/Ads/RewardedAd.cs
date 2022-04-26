@@ -74,9 +74,6 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             _coinManagerScript.GiveAdBonusCoins();
             _coinManagerScript.TransferToTotalCoins(_coinManagerScript.AdBonusCoins);
             OnUnityAdsShowCompleteEvent?.Invoke();
-
-            // Load another ad:
-            //Advertisement.Load(_adUnitId, this);
         }
     }
 

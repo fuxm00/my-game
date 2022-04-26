@@ -22,7 +22,6 @@ public class Barell : MonoBehaviour
         }
 
         StartCoroutine(Explode());
-
     }
 
     IEnumerator Explode()

@@ -22,15 +22,15 @@ public class Reward : MonoBehaviour
 
             if (_coinReward == 1)
             {
-                audioManager.play("Coin1");
+                audioManager.Play("Coin1");
             } else if ( _coinReward <=5) 
             {
-                audioManager.play("Coin2");
+                audioManager.Play("Coin2");
             } else if (_coinReward <=10)
             {
-                audioManager.play("Coin3");
+                audioManager.Play("Coin3");
             } else {
-                audioManager.play("Coin3");
+                audioManager.Play("Coin3");
             }
 
             _scoreMng.GiveCollectedCoins(_coinReward);

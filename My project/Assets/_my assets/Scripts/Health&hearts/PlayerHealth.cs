@@ -72,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
         if (_isAlive)
         {
             CurrentPlayerLives -= damagePoints;
-            FindObjectOfType<AudioManager>().play("Hurt");
+            FindObjectOfType<AudioManager>().Play("Hurt");
 
             if (_currentPlayerLives <= 0)
             {
@@ -83,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
+        FindObjectOfType<AudioManager>().Play("Hurt");
         _isAlive = false;
     }
 

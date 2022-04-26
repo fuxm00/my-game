@@ -5,43 +5,42 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     // kdekoli v kódu zadej: "FindObjectOfType<AudioManager>().play("name");"
-    // aby se přehrál zvuk s daným jménem
 
-    public Sound[] sounds;
-    public Sound[] playlist;
-    private AudioSource playlistSource;
-    private int currentTrackNumber;
-    private int nextTrackNumber;
+    [SerializeField] Sound[] _sounds;
+    [SerializeField] Sound[] _playlist;
+    private AudioSource _playlistSource;
+    private int _currentTrackNumber;
+    private int _nextTrackNumber;
 
     
     void Awake()
     {
-        foreach (Sound s in sounds)
+        foreach (Sound s in _sounds)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
+            s._source = gameObject.AddComponent<AudioSource>();
+            s._source.clip = s._clip;
 
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
+            s._source.volume = s._volume;
+            s._source.pitch = s._pitch;
+            s._source.loop = s._loop;
         }
 
-        playlistSource = gameObject.AddComponent<AudioSource>();
+        _playlistSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Start()
     {
-        startPlaylist();
+        StartPlaylist();
     }
 
     public void Update()
     {
-        continuePlaylist();
+        ContinuePlaylist();
     }
 
-    public void play(string name)
+    public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(_sounds, sound => sound._name == name);
 
         if (s == null)
         {
@@ -49,44 +48,44 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        s.source.Play();
+        s._source.Play();
     }
 
-    public void startPlaylist()
+    public void StartPlaylist()
     {
-        currentTrackNumber = UnityEngine.Random.Range(0, playlist.Length);
+        _currentTrackNumber = UnityEngine.Random.Range(0, _playlist.Length);
 
-        setValues(currentTrackNumber);
+        SetValues(_currentTrackNumber);
 
-        playlistSource.Play();
+        _playlistSource.Play();
     }
 
-    private void setValues(int trackNumber)
+    private void SetValues(int trackNumber)
     {
-        playlistSource.clip = playlist[trackNumber].clip;
-        playlistSource.volume = playlist[trackNumber].volume;
-        playlistSource.pitch = playlist[trackNumber].pitch;
-        playlistSource.loop = playlist[trackNumber].loop;
+        _playlistSource.clip = _playlist[trackNumber]._clip;
+        _playlistSource.volume = _playlist[trackNumber]._volume;
+        _playlistSource.pitch = _playlist[trackNumber]._pitch;
+        _playlistSource.loop = _playlist[trackNumber]._loop;
     }
 
-    public void continuePlaylist()
+    public void ContinuePlaylist()
     {
-        if (!playlistSource.isPlaying)
+        if (!_playlistSource.isPlaying)
         {
-            skipSong();
+            SkipSong();
         }
     }
-    public void skipSong()
+    public void SkipSong()
     {
-        nextTrackNumber = UnityEngine.Random.Range(0, playlist.Length);
+        _nextTrackNumber = UnityEngine.Random.Range(0, _playlist.Length);
 
-        while (currentTrackNumber == nextTrackNumber)
+        while (_currentTrackNumber == _nextTrackNumber)
         {
-            nextTrackNumber = UnityEngine.Random.Range(0, playlist.Length);
+            _nextTrackNumber = UnityEngine.Random.Range(0, _playlist.Length);
         }
 
-        setValues(nextTrackNumber);
-        playlistSource.Play();
-        currentTrackNumber = nextTrackNumber;
+        SetValues(_nextTrackNumber);
+        _playlistSource.Play();
+        _currentTrackNumber = _nextTrackNumber;
     }
 }

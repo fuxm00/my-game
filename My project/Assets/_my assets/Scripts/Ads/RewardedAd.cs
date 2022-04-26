@@ -15,8 +15,6 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     [SerializeField] GameObject _coinMnanager;
     private CoinManager _coinManagerScript;
 
-    [SerializeField] GameObject _gameOverUI;
-
     [SerializeField] UnityEvent OnUnityAdsShowCompleteEvent;
 
     void Awake()

@@ -1359,7 +1359,6 @@ MonoBehaviour:
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
   _coinMnanager: {fileID: 806975532}
-  _gameOverUI: {fileID: 1085786882}
   OnUnityAdsShowCompleteEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1872,62 +1871,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528241b573de5ad41a59b3e1186cf396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: Coin1
-    clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
-    volume: 0.12
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Coin2
-    clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
-    volume: 0.2
-    pitch: 1.06
-    loop: 0
-    source: {fileID: 0}
-  - name: Coin3
-    clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
-    volume: 0.2
-    pitch: 1.11
-    loop: 0
-    source: {fileID: 0}
-  - name: Explosion
-    clip: {fileID: 8300000, guid: 35acad7dfe707d34f8ba81355858e05a, type: 3}
-    volume: 0.1
-    pitch: 0.8
-    loop: 0
-    source: {fileID: 0}
-  - name: Hurt
-    clip: {fileID: 8300000, guid: 1e3a10626db7daf4386d1c9eeaceaf48, type: 3}
-    volume: 0.2
-    pitch: 0.8
-    loop: 0
-    source: {fileID: 0}
-  - name: Jump
-    clip: {fileID: 8300000, guid: f7c0b4adb7b9ddf448d395bdbedbc412, type: 3}
-    volume: 0.2
-    pitch: 0.8
-    loop: 0
-    source: {fileID: 0}
-  playlist:
-  - name: Surf
-    clip: {fileID: 8300000, guid: ac64e4eb5694c704ca261991501aaf61, type: 3}
-    volume: 0.3
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Hope
-    clip: {fileID: 8300000, guid: 2760cfccb50d71f4db09ec04c314fc7c, type: 3}
-    volume: 0.1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Boss
-    clip: {fileID: 8300000, guid: 037b3396b42a60140ab37501c3c7d66b, type: 3}
-    volume: 0.2
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
+  _sounds:
+  - _name: Coin1
+    _clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
+    _volume: 0.12
+    _pitch: 1
+    _loop: 0
+    _source: {fileID: 0}
+  - _name: Coin2
+    _clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
+    _volume: 0.12
+    _pitch: 1.06
+    _loop: 0
+    _source: {fileID: 0}
+  - _name: Coin3
+    _clip: {fileID: 8300000, guid: 501743109aea67c4ba2ffeec7420a284, type: 3}
+    _volume: 0.12
+    _pitch: 1.11
+    _loop: 0
+    _source: {fileID: 0}
+  - _name: Explosion
+    _clip: {fileID: 8300000, guid: 35acad7dfe707d34f8ba81355858e05a, type: 3}
+    _volume: 0.1
+    _pitch: 0.8
+    _loop: 0
+    _source: {fileID: 0}
+  - _name: Hurt
+    _clip: {fileID: 8300000, guid: 1e3a10626db7daf4386d1c9eeaceaf48, type: 3}
+    _volume: 0.2
+    _pitch: 0.8
+    _loop: 0
+    _source: {fileID: 0}
+  - _name: Jump
+    _clip: {fileID: 8300000, guid: f7c0b4adb7b9ddf448d395bdbedbc412, type: 3}
+    _volume: 0.2
+    _pitch: 0.8
+    _loop: 0
+    _source: {fileID: 0}
+  _playlist:
+  - _name: Surf
+    _clip: {fileID: 8300000, guid: ac64e4eb5694c704ca261991501aaf61, type: 3}
+    _volume: 0.3
+    _pitch: 1
+    _loop: 0
+    _source: {fileID: 0}
+  - _name: Hope
+    _clip: {fileID: 8300000, guid: 2760cfccb50d71f4db09ec04c314fc7c, type: 3}
+    _volume: 0.1
+    _pitch: 1
+    _loop: 0
+    _source: {fileID: 0}
+  - _name: Boss
+    _clip: {fileID: 8300000, guid: 037b3396b42a60140ab37501c3c7d66b, type: 3}
+    _volume: 0.2
+    _pitch: 1
+    _loop: 0
+    _source: {fileID: 0}
 --- !u!1 &683733201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8452244514634352386, guid: 42d1f172f6d4f78489ea398687130828, type: 3}

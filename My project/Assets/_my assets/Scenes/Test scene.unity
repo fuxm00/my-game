@@ -6451,7 +6451,7 @@ GameObject:
   - component: {fileID: 1711888212}
   - component: {fileID: 1711888211}
   m_Layer: 5
-  m_Name: Back Btn
+  m_Name: Home Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7039,7 +7039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BACK
+  m_Text: HOME
 --- !u!222 &1843805957
 CanvasRenderer:
   m_ObjectHideFlags: 0

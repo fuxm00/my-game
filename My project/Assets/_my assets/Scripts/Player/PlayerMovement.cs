@@ -48,18 +48,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _moveInput = _joystick.Horizontal;
-
         WrongFacingCheck();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         GroundCheck();
-
         MovePlayer(_moveInput, 0);
-
         JumpCheck();
-
         VelocityCheck();
     }
 

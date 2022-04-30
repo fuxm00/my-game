@@ -48,7 +48,7 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("GoldenSkinIsBought") == 1)
         {
-            _extraHeartisBought = true;
+            _goldenSkinIsBought = true;
         }
     }
 
@@ -81,7 +81,7 @@ public class ShopManager : MonoBehaviour
                 _playerHealthScript.IncreaseMaxLives(1);
                 _extraHeartisBought = true;
                 PlayerPrefs.SetInt("ExtraHeartIsBought", 1);
-                _coinManagerScript.TransferToTotalCoins(-_extraHeartPrice);
+                _coinManagerScript.TransferToTotalCoins(_extraHeartPrice * -1);
             }
         }
     }
@@ -95,7 +95,7 @@ public class ShopManager : MonoBehaviour
                 _playerAppearanceScript.ChangeToGoldSkin();
                 _goldenSkinIsBought = true;
                 PlayerPrefs.SetInt("GoldenSkinIsBought", 1);
-                _coinManagerScript.TransferToTotalCoins(-_goldenSkinPrice);
+                _coinManagerScript.TransferToTotalCoins(_goldenSkinPrice * -1);
             }
         }
     }

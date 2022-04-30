@@ -1306,7 +1306,6 @@ GameObject:
   - component: {fileID: 307442486}
   - component: {fileID: 307442487}
   - component: {fileID: 307442488}
-  - component: {fileID: 307442489}
   m_Layer: 0
   m_Name: Ad Manager
   m_TagString: Untagged
@@ -1374,21 +1373,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &307442489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307442485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 915190303f61ea54e803494ac5e744c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bannerPosition: 4
-  _androidAdUnitId: Banner_Android
-  _iOSAdUnitId: Banner_iOS
 --- !u!4 &359344679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4036900735588549321, guid: 9ab0b256e2852324f8c8fcd639b055a7, type: 3}
@@ -3690,18 +3674,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 792226298}
-        m_TargetAssemblyTypeName: ShopUI, Assembly-CSharp
-        m_MethodName: ShowBanner
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6537,18 +6509,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 792226298}
-        m_TargetAssemblyTypeName: ShopUI, Assembly-CSharp
-        m_MethodName: HideBanner
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

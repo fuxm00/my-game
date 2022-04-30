@@ -24,28 +24,12 @@ public class ShopUI : MonoBehaviour
     [Header("Prefix")]
     [SerializeField] string _coinPrefix;
 
-    private BannerAd _bannerAdScript;
     private CoinManager _coinManagerScript;
     private ShopManager _shopManagerScript;
 
     private void Start()
     {
         Refresh();
-    }
-    public void ShowBanner()
-    {
-        if (_bannerAdScript == null)
-        {
-            _bannerAdScript = _adManager.GetComponent<BannerAd>();
-        }
-
-        _bannerAdScript.LoadBanner();
-        _bannerAdScript.ShowBannerAd();
-    }
-
-    public void HideBanner()
-    {
-        _bannerAdScript.HideBannerAd();
     }
 
     public void Refresh()

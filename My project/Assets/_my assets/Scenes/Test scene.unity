@@ -1549,7 +1549,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x COINS
+  m_Text: 999 COINS
 --- !u!222 &477664414
 CanvasRenderer:
   m_ObjectHideFlags: 0

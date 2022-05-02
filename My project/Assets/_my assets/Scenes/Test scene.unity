@@ -1761,7 +1761,7 @@ MonoBehaviour:
   - {fileID: 2858611994326846292, guid: e1e56f8e732fb2d449f54607ac7ffd34, type: 3}
   - {fileID: 4574042265254223934, guid: 35fe158a0f499f544b3397bfb7993262, type: 3}
   _playerDistanceToSpawnPart: 25
-  _playerDistanceToDestroyPart: 100
+  _playerDistanceToDestroyPart: 125
   _player: {fileID: 263333667}
   _gameManager: {fileID: 42853425}
   _levelPartsToPrepare: 3
@@ -3150,7 +3150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "0.99\u20AC"
+  m_Text: $4,99
 --- !u!222 &924158184
 CanvasRenderer:
   m_ObjectHideFlags: 0

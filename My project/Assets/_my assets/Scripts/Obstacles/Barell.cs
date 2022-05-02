@@ -7,7 +7,7 @@ public class Barell : MonoBehaviour
     [Header("Characteristics")]
     [SerializeField] float _blastRadius;
     [SerializeField] float _explodeForce;
-    [SerializeField] bool _isRandomised;
+    [SerializeField] bool _isRandomized;
 
     [Header("Effect")]
     [SerializeField] GameObject _explosionEffect;
@@ -15,7 +15,7 @@ public class Barell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(_isRandomised)
+        if(_isRandomized)
         {
             float randomRotation = Random.Range(-90, 90);
             transform.Rotate(0, 0, randomRotation);
@@ -39,7 +39,7 @@ public class Barell : MonoBehaviour
             if (rb != null)
             {
                 Vector2 direction = nearbyObject.transform.position - transform.position;
-                rb.AddForce(direction * _explodeForce);
+                rb.AddForce(direction.normalized * _explodeForce);
             }
         }
 

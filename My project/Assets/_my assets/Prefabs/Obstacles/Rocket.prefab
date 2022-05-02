@@ -235,7 +235,7 @@ MonoBehaviour:
   _rotationSpeed: 130
   _isHoming: 1
   _blastRadius: 2
-  _explodeForce: 200
+  _explodeForce: 400
   _timeDelayToExplode: 10
   _explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
 --- !u!61 &693272324933718041

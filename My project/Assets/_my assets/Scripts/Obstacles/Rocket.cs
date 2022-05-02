@@ -35,7 +35,7 @@ public class Rocket : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         if (Time.time < _timeToExplode)
         {
@@ -65,7 +65,7 @@ public class Rocket : MonoBehaviour
         rb.velocity = transform.up * _rocketSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Player")
         {
@@ -85,7 +85,7 @@ public class Rocket : MonoBehaviour
             if (rb != null)
             {
                 Vector2 direction = nearbyObject.transform.position - transform.position;
-                rb.AddForce(direction * _explodeForce);
+                rb.AddForce(direction.normalized * _explodeForce);
             }
         }
 

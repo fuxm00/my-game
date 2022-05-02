@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 5504852650623848125}
   - component: {fileID: 5504852650623848124}
   m_Layer: 7
-  m_Name: Barell_Normal
+  m_Name: Barell_Static
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,8 +459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blastRadius: 3
-  _explodeForce: 200
-  _isRandomised: 0
+  _explodeForce: 500
+  _isRandomized: 0
   _explosionEffect: {fileID: 9218804137565409685, guid: 4712a6b2708630f4a96ebfeaf6979ed8, type: 3}
 --- !u!1 &5504852650753064259
 GameObject:

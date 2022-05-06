@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6648684170250805455
 Transform:
@@ -125,7 +125,7 @@ GameObject:
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7027738647193501198
 Transform:
@@ -234,7 +234,7 @@ GameObject:
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1925473167452673343
 Transform:
@@ -341,7 +341,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8904016583327371019
 Transform:
@@ -415,7 +415,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1006406210180445733
 Transform:
@@ -490,7 +490,7 @@ GameObject:
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7882799886545498396
 Transform:
@@ -661,7 +661,7 @@ GameObject:
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2391798539314492670
 Transform:
@@ -851,6 +851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5684106734758827472, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5684106734758827473, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -895,6 +899,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5684106735686512155, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
 --- !u!4 &4965155629343166685 stripped
@@ -912,6 +920,10 @@ PrefabInstance:
     - target: {fileID: 5684106734758827472, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_Name
       value: Coin_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684106734758827472, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5684106734758827473, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_RootOrder
@@ -957,6 +969,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5684106735686512155, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
 --- !u!4 &4893686435928220340 stripped
@@ -974,6 +990,10 @@ PrefabInstance:
     - target: {fileID: 5684106734758827472, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_Name
       value: Coin_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684106734758827472, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5684106734758827473, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_RootOrder
@@ -1018,6 +1038,10 @@ PrefabInstance:
     - target: {fileID: 5684106734758827473, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684106735686512155, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
@@ -1157,6 +1181,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1006406210180445733}
     m_Modifications:
+    - target: {fileID: 539809623444093844, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 539809624873992286, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1204,6 +1232,10 @@ PrefabInstance:
     - target: {fileID: 539809624873992287, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
       propertyPath: m_Name
       value: Coin_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 539809624873992287, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
@@ -1553,6 +1585,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1006406210180445733}
     m_Modifications:
+    - target: {fileID: 539809623444093844, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 539809624873992286, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1600,6 +1636,10 @@ PrefabInstance:
     - target: {fileID: 539809624873992287, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
       propertyPath: m_Name
       value: Coin_10 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 539809624873992287, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b51bb6f02150e24e9fd3c3b21a3bac1, type: 3}
@@ -1743,6 +1783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5684106734758827472, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5684106734758827473, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1786,6 +1830,10 @@ PrefabInstance:
     - target: {fileID: 5684106734758827473, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684106735686512155, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
@@ -1849,6 +1897,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_5
       objectReference: {fileID: 0}
+    - target: {fileID: 8098827651841729625, guid: c8244cd3dbaa329428844f9bc34805ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098827653876309906, guid: c8244cd3dbaa329428844f9bc34805ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8244cd3dbaa329428844f9bc34805ae, type: 3}
 --- !u!4 &2772247793237831481 stripped
@@ -1866,6 +1922,10 @@ PrefabInstance:
     - target: {fileID: 5684106734758827472, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_Name
       value: Coin_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684106734758827472, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5684106734758827473, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_RootOrder
@@ -1910,6 +1970,10 @@ PrefabInstance:
     - target: {fileID: 5684106734758827473, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684106735686512155, guid: 251ba762778de3448809c8302a42eaf7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 251ba762778de3448809c8302a42eaf7, type: 3}

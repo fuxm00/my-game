@@ -1,6 +1,11 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 
+/// <summary>
+/// This class represents a sound.
+/// Each has it's name, clip to be played, volume, pitch.
+/// _loop determines whether the sound should play in a loop.
+/// </summary>
 [System.Serializable]
 public class Sound
 {

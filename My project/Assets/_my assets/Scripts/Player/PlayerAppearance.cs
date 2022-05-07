@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class changes player's appearance.
+/// </summary>
 public class PlayerAppearance : MonoBehaviour
 {
     [Header("Body")]

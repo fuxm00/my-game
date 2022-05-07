@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class manages player's movement. Check whether he is grounded in order to jump, 
+/// his facing direction and velocity.
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Characteristics")]

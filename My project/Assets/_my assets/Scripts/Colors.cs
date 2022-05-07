@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class manages colors used in scripting.
+/// </summary>
 public static class Colors
 {
     private static Color32 s_white = new Color32(255, 255, 255, 255);

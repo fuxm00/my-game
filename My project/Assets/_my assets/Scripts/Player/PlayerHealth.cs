@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// This class tracks player's health. Keeps record
+/// whether he is alive and manages his current and max health.
+/// </summary>
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Lives")]

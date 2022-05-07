@@ -2,6 +2,11 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// This class manages sounds and playlist.
+/// There is array of sounds which can be played
+/// and playlist array of song to be played on background.
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] Sound[] _sounds;

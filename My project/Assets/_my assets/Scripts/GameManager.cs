@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+/// <summary>
+/// This class manages game. The class can start or end the game
+/// and shows and hides certain UI elemets.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     [Header("Player")]

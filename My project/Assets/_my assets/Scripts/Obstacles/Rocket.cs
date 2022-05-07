@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class represents rockets.
+/// Barells explode on impact with certain objects 
+/// which is determined by values in their tags.
+/// Each has blast radius to affect nearby objects and explode force to be apllied to them.
+/// Each has specific moving speed and rotationing speed 
+/// and can follow certain object by a bool _isHoming.
+/// </summary>
 public class Rocket : MonoBehaviour
 {
     [Header("Characteristics")]
@@ -74,24 +82,29 @@ public class Rocket : MonoBehaviour
     {
         Instantiate(_explosionEffect, transform.position, transform.rotation);
         Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
+        bool playerAlreadyFound = false;
 
         foreach (Collider2D nearbyObject in nearbyObjects)
         {
             Rigidbody2D rb = nearbyObject.GetComponent<Rigidbody2D>();
+
             if (rb != null)
             {
                 Vector2 direction = nearbyObject.transform.position - transform.position;
                 rb.AddForce(direction.normalized * _explodeForce);
             }
-        }
 
-        foreach (Collider2D nearbyObject in nearbyObjects)
-        {
+            if (playerAlreadyFound)
+            {
+                continue;
+            }
+
             PlayerHealth health = nearbyObject.GetComponent<PlayerHealth>();
+
             if (health != null)
             {
                 health.DamagePlayer(1);
-                break;
+                playerAlreadyFound = true;
             }
         }
 

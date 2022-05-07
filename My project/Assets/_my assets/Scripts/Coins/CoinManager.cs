@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// This class keeps stats about collected coins and total coins collected by a player
+/// and manages these coins.
+/// </summary>
 public class CoinManager : MonoBehaviour
 {
     private int _collectedCoins;
@@ -43,7 +47,6 @@ public class CoinManager : MonoBehaviour
         _totalCoins = PlayerPrefs.GetInt("totalCoins");
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _collectedCoins = 0;

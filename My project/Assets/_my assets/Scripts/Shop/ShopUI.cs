@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class displays total coins to player and disables bought items.
+/// </summary>
 public class ShopUI : MonoBehaviour
 {
     [Header("Ad Manager")]

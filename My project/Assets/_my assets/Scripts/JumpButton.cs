@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// This class represents jump button.
+/// </summary>
 public class JumpButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     private bool _isPressed;

@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class displays current player's health in form of hearts.
+/// </summary>
+
 public class PlayerHeartsUI : MonoBehaviour
 {
     [Header("Player")]

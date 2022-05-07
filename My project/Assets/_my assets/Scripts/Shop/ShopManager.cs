@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
+/// <summary>
+/// This class represent in-game shop.
+/// Manages microtransactions and take actions when something is bought.
+/// </summary>
 public class ShopManager : MonoBehaviour
 {
     [Header("Coins")]
@@ -68,7 +72,7 @@ public class ShopManager : MonoBehaviour
 
     public void OnPurchaseFailed(Product product, PurchaseFailureReason reason)
     {
-        Debug.Log("Purchase of: " + product.definition.id + " failed because of " + reason);
+        Debug.Log("Purchase of product with id: " + product.definition.id + " failed because of " + reason);
     }
 
     public void BuyExtraHeart()

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class displays stats about coins to the player.
+/// </summary>
 public class CoinUI : MonoBehaviour
 {
     [Header("Coin Board")] 

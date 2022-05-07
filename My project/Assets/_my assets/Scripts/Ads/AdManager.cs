@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
-
+/// <summary>
+/// This class initialize ads in game. 
+/// </summary>
 public class AdManager : MonoBehaviour, IUnityAdsInitializationListener
 {
     [SerializeField] string _androidGameId;

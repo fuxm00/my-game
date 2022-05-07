@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class represents coins in game. Each coin has some reward
+/// and sounds according to it's reward.
+/// </summary>
 public class Reward : MonoBehaviour
 {
     [Header("Reward")]

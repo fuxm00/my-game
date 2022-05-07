@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class moves by camera according to player's position if there is any.
+/// </summary>
 public class CameraController : MonoBehaviour
 {
     private GameObject _player;
 
-    // Update is called once per frame
     void Update()
     {
         if (_player == null)

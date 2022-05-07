@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class displays stats of collected coins, bonus coins from ads and total coins.
+/// </summary>
 public class GameOverUI : MonoBehaviour
 {
     [Header("Prefixes")]

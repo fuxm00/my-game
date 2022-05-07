@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class spawn objects in determined interval by _respawnTime.
+/// It spawns them according to player's distance.
+/// </summary>
 public class Spawner : MonoBehaviour
 {
     [Header("Object to Spawn")]

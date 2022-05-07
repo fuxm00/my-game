@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class creates random level from predetermined parts.
+/// </summary>
 public class LevelGenerator : MonoBehaviour
 {
     [Header("Parts")]

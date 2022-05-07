@@ -7,7 +7,6 @@ public class PlayerAppearance : MonoBehaviour
     [Header("Body")]
     [SerializeField] GameObject _playerBody;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (PlayerPrefs.GetInt("GoldenSkinIsBought") == 1)

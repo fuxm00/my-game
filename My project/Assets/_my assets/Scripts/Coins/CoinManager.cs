@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class CoinManager : MonoBehaviour
 {
-    [SerializeField] UnityEvent OnTotalCoinsChange;
-    [SerializeField] UnityEvent OnRecievedCoinsChange;
-
     private int _collectedCoins;
+    private int _adBonusCoins;
+    private int _totalCoins;
+
     public int CollectedCoins
     {
         get
@@ -16,8 +16,6 @@ public class CoinManager : MonoBehaviour
             return _collectedCoins;
         }
     }
-
-    private int _adBonusCoins;
     public int AdBonusCoins
     {
         get
@@ -25,8 +23,6 @@ public class CoinManager : MonoBehaviour
             return _adBonusCoins;
         }
     }
-
-    private int _totalCoins;
     public int TotalCoins
     {
         get
@@ -39,7 +35,10 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    [SerializeField] UnityEvent OnTotalCoinsChange;
+    [SerializeField] UnityEvent OnRecievedCoinsChange;
+
+    void Awake()
     {
         _totalCoins = PlayerPrefs.GetInt("totalCoins");
     }

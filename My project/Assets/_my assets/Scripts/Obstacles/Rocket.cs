@@ -15,26 +15,24 @@ public class Rocket : MonoBehaviour
     [Header("Effect")]
     [SerializeField] GameObject _explosionEffect;
 
-    private Transform targetTransform;
-    private Rigidbody2D rb;
+    private Transform _targetTransform;
+    private Rigidbody2D _rb;
     private float _timeToExplode;
 
-    // Start is called before the first frame update
     void Start()
     {
-        if (targetTransform == null)
+        if (_targetTransform == null)
         {
             if (GameObject.FindGameObjectWithTag("Player") != null)
             {
-                targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+                _targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
             }
         }
 
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _timeToExplode = Time.time + _timeDelayToExplode;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Time.time < _timeToExplode)
@@ -47,27 +45,26 @@ public class Rocket : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (targetTransform != null)
+        if (_targetTransform != null)
         {
             if (_isHoming == true)
             {
-                Vector2 desiredDirection = targetTransform.position - gameObject.transform.position;
+                Vector2 desiredDirection = _targetTransform.position - transform.position;
                 Vector2 currentDirection = gameObject.transform.up;
-
                 desiredDirection.Normalize();
-
                 float rotateAmount = Vector3.Cross(desiredDirection, currentDirection).z;
-
-                rb.angularVelocity = rotateAmount * _rotationSpeed * -1;
+                _rb.angularVelocity = rotateAmount * _rotationSpeed * -1;
             }
         }
 
-        rb.velocity = transform.up * _rocketSpeed;
+        _rb.velocity = transform.up * _rocketSpeed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Platform" || 
+            col.gameObject.tag == "Obstacle" || 
+            col.gameObject.tag == "Player")
         {
             Explode();
         }
@@ -76,7 +73,6 @@ public class Rocket : MonoBehaviour
     private void Explode()
     {
         Instantiate(_explosionEffect, transform.position, transform.rotation);
-
         Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
 
         foreach (Collider2D nearbyObject in nearbyObjects)

@@ -13,6 +13,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     string _adUnitId = null; // This will remain null for unsupported platforms
 
     [SerializeField] GameObject _coinMnanager;
+
     private CoinManager _coinManagerScript;
 
     [SerializeField] UnityEvent OnUnityAdsShowCompleteEvent;

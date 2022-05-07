@@ -16,7 +16,6 @@ public class Spawner : MonoBehaviour
     private GameManager _gameManagerScript;
     private float _nextSpawnTime;
 
-    // Start is called before the first frame update
     void Start()
     {
         _gameManager = GameObject.FindGameObjectWithTag("GameMng");
@@ -24,7 +23,6 @@ public class Spawner : MonoBehaviour
         _nextSpawnTime = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_player == null)
@@ -42,7 +40,9 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        if (Vector3.Distance(_player.transform.position, transform.position) > _playerDistanceToSpawnObject)
+        Vector2 playerDistance = _player.transform.position;
+
+        if (Vector2.Distance(playerDistance, transform.position) > _playerDistanceToSpawnObject)
         {
             return;
         }

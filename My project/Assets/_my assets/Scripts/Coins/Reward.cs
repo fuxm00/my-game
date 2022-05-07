@@ -6,12 +6,12 @@ public class Reward : MonoBehaviour
 {
     [Header("Reward")]
     [SerializeField] int _coinReward;
-    private CoinManager _scoreMng;
 
-    // Start is called before the first frame update
+    private CoinManager _scoreManager;
+
     void Start()
     {
-        _scoreMng = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<CoinManager>();
+        _scoreManager = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<CoinManager>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +33,7 @@ public class Reward : MonoBehaviour
                 audioManager.Play("Coin3");
             }
 
-            _scoreMng.GiveCollectedCoins(_coinReward);
+            _scoreManager.GiveCollectedCoins(_coinReward);
             Destroy(gameObject);
         }
     }

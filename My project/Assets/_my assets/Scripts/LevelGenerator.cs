@@ -26,7 +26,6 @@ public class LevelGenerator : MonoBehaviour
     private int _currentLevelPartNumber;
     private int _nextLevelPartNumber;
 
-    // Start is called before the first frame update
     void Start()
     {
         _gameManagerScript = _gameManager.GetComponent<GameManager>();
@@ -34,7 +33,6 @@ public class LevelGenerator : MonoBehaviour
         SetStartPosition();   
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_gameManagerScript.GameIsRunning)
@@ -48,10 +46,22 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    public void ResetLevelParts()
+    {
+        _currentLevelParts = GameObject.FindGameObjectsWithTag("LevelPart");
+
+        foreach (GameObject levelPart in _currentLevelParts)
+        {
+            Destroy(levelPart);
+        }
+
+        SetStartPosition();
+        InitLevelParts();
+    }
+
     private void SpawnFirstLevelPart()
     {
         _currentLevelPartNumber = Random.Range(0, _levelParts.Count);
-
         SpawnLevelPart(_currentLevelPartNumber);
     }
 
@@ -65,7 +75,6 @@ public class LevelGenerator : MonoBehaviour
         }
 
         SpawnLevelPart(_nextLevelPartNumber);
-
         _currentLevelPartNumber = _nextLevelPartNumber;
     }
 
@@ -74,20 +83,6 @@ public class LevelGenerator : MonoBehaviour
         Transform chosenLevelPart = _levelParts[spawnNumber];
         Transform lastLevelPartTransform = Instantiate(chosenLevelPart, _lastEndposition, Quaternion.identity);
         _lastEndposition = lastLevelPartTransform.Find("End Position").position;
-    }
-
-    public void ResetLevelParts()
-    {
-        _currentLevelParts = GameObject.FindGameObjectsWithTag("LevelPart");
-
-        foreach (GameObject levelPart in _currentLevelParts)
-        {
-            Destroy(levelPart);
-        }
-
-        SetStartPosition();
-
-        InitLevelParts();
     }
 
     private void DestroyDistantLevelParts()

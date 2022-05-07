@@ -25,26 +25,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask _groundMask;
 
     private bool _isGrounded;
-    private PlayerHealth _playerhealth;
     private bool _hasJumped;
-    private Vector3 _startPostion;
-    private Rigidbody2D _rb;
-    private float _moveInput;
     private bool _facingRight = true;
+    private float _moveInput;
+    private Vector3 _startPostion;
+    private PlayerHealth _playerhealth;
+    private Rigidbody2D _rb;
     private JumpButton _jumpButtonScript;
 
-    // Start is called before the first frame update
     void Start()
     {
         _rb = this.GetComponent<Rigidbody2D>();
         _hasJumped = true;
-
         _startPostion = _player.transform.position;
         _playerhealth = _player.GetComponent<PlayerHealth>();
         _jumpButtonScript = _jumpButton.GetComponent<JumpButton>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _moveInput = _joystick.Horizontal;
@@ -57,6 +54,11 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer(_moveInput, 0);
         JumpCheck();
         VelocityCheck();
+    }
+
+    public void ResetPosition()
+    {
+        _player.transform.position = _startPostion;
     }
 
     private void GroundCheck()
@@ -114,11 +116,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.velocity = Vector2.up * _jumpForce;
         FindObjectOfType<AudioManager>().Play("Jump");
-    }
-
-    public void ResetPosition()
-    {
-        _player.transform.position = _startPostion;
     }
 
     private void VelocityCheck()

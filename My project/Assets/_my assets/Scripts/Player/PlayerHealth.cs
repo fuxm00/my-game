@@ -7,6 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("Lives")]
     [SerializeField] int _playerMaxLives;
+
+    private int _currentPlayerLives;
+    private bool _isAlive;
+
+    [SerializeField] UnityEvent OnHealthChange;
+
     public int PlayerMaxLives
     {
         get
@@ -14,8 +20,6 @@ public class PlayerHealth : MonoBehaviour
             return _playerMaxLives;
         }
     }
-
-    private int _currentPlayerLives;
     public int CurrentPlayerLives
     {
         get
@@ -28,9 +32,6 @@ public class PlayerHealth : MonoBehaviour
             OnHealthChange?.Invoke();
         }
     }
-
-    [Header("Is Alive")]
-    private bool _isAlive;
     public bool IsAlive
     {
         get
@@ -39,9 +40,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    [SerializeField] UnityEvent OnHealthChange;
-
-    // Start is called before the first frame update
     void Start()
     {
         if (PlayerPrefs.GetInt("ExtraHeartIsBought") == 1)

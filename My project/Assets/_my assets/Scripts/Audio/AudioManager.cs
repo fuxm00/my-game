@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // kdekoli v kódu zadej: "FindObjectOfType<AudioManager>().play("name");"
-
     [SerializeField] Sound[] _sounds;
     [SerializeField] Sound[] _playlist;
+
     private AudioSource _playlistSource;
     private int _currentTrackNumber;
     private int _nextTrackNumber;
-
     
     void Awake()
     {
@@ -28,12 +26,12 @@ public class AudioManager : MonoBehaviour
         _playlistSource = gameObject.AddComponent<AudioSource>();
     }
 
-    private void Start()
+    void Start()
     {
         StartPlaylist();
     }
 
-    public void Update()
+    void Update()
     {
         ContinuePlaylist();
     }
@@ -60,14 +58,6 @@ public class AudioManager : MonoBehaviour
         _playlistSource.Play();
     }
 
-    private void SetValues(int trackNumber)
-    {
-        _playlistSource.clip = _playlist[trackNumber]._clip;
-        _playlistSource.volume = _playlist[trackNumber]._volume;
-        _playlistSource.pitch = _playlist[trackNumber]._pitch;
-        _playlistSource.loop = _playlist[trackNumber]._loop;
-    }
-
     public void ContinuePlaylist()
     {
         if (!_playlistSource.isPlaying)
@@ -87,5 +77,13 @@ public class AudioManager : MonoBehaviour
         SetValues(_nextTrackNumber);
         _playlistSource.Play();
         _currentTrackNumber = _nextTrackNumber;
+    }
+
+    private void SetValues(int trackNumber)
+    {
+        _playlistSource.clip = _playlist[trackNumber]._clip;
+        _playlistSource.volume = _playlist[trackNumber]._volume;
+        _playlistSource.pitch = _playlist[trackNumber]._pitch;
+        _playlistSource.loop = _playlist[trackNumber]._loop;
     }
 }

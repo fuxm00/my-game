@@ -40,16 +40,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _levelGenerator;
 
     private bool _gameIsRunning;
-    public bool GameIsRunning
-    {
-        get
-        {
-            return _gameIsRunning;
-        }
-    }
-
-    [SerializeField] UnityEvent OnGameOver;
-
     private GameObject _player;
     private PlayerHealth _playerHealthScript;
     private PlayerMovement _playerMovementScript;
@@ -58,32 +48,32 @@ public class GameManager : MonoBehaviour
     private RewardedAd _rewardedAd;
     private JumpButton _jumpButtonScript;
 
-    // Start is called before the first frame update
+    [SerializeField] UnityEvent OnGameOver;
+
+    public bool GameIsRunning
+    {
+        get
+        {
+            return _gameIsRunning;
+        }
+    }
+
     void Start()
     {
         PreparePlayer();
         HideControls();
         HideScore();
         _gameIsRunning = false;
-
         _playerHealthScript = _player.GetComponent<PlayerHealth>();
-
         HideHearts();
-
         _coinManagerScript = _coinManager.GetComponent<CoinManager>();
-
         _startGameUI.SetActive(true);
-
         _rewardedAd = _adManager.GetComponent<RewardedAd>();
-
         _levelGeneratorScript = _levelGenerator.GetComponent<LevelGenerator>();
-
         _playerMovementScript = _player.GetComponent<PlayerMovement>();
-
         _jumpButtonScript = _jumpButton.GetComponent<JumpButton>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_gameIsRunning)
@@ -114,11 +104,8 @@ public class GameManager : MonoBehaviour
         }
 
         ShowScore();
-
         _rewardedAd.LoadAd();
-
         _levelGeneratorScript.ResetLevelParts();
-
         _playerMovementScript.ResetPosition();
     }
 

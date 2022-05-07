@@ -16,8 +16,12 @@ public class ShopManager : MonoBehaviour
     [SerializeField] int _goldenSkinPrice;
 
     private string _coins999 = "coins_999";
-
     private bool _goldenSkinIsBought;
+    private bool _extraHeartisBought;
+    private CoinManager _coinManagerScript;
+    private PlayerHealth _playerHealthScript;
+    private PlayerAppearance _playerAppearanceScript;
+
     public bool GoldenSkinIsBought
     {
         get
@@ -26,7 +30,6 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private bool _extraHeartisBought;
     public bool ExtraHeartisBought
     {
         get
@@ -35,11 +38,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private CoinManager _coinManagerScript;
-    private PlayerHealth _playerHealthScript;
-    private PlayerAppearance _playerAppearanceScript;
-
-    private void Awake()
+    void Awake()
     {
         if (PlayerPrefs.GetInt("ExtraHeartIsBought") == 1)
         {
@@ -52,7 +51,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
         _coinManagerScript = _coinManager.GetComponent<CoinManager>();
         _playerHealthScript = _player.GetComponent<PlayerHealth>();

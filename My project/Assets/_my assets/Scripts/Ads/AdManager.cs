@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 /// <summary>
-/// This class initialize ads in game. 
+/// This class initializes ads. 
 /// </summary>
 public class AdManager : MonoBehaviour, IUnityAdsInitializationListener
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class moves by camera according to player's position if there is any.
+/// This class moves by a camera according to player's current position if there is any.
 /// </summary>
 public class CameraController : MonoBehaviour
 {

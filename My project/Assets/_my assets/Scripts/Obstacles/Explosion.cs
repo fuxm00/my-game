@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class playes explosion sound effect and destroys self in 2 seconds.
+/// This class plays explosion sound effect and destroys self in 2 seconds.
 /// </summary>
 public class Explosion : MonoBehaviour
 {

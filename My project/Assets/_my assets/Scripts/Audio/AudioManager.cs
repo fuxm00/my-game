@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// This class manages sounds and playlist.
-/// There is array of sounds which can be played
-/// and playlist array of song to be played on background.
+/// There is an array of sounds which can be played
+/// and playlist array of songs to be played in the background.
 /// </summary>
 public class AudioManager : MonoBehaviour
 {

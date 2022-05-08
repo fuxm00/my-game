@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// This class keeps stats about collected coins and total coins collected by a player
+/// This class keeps stats about collected and total coins collected by a player.
 /// and manages these coins.
 /// </summary>
 public class CoinManager : MonoBehaviour

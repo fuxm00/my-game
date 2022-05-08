@@ -5,8 +5,8 @@ using UnityEngine;
 /// <summary>
 /// This class represents barells.
 /// Barells explode after certain ammount of time 
-/// which is determined by values in _minSeconds and _maxSeconds.
-/// Each has blast radius to affect nearby objects and explode force to be apllied to them.
+/// which is determined by values of _minSeconds and _maxSeconds.
+/// Each has blast radius to affect nearby objects and explode force to be applied to them.
 /// Their rotation can by randomized by a bool _isRandomized;
 /// </summary>
 public class Barell : MonoBehaviour

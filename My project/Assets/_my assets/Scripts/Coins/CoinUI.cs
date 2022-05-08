@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// This class displays stats about coins to the player.
+/// This class displays stats about collected coins to the player 
+/// while playing a level.
 /// </summary>
 public class CoinUI : MonoBehaviour
 {

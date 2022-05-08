@@ -67,8 +67,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void GroundCheck()
     {
-        if (Physics2D.OverlapCircle(_groundCheckLeft.position, _distanceToCheck, _groundMask) || 
-            Physics2D.OverlapCircle(_groundCheckRight.position, _distanceToCheck, _groundMask))
+        Vector3 leftPos = _groundCheckLeft.position;
+        Vector3 rightPos = _groundCheckRight.position;
+
+        if (Physics2D.OverlapCircle(leftPos, _distanceToCheck, _groundMask) || 
+            Physics2D.OverlapCircle(rightPos, _distanceToCheck, _groundMask))
         {
             _isGrounded = true;
         }

@@ -72,7 +72,12 @@ public class ShopManager : MonoBehaviour
 
     public void OnPurchaseFailed(Product product, PurchaseFailureReason reason)
     {
-        Debug.Log("Purchase of product with id: " + product.definition.id + " failed because of " + reason);
+        string message = 
+            "Purchase of product with id: " +
+            product.definition.id +
+            " failed because of " + 
+            reason;
+        Debug.Log(message);
     }
 
     public void BuyExtraHeart()

@@ -38,10 +38,11 @@ public class Barell : MonoBehaviour
         yield return new WaitForSeconds(randomSeconds);
 
         Instantiate(_explosionEffect, transform.position, transform.rotation);
-        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, _blastRadius);
+        Vector2 position = transform.position;
+        Collider2D[] nearbyObjs = Physics2D.OverlapCircleAll(position, _blastRadius);
         bool playerAlreadyFound = false;
 
-        foreach (Collider2D nearbyObject in nearbyObjects)
+        foreach (Collider2D nearbyObject in nearbyObjs)
         {
             Rigidbody2D rb = nearbyObject.GetComponent<Rigidbody2D>();
 

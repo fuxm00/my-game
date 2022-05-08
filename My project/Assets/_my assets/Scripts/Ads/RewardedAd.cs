@@ -31,7 +31,6 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 #endif
 
         _showAdButton.interactable = false;
-
         _coinManagerScript = _coinMnanager.GetComponent<CoinManager>();
     }
 
@@ -60,9 +59,9 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
-        if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
+        if (adUnitId.Equals(_adUnitId) && 
+            showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
-            
             _showAdButton.interactable = false;
             _showAdButton.onClick.RemoveListener(ShowAd);
             _coinManagerScript.GiveAdBonusCoins();

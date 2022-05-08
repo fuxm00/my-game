@@ -34,12 +34,21 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         _coinManagerScript = _coinMnanager.GetComponent<CoinManager>();
     }
 
+    /// <summary>
+    /// Loads an ad.
+    /// </summary>
     public void LoadAd()
     {
         Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
     }
 
+    /// <summary>
+    /// Prepares ad after loading.
+    /// </summary>
+    /// <param name="adUnitId">
+    /// id of an ad unit
+    /// </param>
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         Debug.Log("Ad Loaded: " + adUnitId);
@@ -51,12 +60,24 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         }
     }
 
+    /// <summary>
+    /// Shows loaded ad.
+    /// </summary>
     public void ShowAd()
     {
         _showAdButton.interactable = false;
         Advertisement.Show(_adUnitId, this);
     }
 
+    /// <summary>
+    /// Rewards player after complete view.
+    /// </summary>
+    /// <param name="adUnitId">
+    /// id of an ad unit
+    /// </param>
+    /// <param name="showCompletionState">
+    /// state of shown ad
+    /// </param>
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
         if (adUnitId.Equals(_adUnitId) && 
@@ -70,18 +91,61 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         }
     }
 
+    /// <summary>
+    /// Debugs a message about ad loading failure.
+    /// </summary>
+    /// <param name="adUnitId">
+    /// id of an ad unit
+    /// </param>
+    /// <param name="error">
+    /// error details
+    /// </param>
+    /// <param name="message">
+    /// additional failure's message
+    /// </param>
     public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
     {
         Debug.Log($"Error loading Ad Unit {adUnitId}: {error.ToString()} - {message}");
     }
 
+    /// <summary>
+    /// Debugs a message about failure during showing an Ad.
+    /// </summary>
+    /// <param name="adUnitId">
+    /// id of an ad unit.
+    /// </param>
+    ///  <param name="error">
+    /// error details
+    /// </param>
+    /// <param name="message">
+    /// additional failure's message
+    /// </param>
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
     }
 
-    public void OnUnityAdsShowStart(string adUnitId) { }
-    public void OnUnityAdsShowClick(string adUnitId) { }
+    /// <summary>
+    /// Debugs a message about ad unit, which has been shown.
+    /// </summary>
+    /// <param name="adUnitId">
+    /// id of an ad unit
+    /// </param>
+    public void OnUnityAdsShowStart(string adUnitId) 
+    {
+        Debug.Log($"Ad Unit {adUnitId} started showing");
+    }
+
+    /// <summary>
+    /// Debugs a message about ad unit, which was clicked on.
+    /// </summary>
+    /// <param name="adUnitId">
+    /// id of an ad unit
+    /// </param>
+    public void OnUnityAdsShowClick(string adUnitId) 
+    {
+        Debug.Log($"Ad Unit {adUnitId} was clicked");
+    }
 
     void OnDestroy()
     {

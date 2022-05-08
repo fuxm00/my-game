@@ -21,6 +21,9 @@ public class CoinUI : MonoBehaviour
     private CoinManager _coinManagerScript;
     private Text _coinText;
 
+    /// <summary>
+    /// Refreshes player's score.
+    /// </summary>
     public void RefreshScore()
     {
         _coinText = _coinBoard.GetComponent<Text>();

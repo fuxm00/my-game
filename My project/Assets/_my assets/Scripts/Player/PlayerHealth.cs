@@ -63,12 +63,21 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Reset current lives to default value.
+    /// </summary>
     public void ResetHealth()
     {
         CurrentPlayerLives = _playerMaxLives;
         _isAlive = true;
     }
 
+    /// <summary>
+    /// Damages player lives.
+    /// </summary>
+    /// <param name="damagePoints">
+    /// damaged value
+    /// </param>
     public void DamagePlayer(int damagePoints)
     {
         if (_isAlive)
@@ -83,12 +92,21 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Makes player die.
+    /// </summary>
     public void Die()
     {
         FindObjectOfType<AudioManager>().Play("Hurt");
         _isAlive = false;
     }
 
+    /// <summary>
+    /// Increases player's default amount of lives.
+    /// </summary>
+    /// <param name="amount">
+    /// amount of lives to be added
+    /// </param>
     public void IncreaseMaxLives (int amount)
     {
         _playerMaxLives += amount;

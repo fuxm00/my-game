@@ -16,6 +16,9 @@ public class PlayerHeartsUI : MonoBehaviour
 
     private PlayerHealth _playerHealth;
 
+    /// <summary>
+    /// Refreshes player's lives.
+    /// </summary>
     public void RefreshHearts()
     {
         _playerHealth = _player.GetComponent<PlayerHealth>();

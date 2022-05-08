@@ -46,6 +46,7 @@ public static class Colors
             return s_gold;
         }
     }
+
     public static Color32 BrightGreen
     {
         get
@@ -53,6 +54,7 @@ public static class Colors
             return s_brightGreen;
         }
     }
+
     public static Color32 Grey
     {
         get

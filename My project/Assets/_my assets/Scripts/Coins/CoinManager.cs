@@ -53,18 +53,33 @@ public class CoinManager : MonoBehaviour
         _adBonusCoins = 0;
     }
 
+    /// <summary>
+    /// Gives player collected coins.
+    /// </summary>
+    /// <param name="amount">
+    /// amount of collected coins
+    /// </param>
     public void GiveCollectedCoins(int amount)
     {
         _collectedCoins += amount;
         OnRecievedCoinsChange?.Invoke();
     }
 
+    /// <summary>
+    /// Gives player bonus coins.
+    /// </summary>
     public void GiveAdBonusCoins()
     {
         _adBonusCoins = (int)((float)_collectedCoins * .2f);
         OnRecievedCoinsChange?.Invoke();
     }
 
+    /// <summary>
+    /// Transfers coins to total coins.
+    /// </summary>
+    /// <param name="amount">
+    /// amount of coins to transfer
+    /// </param>
     public void TransferToTotalCoins(int amount)
     {
         _totalCoins += amount;
@@ -72,6 +87,9 @@ public class CoinManager : MonoBehaviour
         OnTotalCoinsChange?.Invoke();
     }
 
+    /// <summary>
+    /// Resets collected and bonus coins.
+    /// </summary>
     public void ResetRecievedCoins()
     {
         _collectedCoins = 0;

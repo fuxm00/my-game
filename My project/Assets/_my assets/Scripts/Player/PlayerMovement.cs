@@ -60,6 +60,9 @@ public class PlayerMovement : MonoBehaviour
         VelocityCheck();
     }
 
+    /// <summary>
+    /// Resets player's position.
+    /// </summary>
     public void ResetPosition()
     {
         _player.transform.position = _startPostion;

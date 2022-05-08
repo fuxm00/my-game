@@ -41,6 +41,12 @@ public class AudioManager : MonoBehaviour
         ContinuePlaylist();
     }
 
+    /// <summary>
+    /// Plays a sound according to its name.
+    /// </summary>
+    /// <param name="name">
+    /// name of a sound
+    /// </param>
     public void Play(string name)
     {
         Sound s = Array.Find(_sounds, sound => sound._name == name);
@@ -54,6 +60,9 @@ public class AudioManager : MonoBehaviour
         s._source.Play();
     }
 
+    /// <summary>
+    /// Starts playing music.
+    /// </summary>
     public void StartPlaylist()
     {
         _currentTrackNumber = UnityEngine.Random.Range(0, _playlist.Length);
@@ -63,6 +72,9 @@ public class AudioManager : MonoBehaviour
         _playlistSource.Play();
     }
 
+    /// <summary>
+    /// Keeps playlist running.
+    /// </summary>
     public void ContinuePlaylist()
     {
         if (!_playlistSource.isPlaying)
@@ -70,6 +82,10 @@ public class AudioManager : MonoBehaviour
             SkipSong();
         }
     }
+
+    /// <summary>
+    /// Skips a song in a playlist.
+    /// </summary>
     public void SkipSong()
     {
         _nextTrackNumber = UnityEngine.Random.Range(0, _playlist.Length);

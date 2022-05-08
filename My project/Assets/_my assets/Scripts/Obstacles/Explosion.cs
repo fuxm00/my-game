@@ -12,6 +12,10 @@ public class Explosion : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Explosion");
         StartCoroutine(DestroySelf());
     }
+
+    /// <summary>
+    /// Destroys self in 2 seconds.
+    /// </summary>
     IEnumerator DestroySelf()
     {
         yield return new WaitForSeconds(2);

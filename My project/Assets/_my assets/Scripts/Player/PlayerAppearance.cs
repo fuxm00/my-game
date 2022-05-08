@@ -18,6 +18,9 @@ public class PlayerAppearance : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes player's color to gold.
+    /// </summary>
     public void ChangeToGoldSkin()
     {
         _playerBody.GetComponent<SpriteRenderer>().color = Colors.Gold;

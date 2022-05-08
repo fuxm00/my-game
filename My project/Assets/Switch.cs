@@ -17,6 +17,7 @@ public class Switch : MonoBehaviour
     private PostProcessLayer _postProcessLayer;
     private Vector2 _paddlePosition;
     private Toggle _toggle;
+
     void Awake()
     {
         _postProcessLayer = _mainCamera.GetComponent<PostProcessLayer>();
@@ -35,6 +36,12 @@ public class Switch : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Manages post-processing layer.
+    /// </summary>
+    /// <param name="isOn">
+    /// whether a toggle should be turned on or off
+    /// </param>
     public void OnChange(bool isOn)
     {
         if (isOn)

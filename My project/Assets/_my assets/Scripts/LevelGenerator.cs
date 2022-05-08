@@ -49,6 +49,9 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Deletes instantiated level parts.
+    /// </summary>
     public void ResetLevelParts()
     {
         _currentLevelParts = GameObject.FindGameObjectsWithTag("LevelPart");

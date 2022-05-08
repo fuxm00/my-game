@@ -86,6 +86,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts new game.
+    /// </summary>
     public void NewGame()
     {
         _gameIsRunning = true;
@@ -113,6 +116,9 @@ public class GameManager : MonoBehaviour
         _playerMovementScript.ResetPosition();
     }
 
+    /// <summary>
+    /// Ends a game.
+    /// </summary>
     public void GameOver()
     {
         HideControls();
@@ -125,6 +131,9 @@ public class GameManager : MonoBehaviour
         OnGameOver?.Invoke();
     }
 
+    /// <summary>
+    /// Exits a game completely.
+    /// </summary>
     public void QuitApp()
     {
         Application.Quit();

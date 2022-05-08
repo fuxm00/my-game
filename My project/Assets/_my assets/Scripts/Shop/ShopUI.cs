@@ -30,11 +30,14 @@ public class ShopUI : MonoBehaviour
     private CoinManager _coinManagerScript;
     private ShopManager _shopManagerScript;
 
-    private void Start()
+    void Start()
     {
         Refresh();
     }
 
+    /// <summary>
+    /// Refreshes shop buttons and total coins collected.
+    /// </summary>
     public void Refresh()
     {
         if (_shopManagerScript == null)

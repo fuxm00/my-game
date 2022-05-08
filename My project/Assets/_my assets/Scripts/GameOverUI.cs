@@ -21,6 +21,9 @@ public class GameOverUI : MonoBehaviour
 
     private CoinManager _coinManagerScript;
 
+    /// <summary>
+    /// Refreshes stats about coins.
+    /// </summary>
     public void RefreshCoins()
     {
         _coinManagerScript = _coinManager.GetComponent<CoinManager>();

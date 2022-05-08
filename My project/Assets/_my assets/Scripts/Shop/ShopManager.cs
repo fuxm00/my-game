@@ -62,6 +62,12 @@ public class ShopManager : MonoBehaviour
         _playerAppearanceScript = _player.GetComponent<PlayerAppearance>();
     }
 
+    /// <summary>
+    /// Process purchase when it is completed.
+    /// </summary>
+    /// <param name="product">
+    /// name of a bought product
+    /// </param>
     public void OnPurchaseComplete(Product product)
     {
         if (product.definition.id == _coins999)
@@ -70,6 +76,15 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Debugs a message about failure's reason.
+    /// </summary>
+    /// <param name="product">
+    /// failed product
+    /// </param>
+    /// <param name="reason">
+    /// failures reason
+    /// </param>
     public void OnPurchaseFailed(Product product, PurchaseFailureReason reason)
     {
         string message = 
@@ -80,6 +95,9 @@ public class ShopManager : MonoBehaviour
         Debug.Log(message);
     }
 
+    /// <summary>
+    /// Buys player an extra heart
+    /// </summary>
     public void BuyExtraHeart()
     {
         if (!_extraHeartisBought)
@@ -94,6 +112,9 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Buys player a golden skin.
+    /// </summary>
     public void BuyGoldenSkin()
     {
         if (!_goldenSkinIsBought)

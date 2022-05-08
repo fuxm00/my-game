@@ -21,12 +21,23 @@ public class JumpButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         }
     }
 
-
+    /// <summary>
+    /// Sets _isPressed when a pointer goes up.
+    /// </summary>
+    /// <param name="eventData">
+    /// information about an event of pressing a button
+    /// </param>
     public void OnPointerUp(PointerEventData eventData)
     {
         _isPressed = false;
     }
 
+    /// <summary>
+    /// Sets _isPressed when a pointer goes down.
+    /// </summary>
+    /// <param name="eventData">
+    /// information about an event of unpressing a button
+    /// </param>
     public void OnPointerDown(PointerEventData eventData)
     {
         _isPressed = true;

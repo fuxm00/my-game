@@ -32,6 +32,10 @@ public class Barell : MonoBehaviour
         StartCoroutine(Explode());
     }
 
+    /// <summary>
+    /// Explodes the barell after few seconds,
+    /// affects nearby objects and damage player.
+    /// </summary>
     IEnumerator Explode()
     {
         float randomSeconds = Random.Range(_minSeconds, _maxSeconds);

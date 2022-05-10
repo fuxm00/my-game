@@ -147,6 +147,9 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         Debug.Log($"Ad Unit {adUnitId} was clicked");
     }
 
+    /// <summary>
+    /// Remove listeners after destroying an object.
+    /// </summary>
     void OnDestroy()
     {
         _showAdButton.onClick.RemoveAllListeners();

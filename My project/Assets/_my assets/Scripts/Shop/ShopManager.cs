@@ -42,6 +42,9 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks whether certain products have been bought on awake.
+    /// </summary>
     void Awake()
     {
         if (PlayerPrefs.GetInt("ExtraHeartIsBought") == 1)
@@ -55,6 +58,9 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// gets access to certain components.
+    /// </summary>
     void Start()
     {
         _coinManagerScript = _coinManager.GetComponent<CoinManager>();

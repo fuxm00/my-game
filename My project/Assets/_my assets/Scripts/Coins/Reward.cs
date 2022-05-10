@@ -13,11 +13,18 @@ public class Reward : MonoBehaviour
 
     private CoinManager _scoreManager;
 
+    /// <summary>
+    /// gets access t oscore manager on start.
+    /// </summary>
     void Start()
     {
         _scoreManager = GameObject.FindGameObjectWithTag("ScoreMng").GetComponent<CoinManager>();
     }
 
+    /// <summary>
+    /// Plays a sound accrong to type of coin and handles the coins.
+    /// </summary>
+    /// <param name="collision"></param>
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

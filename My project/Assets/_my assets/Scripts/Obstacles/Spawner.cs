@@ -20,6 +20,9 @@ public class Spawner : MonoBehaviour
     private GameManager _gameManagerScript;
     private float _nextSpawnTime;
 
+    /// <summary>
+    /// Gets access to certain components on start.
+    /// </summary>
     void Start()
     {
         _gameManager = GameObject.FindGameObjectWithTag("GameMng");
@@ -27,6 +30,10 @@ public class Spawner : MonoBehaviour
         _nextSpawnTime = 0;
     }
 
+    /// <summary>
+    /// Spawns certain objects according to players distance
+    /// nd spawning frequency on update.
+    /// </summary>
     void Update()
     {
         if (_player == null)

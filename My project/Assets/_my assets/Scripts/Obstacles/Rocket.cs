@@ -27,6 +27,9 @@ public class Rocket : MonoBehaviour
     private Rigidbody2D _rb;
     private float _timeToExplode;
 
+    /// <summary>
+    /// Finds target if needed, gets access to it's rigidbody and sets time to explode on start.
+    /// </summary>
     void Start()
     {
         if (_targetTransform == null)
@@ -41,6 +44,9 @@ public class Rocket : MonoBehaviour
         _timeToExplode = Time.time + _timeDelayToExplode;
     }
 
+    /// <summary>
+    /// If the explode time has come, explodes the rocket on update.
+    /// </summary>
     void Update()
     {
         if (Time.time < _timeToExplode)
@@ -51,6 +57,9 @@ public class Rocket : MonoBehaviour
         Explode();
     }
 
+    /// <summary>
+    /// Rotates by a rocket when wanted.
+    /// </summary>
     void FixedUpdate()
     {
         if (_targetTransform != null)
@@ -68,6 +77,12 @@ public class Rocket : MonoBehaviour
         _rb.velocity = transform.up * _rocketSpeed;
     }
 
+    /// <summary>
+    /// Explodes when collision with certain objects.
+    /// </summary>
+    /// <param name="col">
+    /// collider of a colliding object
+    /// </param>
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Platform" || 
@@ -78,6 +93,9 @@ public class Rocket : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Explodes the rocket, affects nearby objects and damage player.
+    /// </summary>
     private void Explode()
     {
         Instantiate(_explosionEffect, transform.position, transform.rotation);

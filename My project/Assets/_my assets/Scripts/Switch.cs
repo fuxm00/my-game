@@ -18,6 +18,10 @@ public class Switch : MonoBehaviour
     private Vector2 _paddlePosition;
     private Toggle _toggle;
 
+    /// <summary>
+    /// Gets access to certain components
+    /// and switch the toggle according to playerprefs.
+    /// </summary>
     void Awake()
     {
         _postProcessLayer = _mainCamera.GetComponent<PostProcessLayer>();

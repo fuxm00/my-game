@@ -37,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private JumpButton _jumpButtonScript;
 
+    /// <summary>
+    /// Gets access to certain components and prepares a field.
+    /// </summary>
     void Start()
     {
         _rb = this.GetComponent<Rigidbody2D>();
@@ -46,16 +49,23 @@ public class PlayerMovement : MonoBehaviour
         _jumpButtonScript = _jumpButton.GetComponent<JumpButton>();
     }
 
+    /// <summary>
+    /// Gets input from joystick and checks player facing direction on update.
+    /// </summary>
     void Update()
     {
         _moveInput = _joystick.Horizontal;
         WrongFacingCheck();
     }
 
+    /// <summary>
+    /// Moves player, checks whether the player is grounded ,
+    /// whether he is able to jump and his falling speed.
+    /// </summary>
     void FixedUpdate()
     {
         GroundCheck();
-        MovePlayer(_moveInput, 0);
+        MovePlayer();
         JumpCheck();
         VelocityCheck();
     }
@@ -68,6 +78,9 @@ public class PlayerMovement : MonoBehaviour
         _player.transform.position = _startPostion;
     }
 
+    /// <summary>
+    /// Checks whether the player is grounded or not.
+    /// </summary>
     private void GroundCheck()
     {
         Vector3 leftPos = _groundCheckLeft.position;
@@ -84,11 +97,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void MovePlayer(float horizontal, float vertical)
+    /// <summary>
+    /// Moves by a player.
+    /// </summary>
+    private void MovePlayer()
     {
         _rb.velocity = new Vector2(_moveInput * _moveSpeed, _rb.velocity.y);
     }
 
+    /// <summary>
+    /// Checks facing diretion of a player.
+    /// </summary>
     private void WrongFacingCheck()
     {
         if (_facingRight == false && _moveInput > 0)
@@ -100,6 +119,10 @@ public class PlayerMovement : MonoBehaviour
             FlipPlayer();
         }
     }
+
+    /// <summary>
+    /// Flips palyer.
+    /// </summary>
     private void FlipPlayer()
     {
         _facingRight = !_facingRight;
@@ -108,6 +131,9 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = scale;
     }
 
+    /// <summary>
+    /// Checks whether the player can jump.
+    /// </summary>
     private void JumpCheck()
     {
         if (_isGrounded == true)
@@ -122,12 +148,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Jumps with a player.
+    /// </summary>
     private void Jump()
     {
         _rb.velocity = Vector2.up * _jumpForce;
         FindObjectOfType<AudioManager>().Play("Jump");
     }
 
+    /// <summary>
+    /// Checks whether the player falls too fast.
+    /// </summary>
     private void VelocityCheck()
     {
         if (_rb.velocity.y < _velocityOfDeath)

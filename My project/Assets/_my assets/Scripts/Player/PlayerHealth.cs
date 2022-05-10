@@ -44,6 +44,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks whether the extra heart has been bought,
+    /// sets current lives and checks whether he is alive.
+    /// </summary>
     void Start()
     {
         if (PlayerPrefs.GetInt("ExtraHeartIsBought") == 1)

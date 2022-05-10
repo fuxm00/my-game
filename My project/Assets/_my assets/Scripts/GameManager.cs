@@ -62,14 +62,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Prepares player, fields, prepares wanted UI elements 
+    /// and gets acces to certain components on start.
+    /// </summary>
     void Start()
     {
         PreparePlayer();
-        HideControls();
-        HideScore();
+        ShowControls(false);
+        ShowScore(false);
         _gameIsRunning = false;
         _playerHealthScript = _player.GetComponent<PlayerHealth>();
-        HideHearts();
+        ShowHearts(false);
         _coinManagerScript = _coinManager.GetComponent<CoinManager>();
         _startGameUI.SetActive(true);
         _rewardedAd = _adManager.GetComponent<RewardedAd>();
@@ -78,6 +82,9 @@ public class GameManager : MonoBehaviour
         _jumpButtonScript = _jumpButton.GetComponent<JumpButton>();
     }
 
+    /// <summary>
+    /// Checks whether the game has ended on update.
+    /// </summary>
     void Update()
     {
         if (_gameIsRunning)
@@ -93,10 +100,10 @@ public class GameManager : MonoBehaviour
     {
         _gameIsRunning = true;
         _gameOverUI.SetActive(false);
-        ShowControls();
+        ShowControls(true);
         _player.SetActive(true);
         _playerHealthScript.ResetHealth();
-        ShowHearts();
+        ShowHearts(true);
         
         _coinManagerScript.ResetRecievedCoins();
 
@@ -110,7 +117,7 @@ public class GameManager : MonoBehaviour
             _playerHeartsUI.SetActive(true);
         }
 
-        ShowScore();
+        ShowScore(true);
         _rewardedAd.LoadAd();
         _levelGeneratorScript.ResetLevelParts();
         _playerMovementScript.ResetPosition();
@@ -121,12 +128,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-        HideControls();
+        ShowControls(false);
         _player.SetActive(false);
         _gameIsRunning = false;
         _gameOverUI.SetActive(true);
-        HideHearts();
-        HideScore();
+        ShowHearts(false);
+        ShowScore(false);
         _coinManagerScript.TransferToTotalCoins(_coinManagerScript.CollectedCoins);
         OnGameOver?.Invoke();
     }
@@ -139,6 +146,9 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    /// <summary>
+    /// Checks whether the game has ended and ends it if so.
+    /// </summary>
     private void GameOverCheck()
     {
         if (_gameIsRunning)
@@ -152,71 +162,80 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ShowControls()
+    /// <summary>
+    /// Shows or hides controls
+    /// </summary>
+    /// <param name="show">
+    /// whether the controls shouhld be displayed or not
+    /// </param>
+    private void ShowControls(bool toShow)
     {
         Image image = _joystick.gameObject.GetComponent<Image>();
         Image image2 = _joystickHandle.gameObject.GetComponent<Image>();
         Image image3 = _joystickBackgound.gameObject.GetComponent<Image>();
+
+        Color32 borderColor;
+        Color32 handleColor;
+        Color32 backGroundColor;
+
+        if (toShow)
+        {
+            borderColor = Colors.White;
+            handleColor = Colors.White;
+            backGroundColor = Colors.SemiTransparent;
+
+            _jumpButtonScript.IsPressed = false;
+        } else
+        {
+            borderColor = Colors.Transparent;
+            handleColor = Colors.Transparent;
+            backGroundColor = Colors.Transparent;
+        }        
+
         if (image != null)
         {
-            image.color = Colors.White;
+            image.color = borderColor;
         }
         if (image2 != null)
         {
-            image2.color = Colors.White;
+            image2.color = handleColor;
         }
         if (image3 != null)
         {
-            image3.color = Colors.SemiTransparent;
+            image3.color = backGroundColor;
         }
 
-        _jumpButton.gameObject.SetActive(true);
-        _jumpButtonScript.IsPressed = false;
+        _jumpButton.gameObject.SetActive(toShow);
     }
 
-    private void HideControls()
+    /// <summary>
+    /// Shows or hides player's hearts.
+    /// </summary>
+    /// <param name="toShow">
+    /// whether the hearts should be displayed or not
+    /// </param>
+    private void ShowHearts(bool toShow)
     {
-        Image image = _joystick.gameObject.GetComponent<Image>();
-        Image image2 = _joystickHandle.gameObject.GetComponent<Image>();
-        Image image3 = _joystickBackgound.gameObject.GetComponent<Image>();
-        if (image != null)
-        {
-            image.color = Colors.Transparent;
-        }
-        if (image2 != null)
-        {
-            image2.color = Colors.Transparent;
-        }
-        if (image3 != null)
-        {
-            image3.color = Colors.Transparent;
-        }
-
-        _jumpButton.gameObject.SetActive(false);
+        _playerHeartsUI.SetActive(toShow);
     }
 
-    private void ShowHearts()
-    {
-        _playerHeartsUI.SetActive(true);
-    }
-
-    private void HideHearts()
-    {
-        _playerHeartsUI.SetActive(false);
-    }
+    /// <summary>
+    /// Prepares player for game.
+    /// </summary>
     private void PreparePlayer()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _player.SetActive(false);
     }
 
-    private void ShowScore()
+    /// <summary>
+    /// Shows or hides score.
+    /// </summary>
+    /// <param name="toShow">
+    /// whether the score should be displayed or not
+    /// </param>
+    private void ShowScore(bool toShow)
     {
-        _coinUI.SetActive(true);
-    }
-
-    private void HideScore()
-    {
-        _coinUI.SetActive(false);
+        _coinUI.SetActive(toShow);
     }
 }

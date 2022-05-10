@@ -29,6 +29,9 @@ public class LevelGenerator : MonoBehaviour
     private int _currentLevelPartNumber;
     private int _nextLevelPartNumber;
 
+    /// <summary>
+    /// Sets start position and gets acces to game manager on start.
+    /// </summary>
     void Start()
     {
         _gameManagerScript = _gameManager.GetComponent<GameManager>();
@@ -36,6 +39,10 @@ public class LevelGenerator : MonoBehaviour
         SetStartPosition();   
     }
 
+    /// <summary>
+    /// Spawns levelparts when close to the end
+    /// and destroys distant level parts.
+    /// </summary>
     void Update()
     {
         if (_gameManagerScript.GameIsRunning)
@@ -65,12 +72,18 @@ public class LevelGenerator : MonoBehaviour
         InitLevelParts();
     }
 
+    /// <summary>
+    /// Spawns first level part.
+    /// </summary>
     private void SpawnFirstLevelPart()
     {
         _currentLevelPartNumber = Random.Range(0, _levelParts.Count);
         SpawnLevelPart(_currentLevelPartNumber);
     }
 
+    /// <summary>
+    /// Spawns next distinct level part.
+    /// </summary>
     private void SpawnNextLevelPart()
     {
         _nextLevelPartNumber = Random.Range(0, _levelParts.Count);
@@ -84,6 +97,12 @@ public class LevelGenerator : MonoBehaviour
         _currentLevelPartNumber = _nextLevelPartNumber;
     }
 
+    /// <summary>
+    /// Spawns level part.
+    /// </summary>
+    /// <param name="spawnNumber">
+    /// id of level part to spawn
+    /// </param>
     private void SpawnLevelPart (int spawnNumber)
     {
         Transform chosenLevelPart = _levelParts[spawnNumber];
@@ -91,6 +110,9 @@ public class LevelGenerator : MonoBehaviour
         _lastEndposition = lastLevelPartTransform.Find("End Position").position;
     }
 
+    /// <summary>
+    /// Destroys distant level parts.
+    /// </summary>
     private void DestroyDistantLevelParts()
     {
         _currentLevelParts = GameObject.FindGameObjectsWithTag("LevelPart");
@@ -104,6 +126,9 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Prepares first set of level parts.
+    /// </summary>
     private void InitLevelParts()
     {
         SpawnFirstLevelPart();
@@ -114,6 +139,9 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets position for second level part to be spawned on.
+    /// </summary>
     private void SetStartPosition()
     {
         _lastEndposition = _levelPart_Start.Find("End Position").position;

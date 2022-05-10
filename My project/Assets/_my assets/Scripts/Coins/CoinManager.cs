@@ -42,11 +42,17 @@ public class CoinManager : MonoBehaviour
     [SerializeField] UnityEvent OnTotalCoinsChange;
     [SerializeField] UnityEvent OnRecievedCoinsChange;
 
+    /// <summary>
+    /// Gets total coins from playerprefs.
+    /// </summary>
     void Awake()
     {
         _totalCoins = PlayerPrefs.GetInt("totalCoins");
     }
 
+    /// <summary>
+    /// Prepares fields.
+    /// </summary>
     void Start()
     {
         _collectedCoins = 0;

@@ -30,6 +30,9 @@ public class ShopUI : MonoBehaviour
     private CoinManager _coinManagerScript;
     private ShopManager _shopManagerScript;
 
+    /// <summary>
+    /// Refreshes self on start.
+    /// </summary>
     void Start()
     {
         Refresh();

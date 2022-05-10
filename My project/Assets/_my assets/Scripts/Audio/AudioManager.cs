@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     private int _currentTrackNumber;
     private int _nextTrackNumber;
     
+    /// <summary>
+    /// Prepares sounds and songs to be played on awake.
+    /// </summary>
     void Awake()
     {
         foreach (Sound s in _sounds)
@@ -31,11 +34,17 @@ public class AudioManager : MonoBehaviour
         _playlistSource = gameObject.AddComponent<AudioSource>();
     }
 
+    /// <summary>
+    /// Starts playing a background music on start.
+    /// </summary>
     void Start()
     {
         StartPlaylist();
     }
 
+    /// <summary>
+    /// Continues playing music on update.
+    /// </summary>
     void Update()
     {
         ContinuePlaylist();
@@ -100,6 +109,13 @@ public class AudioManager : MonoBehaviour
         _currentTrackNumber = _nextTrackNumber;
     }
 
+    /// <summary>
+    /// Sets clip, volume, pitch and loop values from a song to be played 
+    /// to audio source of background music.
+    /// </summary>
+    /// <param name="trackNumber">
+    /// id of song to be played
+    /// </param>
     private void SetValues(int trackNumber)
     {
         _playlistSource.clip = _playlist[trackNumber]._clip;

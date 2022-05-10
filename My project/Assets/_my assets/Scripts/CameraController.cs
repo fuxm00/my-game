@@ -9,6 +9,9 @@ public class CameraController : MonoBehaviour
 {
     private GameObject _player;
 
+    /// <summary>
+    /// Finds player and when not null, follows him with camera.
+    /// </summary>
     void Update()
     {
         if (_player == null)

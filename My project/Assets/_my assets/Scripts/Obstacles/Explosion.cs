@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class Explosion : MonoBehaviour
 {
+    /// <summary>
+    /// Playes explosion sound effect and destrys self in 2 seconds.
+    /// </summary>
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("Explosion");

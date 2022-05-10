@@ -21,6 +21,9 @@ public class Barell : MonoBehaviour
     [Header("Effect")]
     [SerializeField] GameObject _explosionEffect;
 
+    /// <summary>
+    /// Manages barell's rotation and starts it'S explode procedure on start.
+    /// </summary>
     void Start()
     {
         if(_isRandomized)
